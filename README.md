@@ -12,10 +12,14 @@ The project's tasks are as follows:
 If it is:
 
 - [ ] Find the maximum element of the diagonal and print it to the screen.
-- [ ] Calculate and print a matrix based on the following formula:
+- [ ] Calculate and print a matrix based on the following formulas:
 
-<div style="text-align:center"><img src ="doc/formula1.gif" /></div>
-<div style="text-align:center"><img src ="doc/formula2.gif" /></div>
+<p align="center">
+  <img src="doc/formula1.gif">
+</p>
+<p align="center">
+  <img src="doc/formula2.gif">
+</p>
 
 where `m` is the previously calculated maximum element of the diagonal and `A` the original matrix.
 
