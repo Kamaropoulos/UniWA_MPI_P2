@@ -23,6 +23,6 @@ If it is:
 
 where `m` is the previously calculated maximum element of the diagonal and `A` the original matrix.
 
-- [ ] ind the minimum element of the new matrix and print it to the screen with it's position in the matrix.
+- [ ] Find the minimum element of the new matrix and print it to the screen with it's position in the matrix.
 
 The project has to be implemented using MPI's Collective Communication methods.
