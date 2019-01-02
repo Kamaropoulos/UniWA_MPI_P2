@@ -6,7 +6,7 @@ The class is about, well, parallel programming using MPI.
 
 The project's tasks are as follows:
 
-- [ ] Read a square matrix from the user.
+- [x] Read a square matrix from the user.
 - [ ] Check if it is [strictly diagonally dominant](https://en.wikipedia.org/wiki/Diagonally_dominant_matrix) and print a message to the screen.
 
 If it is:
