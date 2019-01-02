@@ -13,28 +13,57 @@
 
 #include <iostream>
 
-// #include "mpi.h"
+#include "mpi.h"
 
 #include "data.h"
 
+#define ROOT_PROCESS 0
+
+
+
+/**
+ * @brief Returns the number of processes and the rank of the current process.
+ * 
+ * @param processesCount The address to which the number of the processes will be written.
+ * @param rank The address to which the rank of the current process will be written.
+ * 
+ */
+void GetMPIParams(int *processesCount, int *rank)
+{
+    MPI_Comm_rank(MPI_COMM_WORLD, rank);
+    MPI_Comm_size(MPI_COMM_WORLD, processesCount);
+}
+
 int main(int argc, char const *argv[])
 {
-    std::vector<std::vector<int>> data;
+    // for (int i = 0; i < data.size(); i++)
+    // {
+    //     for (int j = 0; j < data[0].size(); j++)
+    //     {
+    //         std::cout << data[i][j] << " ";
+    //     }
+    //     std::cout << std::endl;
+    // }
 
-    ReadData(&data, argc, argv);
+    // The number of processes the code is running on.
+    int processes;
 
-    for (int i = 0; i < data.size(); i++)
-    {
-        for (int j = 0; j < data[0].size(); j++)
-        {
-            std::cout << data[i][j] << " ";
-        }
-        std::cout << std::endl;
-    }
+    // The rank of the current process.
+    int myRank;
 
-    // Get comm world info
+    // Get running processes number and current process rank.
+    GetMPIParams(&processes, &myRank);
 
     // Scatter lines
+    if (myRank == ROOT_PROCESS)
+    {
+        std::vector<std::vector<int>> data;
+
+        // Read data from file.
+        ReadData(&data, argc, argv);
+
+        
+    }
 
     // For each line:
     // check if it meets the criteria
