@@ -36,7 +36,7 @@ inline bool fileExists(const std::string &name)
     return (stat(name.c_str(), &buffer) == 0);
 }
 
-std::string inputFileName(int argc, char const *argv[])
+std::string inputFileName(int argc, char **argv)
 {
     std::string filename;
     // Check if file name was passed
@@ -72,7 +72,7 @@ std::string inputFileName(int argc, char const *argv[])
  * @param argc 
  * @param argv 
  */
-void ReadData(std::vector<std::vector<int>> *data, int argc, char const *argv[])
+void ReadData(std::vector<std::vector<int>> *data, int argc, char **argv)
 {
     std::string filename;
 
@@ -115,4 +115,46 @@ void ReadData(std::vector<std::vector<int>> *data, int argc, char const *argv[])
         // We are at the end of the file, close it as we won't need it anymore.
         inputFile.close();
     }
+}
+
+/**
+ * @brief Returns a 2D Array with the data of the passed 2D Vector
+ * 
+ * @tparam T 
+ * @param v2d The input 2D Vector
+ * @return T** The 2D array with the data from the vector
+ */
+int **vector2DToArray2D(std::vector<std::vector<int>> v2d)
+{
+    // Create a pointer for a 2D array
+    int **arr2d = new int *[v2d.size()];
+
+    // For each line in the vector:
+    for (int i = 0; i < v2d.size(); i++)
+    {
+        arr2d[i] = new int[v2d[i].size()];
+
+        for (int j = 0; j < v2d[i].size(); j++)
+        {
+            arr2d[i][j] = v2d[i][j];
+        }
+    }
+
+    return arr2d;
+}
+
+int *array2DTo1DRowMajor(int **arr2d, int m, int n)
+{
+    // Create a pointer for an array
+    int *arr = new int[m * n];
+
+    for (int i = 0; i < m; i++)
+    {
+        for (int j = 0; j < n; j++)
+        {
+            arr[i * n + j] = arr2d[i][j];
+        }
+    }
+
+    return arr;
 }

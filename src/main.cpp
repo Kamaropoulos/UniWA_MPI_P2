@@ -19,8 +19,6 @@
 
 #define ROOT_PROCESS 0
 
-
-
 /**
  * @brief Returns the number of processes and the rank of the current process.
  * 
@@ -34,22 +32,16 @@ void GetMPIParams(int *processesCount, int *rank)
     MPI_Comm_size(MPI_COMM_WORLD, processesCount);
 }
 
-int main(int argc, char const *argv[])
+int main(int argc, char **argv)
 {
-    // for (int i = 0; i < data.size(); i++)
-    // {
-    //     for (int j = 0; j < data[0].size(); j++)
-    //     {
-    //         std::cout << data[i][j] << " ";
-    //     }
-    //     std::cout << std::endl;
-    // }
-
     // The number of processes the code is running on.
     int processes;
 
     // The rank of the current process.
     int myRank;
+
+    // Initialize MPI.
+    MPI_Init(&argc, &argv);
 
     // Get running processes number and current process rank.
     GetMPIParams(&processes, &myRank);
@@ -62,6 +54,9 @@ int main(int argc, char const *argv[])
         // Read data from file.
         ReadData(&data, argc, argv);
 
+        // Convert data vector to row-major order array
+        int *dataArray = new int[data.size() * data[0].size()];
+        dataArray = array2DTo1DRowMajor(vector2DToArray2D(data), data.size(), data[0].size());
         
     }
 
