@@ -11,6 +11,8 @@
 
 #include <vector>
 
+int _lineToProcess(int line, int totalLines, int processes);
+
 int lineToProcess(int line, int totalLines, int processes);
 
 std::vector<int> processToLines(int process, int totalLines, int processes);
