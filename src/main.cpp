@@ -16,6 +16,7 @@
 #include "mpi.h"
 
 #include "data.h"
+#include "networking.h"
 
 #define ROOT_PROCESS 0
 
@@ -40,6 +41,10 @@ int main(int argc, char **argv)
     // The rank of the current process.
     int myRank;
 
+    int *dataArray;
+
+    int *mxn = new int[2];
+
     // Initialize MPI.
     MPI_Init(&argc, &argv);
 
@@ -54,11 +59,44 @@ int main(int argc, char **argv)
         // Read data from file.
         ReadData(&data, argc, argv);
 
+        mxn[0] = data.size();
+        mxn[1] = data[0].size();
+
+        // Add indentification element (last element will be the line number)
+
+        for (int i = 0; i < mxn[0]; i++)
+        {
+            data[i].push_back(i);
+        }
+
         // Convert data vector to row-major order array
-        int *dataArray = new int[data.size() * data[0].size()];
-        dataArray = array2DTo1DRowMajor(vector2DToArray2D(data), data.size(), data[0].size());
-        
+        dataArray = new int[mxn[0] * (mxn[1] + 1)];
+        dataArray = array2DTo1DRowMajor(vector2DToArray2D(data), mxn[0], (mxn[1] + 1));
     }
+
+    // Broadcast input dimmensions
+    MPI_Bcast(mxn, 2, MPI_INT, 0, MPI_COMM_WORLD);
+
+    int elements = (mxn[1] + 1) * processToLinesCount(myRank, mxn[0], processes);
+    int *row = new int[elements];
+
+    int *displs = new int[processes];
+    int *scounts = new int[processes];
+
+    int displsTemp = 0;
+    for (int i = 0; i < processes; i++)
+    {
+        displs[i] = i * (processToLinesCount(i, mxn[0], processes)) * (mxn[1]+1) + displsTemp;
+        displsTemp = i * (processToLinesCount(i, mxn[0], processes)) * (mxn[1]+1);
+        scounts[i] = (processToLinesCount(i, mxn[0], processes)) * (mxn[1]+1);
+    }
+
+    MPI_Scatterv(dataArray, scounts, displs, MPI_INT, row, *scounts, MPI_INT, 0, MPI_COMM_WORLD);
+
+    delete[] displs;
+    delete[] scounts;
+
+    MPI_Barrier(MPI_COMM_WORLD);
 
     // For each line:
     // check if it meets the criteria
@@ -80,6 +118,8 @@ int main(int argc, char **argv)
 
     // gather the results
     // print min and it's position to the matrix
+
+    MPI_Finalize();
 
     return 0;
 }
