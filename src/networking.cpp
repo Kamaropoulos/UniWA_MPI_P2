@@ -52,7 +52,7 @@ int lineToProcess(int line, int totalLines, int processes)
  */
 int _lineToProcess(int line, int totalLines, int processes)
 {
-    return ((line % (processes - 1)) + 1);
+    return ((line % (processes)));
 }
 
 /**
