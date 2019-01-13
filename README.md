@@ -7,12 +7,12 @@ The class is about, well, parallel programming using MPI.
 The project's tasks are as follows:
 
 - [x] Read a square matrix from the user.
-- [ ] Check if it is [strictly diagonally dominant](https://en.wikipedia.org/wiki/Diagonally_dominant_matrix) and print a message to the screen.
+- [x] Check if it is [strictly diagonally dominant](https://en.wikipedia.org/wiki/Diagonally_dominant_matrix) and print a message to the screen.
 
 If it is:
 
-- [ ] Find the maximum element of the diagonal and print it to the screen.
-- [ ] Calculate and print a matrix based on the following formulas:
+- [x] Find the maximum element of the diagonal and print it to the screen.
+- [x] Calculate and print a matrix based on the following formulas:
 
 <p align="center">
   <img src="doc/formula1.gif">
@@ -23,6 +23,6 @@ If it is:
 
 where `m` is the previously calculated maximum element of the diagonal and `A` the original matrix.
 
-- [ ] Find the minimum element of the new matrix and print it to the screen with it's position in the matrix.
+- [x] Find the minimum element of the new matrix and print it to the screen with it's position in the matrix.
 
 The project has to be implemented using MPI's Collective Communication methods.

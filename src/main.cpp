@@ -20,6 +20,12 @@
 
 #define ROOT_PROCESS 0
 
+struct minloc
+{
+    int value;
+    int rank;
+};
+
 /**
  * @brief Returns the number of processes and the rank of the current process.
  * 
@@ -84,39 +90,244 @@ int main(int argc, char **argv)
     int *scounts = new int[processes];
 
     int displsTemp = 0;
-    for (int i = 0; i < processes; i++)
+    for (int i = 0; i < ((processes > mxn[0]) ? mxn[0] : processes); i++)
     {
-        displs[i] = i * (processToLinesCount(i, mxn[0], processes)) * (mxn[1]+1) + displsTemp;
-        displsTemp = i * (processToLinesCount(i, mxn[0], processes)) * (mxn[1]+1);
-        scounts[i] = (processToLinesCount(i, mxn[0], processes)) * (mxn[1]+1);
+        displs[i] = i * (processToLinesCount(i, mxn[0], processes)) * (mxn[1] + 1);
+        scounts[i] = (processToLinesCount(i, mxn[0], processes)) * (mxn[1] + 1);
+        if ((processes < mxn[0]) && ((mxn[0] % processes) != 0))
+        {
+            displs[i] += displsTemp;
+            displsTemp = (processToLinesCount(i, mxn[0], processes)) * (mxn[1] + 1);
+        }
     }
+
+    // if (myRank == 8)
+    // {
+    //     std::cout << "Process " << myRank << ": displs: ";
+    //     for (int o = 0; o < processes; o++)
+    //     {
+    //         std::cout << displs[o] << " ";
+    //     }
+    //     std::cout << std::endl;
+    //     std::cout << "Process " << myRank << ": scounts: ";
+    //     for (int o = 0; o < processes; o++)
+    //     {
+    //         std::cout << scounts[o] << " ";
+    //     }
+    //     std::cout << std::endl;
+    // }
 
     MPI_Scatterv(dataArray, scounts, displs, MPI_INT, row, *scounts, MPI_INT, 0, MPI_COMM_WORLD);
 
     delete[] displs;
     delete[] scounts;
 
-    MPI_Barrier(MPI_COMM_WORLD);
+    // MPI_Barrier(MPI_COMM_WORLD);
+
+    std::vector<std::vector<int>> localLines = arrayRowMajorTo2DVector(row, processToLinesCount(myRank, mxn[0], processes), mxn[1] + 1);
+
+    int result = 0;
+
+    int maxLocal;
 
     // For each line:
-    // check if it meets the criteria
-    // send the results to 0
+    for (int i = 0; i < localLines.size(); i++)
+    {
+        // check if it meets the criteria
+        int line = localLines[i][mxn[1]];
+        int diagonalElement = localLines[i][line];
 
-    // gather the results
+        if (i == 0)
+        {
+            maxLocal = diagonalElement;
+        }
+        else
+        {
+            maxLocal = (abs(diagonalElement) > maxLocal) ? diagonalElement : maxLocal;
+        }
 
+        // Calculate sum
+        int sum = 0;
+        for (int j = 0; j < mxn[1]; j++)
+        {
+            if (j != line)
+            {
+                sum += abs(localLines[i][j]);
+            }
+        }
+
+        bool ok = diagonalElement >= sum;
+
+        if (ok)
+        {
+            result += 1;
+        }
+    }
+
+    int globalResult;
+    MPI_Reduce(&result, &globalResult, 1, MPI_INT, MPI_SUM, 0, MPI_COMM_WORLD);
+
+    bool abortP = false;
     // print whether it is strictly diagonally dominant to the screen
+    if (myRank == ROOT_PROCESS)
+    {
+        if (globalResult == mxn[0])
+        {
+            abortP = false;
+            std::cout << "yes" << std::endl;
+            MPI_Bcast(&abortP, 1, MPI_CXX_BOOL, 0, MPI_COMM_WORLD);
+        }
+        else
+        {
+            std::cout << "no" << std::endl;
+            abortP = true;
+            MPI_Bcast(&abortP, 1, MPI_CXX_BOOL, 0, MPI_COMM_WORLD);
+            MPI_Finalize();
+            return 0;
+        }
+    }
+    else
+    {
+        MPI_Bcast(&abortP, 1, MPI_CXX_BOOL, 0, MPI_COMM_WORLD);
+        if (abortP)
+        {
+            MPI_Finalize();
+            return 0;
+        }
+    }
 
-    // if it is:
-    // ask processes to find the max
-    // gather the results
-    // print the max
+    MPI_Barrier(MPI_COMM_WORLD);
 
-    // broadcast the max to the processes along with which line they should generate
-    // gather the lines and print the lines
+    // Find diagonal max
 
+    int maxGlobal;
+
+    MPI_Allreduce(&maxLocal, &maxGlobal, 1, MPI_INT, MPI_MAX, MPI_COMM_WORLD);
+    if (myRank == ROOT_PROCESS)
+        std::cout << "max = " << maxGlobal << std::endl;
+
+    // Calculate new matrix
+
+    std::vector<int> linesToFind = processToLines(myRank, mxn[0], processes);
+    std::vector<std::vector<int>> localB;
+
+    int minLocal;
+    int minI = -1, minJ = -1;
+
+    for (int i = 0; i < linesToFind.size(); i++)
+    {
+        std::vector<int> line;
+
+        for (int j = 0; j < mxn[1]; j++)
+        {
+            if (linesToFind[i] != j)
+            {
+                line.push_back(maxGlobal - abs(localLines[i][j]));
+            }
+            else
+            {
+                line.push_back(maxGlobal);
+            }
+            if ((i == 0) && (j == 0))
+            {
+                minLocal = line[0];
+            }
+            else
+            {
+                if (line[j] < minLocal)
+                {
+                    minLocal = line[j];
+                    minI = linesToFind[i];
+                    minJ = j;
+                }
+            }
+        }
+
+        localB.push_back(line);
+    }
+
+    // for (int i = 0; i < linesToFind.size(); i++)
+    // {
+    //     std::cout << "Line " << linesToFind[i] << ": ";
+
+    //     for (int j = 0; j < mxn[1]; j++)
+    //     {
+    //         std::cout << localB[i][j] << " ";
+    //     }
+    //     std::cout << std::endl;
+    // }
+
+    MPI_Barrier(MPI_COMM_WORLD);
+
+    displs = new int[processes];
+    scounts = new int[processes];
+
+    for (int i = 0; i < ((processes > mxn[0]) ? mxn[0] : processes); i++)
+    {
+        displs[i] = i * (processToLinesCount(i, mxn[0], processes)) * (mxn[1]);
+        scounts[i] = (processToLinesCount(i, mxn[0], processes)) * (mxn[1]);
+        if ((processes < mxn[0]) && ((mxn[0] % processes) != 0))
+        {
+            displs[i] += displsTemp;
+            displsTemp = (processToLinesCount(i, mxn[0], processes)) * (mxn[1]);
+        }
+    }
+    int **tempArr2D = vector2DToArray2D(localB);
+    int *localBRowMajor = array2DTo1DRowMajor(tempArr2D, linesToFind.size(), mxn[1]);
+
+    int *b = new int[mxn[0] * mxn[1]];
+
+    // MPI_Scatterv(dataArray, scounts, displs, MPI_INT, row, *scounts, MPI_INT, 0, MPI_COMM_WORLD);
+    MPI_Gatherv(localBRowMajor, linesToFind.size() * mxn[0], MPI_INT, b, scounts, displs, MPI_INT, 0, MPI_COMM_WORLD);
+
+    std::vector<std::vector<int>> vecB = arrayRowMajorTo2DVector(b, mxn[0], mxn[1]);
+
+    if (myRank == ROOT_PROCESS)
+    {
+        std::cout << "B = [" << std::endl;
+        for (int i = 0; i < mxn[0]; i++)
+        {
+
+            for (int j = 0; j < mxn[1]; j++)
+            {
+                std::cout << b[(i * mxn[0]) + j] << " ";
+            }
+            std::cout << std::endl;
+        }
+        std::cout << "]" << std::endl;
+    }
+
+    MPI_Barrier(MPI_COMM_WORLD);
+
+    // // Find min
+    struct minloc minGlobal;
+    int min;
+    MPI_Reduce(&minLocal, &min, 1, MPI_INT, MPI_MIN, 0, MPI_COMM_WORLD);
+    if (myRank == ROOT_PROCESS)
+    {
+        std::cout << "min = " << min << std::endl;
+    }
+
+    MPI_Barrier(MPI_COMM_WORLD);
+
+    MPI_Allreduce(&minLocal, &minGlobal, 1, MPI_2INT, MPI_MINLOC, MPI_COMM_WORLD);
+
+    if (myRank == ROOT_PROCESS)
+    {
+        std::cout << "min = " << minGlobal.value << " at process " << minGlobal.rank << std::endl;
+    }
+
+    MPI_Barrier(MPI_COMM_WORLD);
+
+    if (myRank == minGlobal.rank)
+    {
+
+        std::cout << minGlobal.rank << std::endl;
+        std::cout << "[" << minI << "][" << minJ << "]" << std::endl;
+    }
     // processes continue to find the min of the new matrix
 
-    // gather the results
+    // gather the new matrix
     // print min and it's position to the matrix
 
     MPI_Finalize();

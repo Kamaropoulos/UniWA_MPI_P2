@@ -16,3 +16,5 @@ void ReadData(std::vector<std::vector<int>> *, int, char **);
 int **vector2DToArray2D(std::vector<std::vector<int>>);
 
 int *array2DTo1DRowMajor(int **arr2d, int m, int n);
+
+std::vector<std::vector<int>> arrayRowMajorTo2DVector(int* arr, int m, int n);

@@ -158,3 +158,22 @@ int *array2DTo1DRowMajor(int **arr2d, int m, int n)
 
     return arr;
 }
+
+std::vector<std::vector<int>> arrayRowMajorTo2DVector(int* arr, int m, int n){
+    std::vector<std::vector<int>> vec;
+    
+    int index = 0;
+    for(int i = 0; i < m; i++)
+    {
+        std::vector<int> vecLine;
+        
+        for(int j = 0; j < n; j++)
+        {
+            vecLine.push_back(arr[index++]);
+        }
+
+        vec.push_back(vecLine);        
+    }
+
+    return vec;    
+}
