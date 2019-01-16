@@ -26,3 +26,22 @@ where `m` is the previously calculated maximum element of the diagonal and `A` t
 - [x] Find the minimum element of the new matrix and print it to the screen with it's position in the matrix.
 
 The project has to be implemented using MPI's Collective Communication methods.
+
+## Compilation
+`mpic++ -o bin/main src/main.cpp src/data.cpp src/networking.cpp`
+
+## Execution
+`mpiexec -n 4 ./bin/main <filename>` 
+
+## Testing
+The code can be tested with different inputs by changing the contents of the `testfile.in` file.
+
+## Unit Testing
+Some unit tests were implemented to speed up the debugging process (using the Catch2 library). These can be compiled and executed with the following commands:
+```
+mpic++ -o bin/test test/data_unittest.cpp test/networking_unittest.cpp src/networking.cpp src/data.cpp
+./bin/test
+```
+
+## Documentation
+The source code's documentation can be found on the `docs` directory. It was automatically generated using Doxygen and is available in both PDF and HTML format.
