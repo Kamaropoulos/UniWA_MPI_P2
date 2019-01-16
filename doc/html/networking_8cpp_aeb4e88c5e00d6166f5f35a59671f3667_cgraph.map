@@ -1,0 +1,13 @@
+<map id="calculateB" name="calculateB">
+<area shape="rect" id="node1" title="Calculate the B matrix given the lines assigned to the current process and the max element of matrix ..." alt="" coords="5,119,88,145"/>
+<area shape="rect" id="node2" href="$data_8cpp.html#a6fa50f0193e86a0cf4be42afd2aa3056" title="Calculate the lines of B assigned to a process." alt="" coords="158,56,273,83"/>
+<area shape="rect" id="node7" href="$data_8cpp.html#a0555064a00cfa5563cce34c929f8c7af" title="Convert data in 2D vector to an 1D array with the data of the original vector in row&#45;major order for ..." alt="" coords="169,119,262,145"/>
+<area shape="rect" id="node10" href="$networking_8cpp.html#a3b76ad8a23451b07a2a6f4019798dede" title="Calculate the displs and scounts arrays for use with Scatter and Gather methods." alt="" coords="136,195,295,221"/>
+<area shape="rect" id="node3" href="$networking_8cpp.html#a899a3109ee6d901ce9e10411db36bd53" title="Returns a vector with the numbers (base 0) of the lines a process will be assigned." alt="" coords="365,5,479,32"/>
+<area shape="rect" id="node6" href="$data_8cpp.html#a247d4496219cf307d9be0d0ff98cf148" title="Calculate the value of a cell of the B matrix." alt="" coords="369,56,475,83"/>
+<area shape="rect" id="node4" href="$networking_8cpp.html#a2b5f195179a5dab012c7eb63316c8909" title="Returns the number of the process a line of the array will be assigned to." alt="" coords="571,44,677,71"/>
+<area shape="rect" id="node5" href="$networking_8cpp.html#a13ea20b290c58975e6f9ad5b419330cc" title="[Internal] Line to process assignments based on the modulo of the line." alt="" coords="747,107,859,133"/>
+<area shape="rect" id="node8" href="$data_8cpp.html#ac8c9576be9f28e69607c0756f1e5a7ef" title="Returns a 2D Array with the data of the passed 2D Vector." alt="" coords="353,107,491,133"/>
+<area shape="rect" id="node9" href="$data_8cpp.html#a3a660ef9ff9008d793e691b81c43ce2b" title="Converts a 2D array into an 1D array in row&#45;major order." alt="" coords="343,157,501,184"/>
+<area shape="rect" id="node11" href="$networking_8cpp.html#a1b2d1e5ad12dfa2377bd6e665324b6d2" title="The number of lines that will be assigned to a process." alt="" coords="549,132,699,159"/>
+</map>

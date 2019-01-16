@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['inputfilename',['inputFileName',['../data_8cpp.html#aa66fdbd9f9a257ed80dac99b66380d2f',1,'data.cpp']]]
+  ['getmpiparams',['GetMPIParams',['../networking_8cpp.html#a4f043b23867da30b825487b736565c9f',1,'GetMPIParams(int *processesCount, int *rank):&#160;networking.cpp'],['../networking_8h.html#a4f043b23867da30b825487b736565c9f',1,'GetMPIParams(int *processesCount, int *rank):&#160;networking.cpp']]]
 ];

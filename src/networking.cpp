@@ -118,11 +118,25 @@ int processToLinesCount(int process, int totalLines, int processes)
     return linesCount;
 }
 
+/**
+ * @brief Method used to abstract the broadcasting of the array size
+ * 
+ * @param arraySize [in] The total number of lines in all processes
+ */
 void broadcastArraySize(int *arraySize)
 {
     MPI_Bcast(arraySize, 1, MPI_INT, 0, MPI_COMM_WORLD);
 }
 
+/**
+ * @brief Calculate the displs and scounts arrays for use with Scatter and Gather methods
+ * 
+ * @param displs [out] A pointer for the displs array to be stored to
+ * @param scounts [out] A pointer for the scounts array to be stored to
+ * @param arraySize [in] The total number of lines in all processes
+ * @param processes [in] The total number of processes
+ * @param myRank [in] The rank of the current process
+ */
 void calculateDisplsScounts(int *&displs, int *&scounts, int arraySize, int processes, int myRank)
 {
     displs = new int[processes];
@@ -146,6 +160,15 @@ void calculateDisplsScounts(int *&displs, int *&scounts, int arraySize, int proc
     }
 }
 
+/**
+ * @brief Scatter the lines of matrix A to the running processes
+ * 
+ * @param data [in] A 2D vector with the input data
+ * @param arraySize [in] The total number of lines
+ * @param myRank [in] The rank of teh current process
+ * @param processes [in] The total number of processes
+ * @return std::vector<std::vector<int>> The lines assigned to the current process
+ */
 std::vector<std::vector<int>> scatterData(std::vector<std::vector<int>> data, int arraySize, int myRank, int processes)
 {
 
@@ -178,6 +201,12 @@ std::vector<std::vector<int>> scatterData(std::vector<std::vector<int>> data, in
     return localData;
 }
 
+/**
+ * @brief Find and share the max element of matrix A across all running processes
+ * 
+ * @param maxLocal [in] The max found on the lines assigned to the current process
+ * @return int The max element of matrix A
+ */
 int calculateMax(int maxLocal)
 {
     int max;
@@ -185,6 +214,19 @@ int calculateMax(int maxLocal)
     return max;
 }
 
+/**
+ * @brief Checks if matrix A meets the strictly diagonally dominant criteria 
+ *        given the lines assigned to the current process and returns it's max
+ *        element by reference
+ * 
+ * @param localData [in] The lines assigned to the current process
+ * @param arraySize [in] The total number of lines
+ * @param myRank [in] The rank of the current process
+ * @param processes [in] The total number of processes
+ * @param max [out] The max element of matrix A
+ * @return true If matrix A meets the strictly diagonally dominant criteria
+ * @return false If matrix A does not meet the strictly diagonally dominant criteria
+ */
 bool checkCriteria(std::vector<std::vector<int>> localData, int arraySize, int myRank, int processes, int *max)
 {
     int maxLocal;
@@ -225,6 +267,19 @@ bool checkCriteria(std::vector<std::vector<int>> localData, int arraySize, int m
     }
 }
 
+/**
+ * @brief Calculate the B matrix given the lines assigned to the current process
+ *        and the max element of matrix A
+ * 
+ * @param localData [in] A 2D vector with the lines assigned to the current process
+ * @param arraySize [in] The total number of lines across all processes
+ * @param max [in] The max element of matrix A
+ * @param myRank [in] The rank of the current process
+ * @param processes [in] The total number of processes
+ * @param minLocal [out] The min element only from the lines assigned to the current process
+ * @param minXLocal [out] The X coordinate of the local min element
+ * @param minYLocal [out] The Y coordinate of the local min element
+ */
 void calculateB(std::vector<std::vector<int>> localData, int arraySize, int max, int myRank, int processes, int *minLocal, int *minXLocal, int *minYLocal)
 {
     std::vector<std::vector<int>> localBLines = calculateBLocal(localData, max, arraySize, myRank, processes, minLocal, minXLocal, minYLocal);
@@ -256,7 +311,15 @@ void calculateB(std::vector<std::vector<int>> localData, int arraySize, int max,
     delete[] b;
 }
 
-void findMin(int minLocal, int minXLocal, int minYLocal, int *min, int *minX, int *minY, int myRank)
+/**
+ * @brief Find and share the min element of matrix B across all running processes
+ * 
+ * @param minLocal [in] The min element only from the lines assigned to the current process
+ * @param minXLocal [in] The X coordinate of the local min element
+ * @param minYLocal The Y coordinate of the local min element
+ * @param min [out] The min elemetn of matrix B
+ */
+void findMin(int minLocal, int minXLocal, int minYLocal, int *min)
 {
     MPI_Allreduce(&minLocal, min, 1, MPI_INT, MPI_MIN, MPI_COMM_WORLD);
 }

@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['getmpiparams',['GetMPIParams',['../networking_8cpp.html#a4f043b23867da30b825487b736565c9f',1,'GetMPIParams(int *processesCount, int *rank):&#160;networking.cpp'],['../networking_8h.html#a4f043b23867da30b825487b736565c9f',1,'GetMPIParams(int *processesCount, int *rank):&#160;networking.cpp']]]
+  ['fileexists',['fileExists',['../data_8cpp.html#a8da6832660ffb6bbf974846015f44a21',1,'data.cpp']]],
+  ['findmin',['findMin',['../networking_8cpp.html#ad3bc02c1c672b6ae601f31c897f7af2f',1,'findMin(int minLocal, int minXLocal, int minYLocal, int *min):&#160;networking.cpp'],['../networking_8h.html#ad3bc02c1c672b6ae601f31c897f7af2f',1,'findMin(int minLocal, int minXLocal, int minYLocal, int *min):&#160;networking.cpp']]]
 ];

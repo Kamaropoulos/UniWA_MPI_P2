@@ -33,4 +33,4 @@ bool checkCriteria(std::vector<std::vector<int>> localData, int arraySize, int m
 
 void calculateB(std::vector<std::vector<int>> localData, int arraySize, int max, int myRank, int processes, int *minLocal, int *minXLocal, int *minYLocal);
 
-void findMin(int minLocal, int minXLocal, int minYLocal, int *min, int *minX, int *minY, int myRank);
+void findMin(int minLocal, int minXLocal, int minYLocal, int *min);

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['vector2dtoarray2d',['vector2DToArray2D',['../data_8cpp.html#ac8c9576be9f28e69607c0756f1e5a7ef',1,'data.cpp']]]
+  ['readdata',['ReadData',['../data_8cpp.html#a48471d7903f5d84f202777dae4ca4942',1,'ReadData(std::vector&lt; std::vector&lt; int &gt;&gt; *data, int *arraySize, int argc, char **argv):&#160;data.cpp'],['../data_8h.html#ac38a113ae54084e7aa3af41af05c5784',1,'ReadData(std::vector&lt; std::vector&lt; int &gt;&gt; *, int *, int, char **):&#160;data.cpp']]]
 ];

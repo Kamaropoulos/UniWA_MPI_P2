@@ -40,13 +40,13 @@
 \DoxyCodeLine{00046     ifRoot(\mbox{\hyperlink{data_8cpp_a48471d7903f5d84f202777dae4ca4942}{ReadData}}(\&data, \&arraySize, argc, argv));}
 \DoxyCodeLine{00047 }
 \DoxyCodeLine{00048     \textcolor{comment}{// Broadcast array dimmensions}}
-\DoxyCodeLine{00049     broadcastArraySize(\&arraySize);}
+\DoxyCodeLine{00049     \mbox{\hyperlink{networking_8cpp_a63a302a1b5a18d9b3c42763b66fc948a}{broadcastArraySize}}(\&arraySize);}
 \DoxyCodeLine{00050 }
-\DoxyCodeLine{00051     localData = scatterData(data, arraySize, myRank, processes);}
+\DoxyCodeLine{00051     localData = \mbox{\hyperlink{networking_8cpp_a3a44c57f314e8ae5a1c782ba82cfd8ad}{scatterData}}(data, arraySize, myRank, processes);}
 \DoxyCodeLine{00052 }
 \DoxyCodeLine{00053     MPI\_Barrier(MPI\_COMM\_WORLD);}
 \DoxyCodeLine{00054 }
-\DoxyCodeLine{00055     \textcolor{keywordtype}{bool} result = checkCriteria(localData, arraySize, myRank, processes, \&max);}
+\DoxyCodeLine{00055     \textcolor{keywordtype}{bool} result = \mbox{\hyperlink{networking_8cpp_a7aaffad7a6e05c4b99e1a949773ddc88}{checkCriteria}}(localData, arraySize, myRank, processes, \&max);}
 \DoxyCodeLine{00056 }
 \DoxyCodeLine{00057     \textcolor{keywordflow}{if} (result == \textcolor{keyword}{false})}
 \DoxyCodeLine{00058     \{}
@@ -57,10 +57,10 @@
 \DoxyCodeLine{00063     MPI\_Barrier(MPI\_COMM\_WORLD);}
 \DoxyCodeLine{00064 }
 \DoxyCodeLine{00065     \textcolor{keywordtype}{int} minLocal, minXLocal, minYLocal;}
-\DoxyCodeLine{00066     calculateB(localData, arraySize, max, myRank, processes, \&minLocal, \&minXLocal, \&minYLocal);}
+\DoxyCodeLine{00066     \mbox{\hyperlink{networking_8cpp_aeb4e88c5e00d6166f5f35a59671f3667}{calculateB}}(localData, arraySize, max, myRank, processes, \&minLocal, \&minXLocal, \&minYLocal);}
 \DoxyCodeLine{00067 }
 \DoxyCodeLine{00068     \textcolor{keywordtype}{int} min, minX, minY;}
-\DoxyCodeLine{00069     findMin(minLocal, minXLocal, minYLocal, \&min, \&minX, \&minY, myRank);}
+\DoxyCodeLine{00069     \mbox{\hyperlink{networking_8cpp_ad3bc02c1c672b6ae601f31c897f7af2f}{findMin}}(minLocal, minXLocal, minYLocal, \&min, \&minX, \&minY, myRank);}
 \DoxyCodeLine{00070 }
 \DoxyCodeLine{00071     ifRoot(\{}
 \DoxyCodeLine{00072         std::cout << \textcolor{stringliteral}{"min = "} << min << std::endl;}
