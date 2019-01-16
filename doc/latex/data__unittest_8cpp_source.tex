@@ -52,7 +52,7 @@
 \DoxyCodeLine{00058         \}}
 \DoxyCodeLine{00059     \}}
 \DoxyCodeLine{00060 }
-\DoxyCodeLine{00061     \textcolor{keywordtype}{int} *result = array2DTo1DRowMajor(array, 4, 4);}
+\DoxyCodeLine{00061     \textcolor{keywordtype}{int} *result = \mbox{\hyperlink{data_8cpp_a3a660ef9ff9008d793e691b81c43ce2b}{array2DTo1DRowMajor}}(array, 4, 4);}
 \DoxyCodeLine{00062 }
 \DoxyCodeLine{00063     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < (4 * 4); i++)}
 \DoxyCodeLine{00064     \{}
@@ -76,7 +76,7 @@
 \DoxyCodeLine{00082     vec.push\_back(l0);}
 \DoxyCodeLine{00083 }
 \DoxyCodeLine{00084     \textcolor{keywordtype}{int} *arr = \textcolor{keyword}{new} \textcolor{keywordtype}{int}[vec.size() * 4];}
-\DoxyCodeLine{00085     prepareData(vec, arr);}
+\DoxyCodeLine{00085     \mbox{\hyperlink{data_8cpp_a0555064a00cfa5563cce34c929f8c7af}{prepareData}}(vec, arr);}
 \DoxyCodeLine{00086 }
 \DoxyCodeLine{00087     CHECK(arr[0] == vec[0][0]);}
 \DoxyCodeLine{00088     CHECK(arr[1] == vec[0][1]);}
@@ -94,7 +94,7 @@
 \DoxyCodeLine{00100     arr2D[0][2] = 3;}
 \DoxyCodeLine{00101     arr2D[0][3] = 4;}
 \DoxyCodeLine{00102 }
-\DoxyCodeLine{00103     \textcolor{keywordtype}{int} *arr1D = array2DTo1DRowMajor(arr2D, 1, 4);}
+\DoxyCodeLine{00103     \textcolor{keywordtype}{int} *arr1D = \mbox{\hyperlink{data_8cpp_a3a660ef9ff9008d793e691b81c43ce2b}{array2DTo1DRowMajor}}(arr2D, 1, 4);}
 \DoxyCodeLine{00104 }
 \DoxyCodeLine{00105     CHECK(arr1D[0] == arr2D[0][0]);}
 \DoxyCodeLine{00106     CHECK(arr1D[1] == arr2D[0][1]);}
@@ -112,7 +112,7 @@
 \DoxyCodeLine{00118     vec.push\_back(l1);}
 \DoxyCodeLine{00119 }
 \DoxyCodeLine{00120     \textcolor{keywordtype}{int} *arr = \textcolor{keyword}{new} \textcolor{keywordtype}{int}[vec.size() * 4];}
-\DoxyCodeLine{00121     prepareData(vec, arr);}
+\DoxyCodeLine{00121     \mbox{\hyperlink{data_8cpp_a0555064a00cfa5563cce34c929f8c7af}{prepareData}}(vec, arr);}
 \DoxyCodeLine{00122 }
 \DoxyCodeLine{00123     CHECK(arr[0] == vec[0][0]);}
 \DoxyCodeLine{00124     CHECK(arr[1] == vec[0][1]);}
@@ -140,7 +140,7 @@
 \DoxyCodeLine{00146 }
 \DoxyCodeLine{00147     \textcolor{keywordtype}{int} maxLocal;}
 \DoxyCodeLine{00148 }
-\DoxyCodeLine{00149     \textcolor{keywordtype}{bool} resultLocal = checkCriteriaLocal(localData, arraySize, 0, 1, \&maxLocal);}
+\DoxyCodeLine{00149     \textcolor{keywordtype}{bool} resultLocal = \mbox{\hyperlink{data_8cpp_abf9ef0211f65026775fa7c1056b754fe}{checkCriteriaLocal}}(localData, arraySize, 0, 1, \&maxLocal);}
 \DoxyCodeLine{00150 }
 \DoxyCodeLine{00151     CHECK(resultLocal == \textcolor{keyword}{true});}
 \DoxyCodeLine{00152     CHECK(maxLocal == 46);}
@@ -162,7 +162,7 @@
 \DoxyCodeLine{00168 }
 \DoxyCodeLine{00169     \textcolor{keywordtype}{int} maxLocal;}
 \DoxyCodeLine{00170 }
-\DoxyCodeLine{00171     \textcolor{keywordtype}{bool} resultLocal = checkCriteriaLocal(localData, arraySize, 0, 1, \&maxLocal);}
+\DoxyCodeLine{00171     \textcolor{keywordtype}{bool} resultLocal = \mbox{\hyperlink{data_8cpp_abf9ef0211f65026775fa7c1056b754fe}{checkCriteriaLocal}}(localData, arraySize, 0, 1, \&maxLocal);}
 \DoxyCodeLine{00172 }
 \DoxyCodeLine{00173     CHECK(resultLocal == \textcolor{keyword}{false});}
 \DoxyCodeLine{00174     CHECK(maxLocal == 38);}
@@ -178,7 +178,7 @@
 \DoxyCodeLine{00184 }
 \DoxyCodeLine{00185     \textcolor{keywordtype}{int} min, minX, minY;}
 \DoxyCodeLine{00186 }
-\DoxyCodeLine{00187     std::vector<std::vector<int>> localB = calculateBLocal(localData, max, arraySize, myRank, processes, \&min, \&minX, \&minY);}
+\DoxyCodeLine{00187     std::vector<std::vector<int>> localB = \mbox{\hyperlink{data_8cpp_a6fa50f0193e86a0cf4be42afd2aa3056}{calculateBLocal}}(localData, max, arraySize, myRank, processes, \&min, \&minX, \&minY);}
 \DoxyCodeLine{00188 }
 \DoxyCodeLine{00189     std::vector<std::vector<int>> controlB;}
 \DoxyCodeLine{00190 }
@@ -205,7 +205,7 @@
 \DoxyCodeLine{00211 }
 \DoxyCodeLine{00212     \textcolor{keywordtype}{int} min, minX, minY;}
 \DoxyCodeLine{00213 }
-\DoxyCodeLine{00214     std::vector<std::vector<int>> localB = calculateBLocal(localData, max, arraySize, myRank, processes, \&min, \&minX, \&minY);}
+\DoxyCodeLine{00214     std::vector<std::vector<int>> localB = \mbox{\hyperlink{data_8cpp_a6fa50f0193e86a0cf4be42afd2aa3056}{calculateBLocal}}(localData, max, arraySize, myRank, processes, \&min, \&minX, \&minY);}
 \DoxyCodeLine{00215 }
 \DoxyCodeLine{00216     std::vector<std::vector<int>> controlB;}
 \DoxyCodeLine{00217 }

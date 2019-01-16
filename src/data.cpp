@@ -28,7 +28,7 @@
 /**
  * @brief Check if a file with the given name exists
  * 
- * @param name The name of the file to check
+ * @param name [in] The name of the file to check
  * @return true The file exists
  * @return false The file doesn't exist
  */
@@ -38,6 +38,13 @@ inline bool fileExists(const std::string &name)
     return (stat(name.c_str(), &buffer) == 0);
 }
 
+/**
+ * @brief Decide which filename should be used to read the data from
+ * 
+ * @param argc [in] The number of command line arguments
+ * @param argv [in] The command line arguments
+ * @return std::string The filename to use for reading the data
+ */
 std::string inputFileName(int argc, char **argv)
 {
     std::string filename;
@@ -70,9 +77,9 @@ std::string inputFileName(int argc, char **argv)
 /**
  * @brief Determines the source to read from, reads and writes the data to a 2D vector
  * 
- * @param data A pointer to an <std::vector<std::vector<int>> collection to write the data to
- * @param argc 
- * @param argv 
+ * @param data [out] A pointer to an <std::vector<std::vector<int>> collection to write the data to
+ * @param argc [in] The number of command line arguments
+ * @param argv [in] The command line arguments
  */
 void ReadData(std::vector<std::vector<int>> *data, int *arraySize, int argc, char **argv)
 {
@@ -124,9 +131,8 @@ void ReadData(std::vector<std::vector<int>> *data, int *arraySize, int argc, cha
 /**
  * @brief Returns a 2D Array with the data of the passed 2D Vector
  * 
- * @tparam T 
- * @param v2d The input 2D Vector
- * @return T** The 2D array with the data from the vector
+ * @param v2d [in] The 2D Vector to get the data from
+ * @return int** A pointer to the 2D array with the data from the vector
  */
 int **vector2DToArray2D(std::vector<std::vector<int>> v2d)
 {
@@ -147,6 +153,15 @@ int **vector2DToArray2D(std::vector<std::vector<int>> v2d)
     return arr2d;
 }
 
+/**
+ * @brief Converts a 2D array into an 1D array in row-major order
+ * 
+ * @param arr2d [in] A 2D array
+ * @param m [in] The number of lines in the 2D array
+ * @param n [in] The number of columns in the 2D array
+ * @return int* A pointer to an array with the data of the passed
+ *              2D array in row-major order
+ */
 int *array2DTo1DRowMajor(int **arr2d, int m, int n)
 {
     // Create a pointer for an array
@@ -163,6 +178,15 @@ int *array2DTo1DRowMajor(int **arr2d, int m, int n)
     return arr;
 }
 
+/**
+ * @brief Converts an array in row-major order to a 2D vector
+ * 
+ * @param arr [in] A pointer to an array
+ * @param m [in] The number of lines in the array
+ * @param n [in] The number of columns in the array
+ * @return std::vector<std::vector<int>> A vector with the row-major order data 
+ *                                       from the passed array
+ */
 std::vector<std::vector<int>> arrayRowMajorTo2DVector(int *arr, int m, int n)
 {
     std::vector<std::vector<int>> vec;
@@ -183,12 +207,31 @@ std::vector<std::vector<int>> arrayRowMajorTo2DVector(int *arr, int m, int n)
     return vec;
 }
 
+/**
+ * @brief Convert data in 2D vector to an 1D array with the data of the original
+ *        vector in row-major order for use with MPI communication methods
+ * 
+ * @param data [in] A 2D vector
+ * @param dataArray [in] A pointer to an array with the size of the data already allocated
+ */
 void prepareData(std::vector<std::vector<int>> data, int *&dataArray)
 {
     int **arr2D = vector2DToArray2D(data);
     dataArray = array2DTo1DRowMajor(arr2D, data.size(), data[0].size());
 }
 
+/**
+ * @brief Check if the lines present in a process meet the strictly diagonally
+ *        dominant criteria
+ * 
+ * @param localData [in] A 2D vector holding the lines the process has
+ * @param arraySize [in] The total number of lines in all processes
+ * @param myRank [in] The rank of the process
+ * @param processes [in] The total number of processes
+ * @param maxLocal [out] The local max found in the local lines
+ * @return int 0 if the local lines meet the criteria;
+ *             1 if the local lines do not meet the criteria 
+ */
 int checkCriteriaLocal(std::vector<std::vector<int>> localData, int arraySize, int myRank, int processes, int *maxLocal)
 {
 
@@ -244,6 +287,16 @@ int checkCriteriaLocal(std::vector<std::vector<int>> localData, int arraySize, i
     }
 }
 
+/**
+ * @brief Calculate the value of a cell of the B matrix
+ * 
+ * @param a [in] The element of matrix A in the same position for which we want to
+ *          calculate the value of B
+ * @param max [in] The max element of the A matrix
+ * @param x [in] The line we want to find an element for
+ * @param y [in] The column we want to find an element for
+ * @return int The calculated value of the requested cell
+ */
 int calculateBCell(int a, int max, int x, int y)
 {
     if (x == y)
@@ -251,6 +304,19 @@ int calculateBCell(int a, int max, int x, int y)
     return max - abs(a);
 }
 
+/**
+ * @brief Calculate the lines of B assigned to a process
+ * 
+ * @param localData [in] The local lines of matrix A
+ * @param max [in] The max value found on matrix A
+ * @param arraySize [in] The total number of lines in all processes
+ * @param myRank [in] The rank of the process
+ * @param processes [in] The total number of processes
+ * @param min [out] The min item found on all lines calculated by the current process
+ * @param minX [out] The X coordinate of the min item on all lines calculated by the current process
+ * @param minY [out] The Y coordinate of the min item on all lines calculated by the current process
+ * @return std::vector<std::vector<int>> A 2D vector holding the lines calculated by the current process
+ */
 std::vector<std::vector<int>> calculateBLocal(std::vector<std::vector<int>> localData, int max, int arraySize, int myRank, int processes, int *min, int *minX, int *minY)
 {
     std::vector<std::vector<int>> localB;
@@ -290,6 +356,12 @@ std::vector<std::vector<int>> calculateBLocal(std::vector<std::vector<int>> loca
     return localB;
 }
 
+/**
+ * @brief Prints matrix B
+ * 
+ * @param b [in] A pointer to an array in row-major order
+ * @param arraySize [in] The total number of lines in all processes
+ */
 void printB(int *b, int arraySize)
 {
     for (int i = 0; i < arraySize; i++)

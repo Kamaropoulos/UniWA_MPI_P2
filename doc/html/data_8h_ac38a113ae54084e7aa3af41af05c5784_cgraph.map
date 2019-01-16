@@ -1,0 +1,4 @@
+<map id="ReadData" name="ReadData">
+<area shape="rect" id="node1" title="Determines the source to read from, reads and writes the data to a 2D vector." alt="" coords="5,5,87,32"/>
+<area shape="rect" id="node2" href="$data_8cpp.html#aa66fdbd9f9a257ed80dac99b66380d2f" title="Decide which filename should be used to read the data from." alt="" coords="135,5,241,32"/>
+</map>

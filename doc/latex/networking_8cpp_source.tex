@@ -108,7 +108,7 @@
 \DoxyCodeLine{00155     \textcolor{comment}{// Convert data vector to row-major order array}}
 \DoxyCodeLine{00156     ifRoot(\{}
 \DoxyCodeLine{00157         dataArray = \textcolor{keyword}{new} \textcolor{keywordtype}{int}[data.size() * arraySize];}
-\DoxyCodeLine{00158         prepareData(data, dataArray);}
+\DoxyCodeLine{00158         \mbox{\hyperlink{data_8cpp_a0555064a00cfa5563cce34c929f8c7af}{prepareData}}(data, dataArray);}
 \DoxyCodeLine{00159     \});}
 \DoxyCodeLine{00160 }
 \DoxyCodeLine{00161     \textcolor{keywordtype}{int} *displs, *scounts;}
@@ -126,7 +126,7 @@
 \DoxyCodeLine{00173     \textcolor{keyword}{delete}[] displs;}
 \DoxyCodeLine{00174     \textcolor{keyword}{delete}[] scounts;}
 \DoxyCodeLine{00175 }
-\DoxyCodeLine{00176     std::vector<std::vector<int>> localData = arrayRowMajorTo2DVector(dataOut, \mbox{\hyperlink{networking_8cpp_a1b2d1e5ad12dfa2377bd6e665324b6d2}{processToLinesCount}}(myRank, arraySize, processes), arraySize);}
+\DoxyCodeLine{00176     std::vector<std::vector<int>> localData = \mbox{\hyperlink{data_8cpp_a1eed75538e1b158fdd154c1de2ee2409}{arrayRowMajorTo2DVector}}(dataOut, \mbox{\hyperlink{networking_8cpp_a1b2d1e5ad12dfa2377bd6e665324b6d2}{processToLinesCount}}(myRank, arraySize, processes), arraySize);}
 \DoxyCodeLine{00177 }
 \DoxyCodeLine{00178     \textcolor{keywordflow}{return} localData;}
 \DoxyCodeLine{00179 \}}
@@ -141,7 +141,7 @@
 \DoxyCodeLine{00188 \textcolor{keywordtype}{bool} checkCriteria(std::vector<std::vector<int>> localData, \textcolor{keywordtype}{int} arraySize, \textcolor{keywordtype}{int} myRank, \textcolor{keywordtype}{int} processes, \textcolor{keywordtype}{int} *max)}
 \DoxyCodeLine{00189 \{}
 \DoxyCodeLine{00190     \textcolor{keywordtype}{int} maxLocal;}
-\DoxyCodeLine{00191     \textcolor{keywordtype}{int} resultLocal = checkCriteriaLocal(localData, arraySize, myRank, processes, \&maxLocal);}
+\DoxyCodeLine{00191     \textcolor{keywordtype}{int} resultLocal = \mbox{\hyperlink{data_8cpp_abf9ef0211f65026775fa7c1056b754fe}{checkCriteriaLocal}}(localData, arraySize, myRank, processes, \&maxLocal);}
 \DoxyCodeLine{00192 }
 \DoxyCodeLine{00193     \textcolor{keywordtype}{int} globalResult;}
 \DoxyCodeLine{00194 }
@@ -180,12 +180,12 @@
 \DoxyCodeLine{00227 }
 \DoxyCodeLine{00228 \textcolor{keywordtype}{void} calculateB(std::vector<std::vector<int>> localData, \textcolor{keywordtype}{int} arraySize, \textcolor{keywordtype}{int} max, \textcolor{keywordtype}{int} myRank, \textcolor{keywordtype}{int} processes, \textcolor{keywordtype}{int} *minLocal, \textcolor{keywordtype}{int} *minXLocal, \textcolor{keywordtype}{int} *minYLocal)}
 \DoxyCodeLine{00229 \{}
-\DoxyCodeLine{00230     std::vector<std::vector<int>> localBLines = calculateBLocal(localData, max, arraySize, myRank, processes, minLocal, minXLocal, minYLocal);}
+\DoxyCodeLine{00230     std::vector<std::vector<int>> localBLines = \mbox{\hyperlink{data_8cpp_a6fa50f0193e86a0cf4be42afd2aa3056}{calculateBLocal}}(localData, max, arraySize, myRank, processes, minLocal, minXLocal, minYLocal);}
 \DoxyCodeLine{00231 }
 \DoxyCodeLine{00232     MPI\_Barrier(MPI\_COMM\_WORLD);}
 \DoxyCodeLine{00233 }
 \DoxyCodeLine{00234     \textcolor{keywordtype}{int} *localBLinesArr = \textcolor{keyword}{new} \textcolor{keywordtype}{int}[localBLines.size() * arraySize];}
-\DoxyCodeLine{00235     prepareData(localBLines, localBLinesArr);}
+\DoxyCodeLine{00235     \mbox{\hyperlink{data_8cpp_a0555064a00cfa5563cce34c929f8c7af}{prepareData}}(localBLines, localBLinesArr);}
 \DoxyCodeLine{00236 }
 \DoxyCodeLine{00237     \textcolor{keywordtype}{int} *displs, *scounts;}
 \DoxyCodeLine{00238     calculateDisplsScounts(displs, scounts, arraySize, processes, myRank);}
@@ -203,7 +203,7 @@
 \DoxyCodeLine{00250     \textcolor{keyword}{delete}[] localBLinesArr;}
 \DoxyCodeLine{00251 }
 \DoxyCodeLine{00252     ifRoot(\{}
-\DoxyCodeLine{00253         printB(b, arraySize);}
+\DoxyCodeLine{00253         \mbox{\hyperlink{data_8cpp_ae58d7964ceddd58b2ec8abdbc159a91e}{printB}}(b, arraySize);}
 \DoxyCodeLine{00254     \});}
 \DoxyCodeLine{00255 }
 \DoxyCodeLine{00256     \textcolor{keyword}{delete}[] b;}
