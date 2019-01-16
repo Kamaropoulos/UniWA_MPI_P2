@@ -1,0 +1,231 @@
+\hypertarget{data_8cpp}{}\section{src/data.cpp File Reference}
+\label{data_8cpp}\index{src/data.cpp@{src/data.cpp}}
+{\ttfamily \#include $<$vector$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$stdexcept$>$}\newline
+{\ttfamily \#include $<$sys/stat.\+h$>$}\newline
+{\ttfamily \#include $<$sstream$>$}\newline
+{\ttfamily \#include $<$fstream$>$}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include \char`\"{}networking.\+h\char`\"{}}\newline
+Include dependency graph for data.\+cpp\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{data_8cpp__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{data_8cpp_a1e3d694f7ffb0df80011cb7c5b205897}\label{data_8cpp_a1e3d694f7ffb0df80011cb7c5b205897}} 
+\#define {\bfseries D\+E\+F\+A\+U\+L\+T\+\_\+\+F\+I\+L\+E\+N\+A\+ME}~\char`\"{}matrix.\+in\char`\"{}
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{data_8cpp_a8da6832660ffb6bbf974846015f44a21}{file\+Exists}} (const std\+::string \&name)
+\begin{DoxyCompactList}\small\item\em Check if a file with the given name exists. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{data_8cpp_aa66fdbd9f9a257ed80dac99b66380d2f}\label{data_8cpp_aa66fdbd9f9a257ed80dac99b66380d2f}} 
+std\+::string {\bfseries input\+File\+Name} (int argc, char $\ast$$\ast$argv)
+\item 
+void \mbox{\hyperlink{data_8cpp_a48471d7903f5d84f202777dae4ca4942}{Read\+Data}} (std\+::vector$<$ std\+::vector$<$ int $>$$>$ $\ast$data, int $\ast$array\+Size, int argc, char $\ast$$\ast$argv)
+\begin{DoxyCompactList}\small\item\em Determines the source to read from, reads and writes the data to a 2D vector. \end{DoxyCompactList}\item 
+int $\ast$$\ast$ \mbox{\hyperlink{data_8cpp_ac8c9576be9f28e69607c0756f1e5a7ef}{vector2\+D\+To\+Array2D}} (std\+::vector$<$ std\+::vector$<$ int $>$$>$ v2d)
+\begin{DoxyCompactList}\small\item\em Returns a 2D Array with the data of the passed 2D Vector. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{data_8cpp_a3a660ef9ff9008d793e691b81c43ce2b}\label{data_8cpp_a3a660ef9ff9008d793e691b81c43ce2b}} 
+int $\ast$ {\bfseries array2\+D\+To1\+D\+Row\+Major} (int $\ast$$\ast$arr2d, int m, int n)
+\item 
+\mbox{\Hypertarget{data_8cpp_a1eed75538e1b158fdd154c1de2ee2409}\label{data_8cpp_a1eed75538e1b158fdd154c1de2ee2409}} 
+std\+::vector$<$ std\+::vector$<$ int $>$ $>$ {\bfseries array\+Row\+Major\+To2\+D\+Vector} (int $\ast$arr, int m, int n)
+\item 
+\mbox{\Hypertarget{data_8cpp_a0555064a00cfa5563cce34c929f8c7af}\label{data_8cpp_a0555064a00cfa5563cce34c929f8c7af}} 
+void {\bfseries prepare\+Data} (std\+::vector$<$ std\+::vector$<$ int $>$$>$ data, int $\ast$\&data\+Array)
+\item 
+\mbox{\Hypertarget{data_8cpp_abf9ef0211f65026775fa7c1056b754fe}\label{data_8cpp_abf9ef0211f65026775fa7c1056b754fe}} 
+int {\bfseries check\+Criteria\+Local} (std\+::vector$<$ std\+::vector$<$ int $>$$>$ local\+Data, int array\+Size, int my\+Rank, int processes, int $\ast$max\+Local)
+\item 
+\mbox{\Hypertarget{data_8cpp_a247d4496219cf307d9be0d0ff98cf148}\label{data_8cpp_a247d4496219cf307d9be0d0ff98cf148}} 
+int {\bfseries calculate\+B\+Cell} (int a, int max, int x, int y)
+\item 
+\mbox{\Hypertarget{data_8cpp_a6fa50f0193e86a0cf4be42afd2aa3056}\label{data_8cpp_a6fa50f0193e86a0cf4be42afd2aa3056}} 
+std\+::vector$<$ std\+::vector$<$ int $>$ $>$ {\bfseries calculate\+B\+Local} (std\+::vector$<$ std\+::vector$<$ int $>$$>$ local\+Data, int max, int array\+Size, int my\+Rank, int processes, int $\ast$min, int $\ast$minX, int $\ast$minY)
+\item 
+\mbox{\Hypertarget{data_8cpp_ae58d7964ceddd58b2ec8abdbc159a91e}\label{data_8cpp_ae58d7964ceddd58b2ec8abdbc159a91e}} 
+void {\bfseries printB} (int $\ast$b, int array\+Size)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\begin{DoxyAuthor}{Author}
+Konstantinos Kamaropoulos (\href{mailto:kamaropoulos@outlook.com}{\texttt{ kamaropoulos@outlook.\+com}}) 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2018-\/12-\/27
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Copyright (c) 2018 
+\end{DoxyCopyright}
+
+
+Definition in file \mbox{\hyperlink{data_8cpp_source}{data.\+cpp}}.
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{data_8cpp_a8da6832660ffb6bbf974846015f44a21}\label{data_8cpp_a8da6832660ffb6bbf974846015f44a21}} 
+\index{data.cpp@{data.cpp}!fileExists@{fileExists}}
+\index{fileExists@{fileExists}!data.cpp@{data.cpp}}
+\subsubsection{\texorpdfstring{fileExists()}{fileExists()}}
+{\footnotesize\ttfamily bool file\+Exists (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{name }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Check if a file with the given name exists. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & The name of the file to check \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true The file exists 
+
+false The file doesn\textquotesingle{}t exist 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{data_8cpp_source_l00035}{35}} of file \mbox{\hyperlink{data_8cpp_source}{data.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00036 \{}
+\DoxyCodeLine{00037     \textcolor{keyword}{struct }stat buffer;}
+\DoxyCodeLine{00038     \textcolor{keywordflow}{return} (stat(name.c\_str(), \&buffer) == 0);}
+\DoxyCodeLine{00039 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{data_8cpp_a48471d7903f5d84f202777dae4ca4942}\label{data_8cpp_a48471d7903f5d84f202777dae4ca4942}} 
+\index{data.cpp@{data.cpp}!ReadData@{ReadData}}
+\index{ReadData@{ReadData}!data.cpp@{data.cpp}}
+\subsubsection{\texorpdfstring{ReadData()}{ReadData()}}
+{\footnotesize\ttfamily void Read\+Data (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::vector$<$ int $>$$>$ $\ast$}]{data,  }\item[{int $\ast$}]{array\+Size,  }\item[{int}]{argc,  }\item[{char $\ast$$\ast$}]{argv }\end{DoxyParamCaption})}
+
+
+
+Determines the source to read from, reads and writes the data to a 2D vector. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & A pointer to an $<$std\+::vector$<$std\+::vector$<$int$>$$>$ collection to write the data to \\
+\hline
+{\em argc} & \\
+\hline
+{\em argv} & \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{data_8cpp_source_l00077}{77}} of file \mbox{\hyperlink{data_8cpp_source}{data.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00078 \{}
+\DoxyCodeLine{00079     std::string filename;}
+\DoxyCodeLine{00080 }
+\DoxyCodeLine{00081     \textcolor{keywordflow}{try}}
+\DoxyCodeLine{00082     \{}
+\DoxyCodeLine{00083         filename = inputFileName(argc, argv);}
+\DoxyCodeLine{00084     \}}
+\DoxyCodeLine{00085     \textcolor{keywordflow}{catch} (std::exception \&e)}
+\DoxyCodeLine{00086     \{}
+\DoxyCodeLine{00087         std::cout << \textcolor{stringliteral}{"\(\backslash\)033[1;31m"}}
+\DoxyCodeLine{00088                   << \textcolor{stringliteral}{"Error: "} << e.what() << \textcolor{stringliteral}{"\(\backslash\)033[0m"}}
+\DoxyCodeLine{00089                   << std::endl;}
+\DoxyCodeLine{00090     \}}
+\DoxyCodeLine{00091 }
+\DoxyCodeLine{00092     \textcolor{comment}{// An input file stream used to read data from config.txt.}}
+\DoxyCodeLine{00093     std::ifstream inputFile(filename);}
+\DoxyCodeLine{00094 }
+\DoxyCodeLine{00095     \textcolor{comment}{// If the file is opened sucessfully}}
+\DoxyCodeLine{00096     \textcolor{keywordflow}{if} (inputFile.is\_open())}
+\DoxyCodeLine{00097     \{}
+\DoxyCodeLine{00098         \textcolor{comment}{// A temporary variable to store numbers from the input file.}}
+\DoxyCodeLine{00099         \textcolor{keywordtype}{int} tmpNumber;}
+\DoxyCodeLine{00100 }
+\DoxyCodeLine{00101         std::string line;}
+\DoxyCodeLine{00102 }
+\DoxyCodeLine{00103         \textcolor{comment}{// While inputFile still has lines, put them on line.}}
+\DoxyCodeLine{00104         \textcolor{keywordflow}{while} (std::getline(inputFile, line))}
+\DoxyCodeLine{00105         \{}
+\DoxyCodeLine{00106             std::istringstream iss(line);}
+\DoxyCodeLine{00107             std::vector<int> tempv;}
+\DoxyCodeLine{00108 }
+\DoxyCodeLine{00109             \textcolor{keywordflow}{while} (iss >> tmpNumber)}
+\DoxyCodeLine{00110             \{}
+\DoxyCodeLine{00111                 tempv.push\_back(tmpNumber);}
+\DoxyCodeLine{00112             \}}
+\DoxyCodeLine{00113 }
+\DoxyCodeLine{00114             data->push\_back(tempv);}
+\DoxyCodeLine{00115         \}}
+\DoxyCodeLine{00116 }
+\DoxyCodeLine{00117         \textcolor{comment}{// We are at the end of the file, close it as we won't need it anymore.}}
+\DoxyCodeLine{00118         inputFile.close();}
+\DoxyCodeLine{00119     \}}
+\DoxyCodeLine{00120 }
+\DoxyCodeLine{00121     *arraySize = data->size();}
+\DoxyCodeLine{00122 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{data_8cpp_ac8c9576be9f28e69607c0756f1e5a7ef}\label{data_8cpp_ac8c9576be9f28e69607c0756f1e5a7ef}} 
+\index{data.cpp@{data.cpp}!vector2DToArray2D@{vector2DToArray2D}}
+\index{vector2DToArray2D@{vector2DToArray2D}!data.cpp@{data.cpp}}
+\subsubsection{\texorpdfstring{vector2DToArray2D()}{vector2DToArray2D()}}
+{\footnotesize\ttfamily int$\ast$$\ast$ vector2\+D\+To\+Array2D (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::vector$<$ int $>$$>$}]{v2d }\end{DoxyParamCaption})}
+
+
+
+Returns a 2D Array with the data of the passed 2D Vector. 
+
+
+\begin{DoxyTemplParams}{Template Parameters}
+{\em T} & \\
+\hline
+\end{DoxyTemplParams}
+
+\begin{DoxyParams}{Parameters}
+{\em v2d} & The input 2D Vector \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+T$\ast$$\ast$ The 2D array with the data from the vector 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{data_8cpp_source_l00131}{131}} of file \mbox{\hyperlink{data_8cpp_source}{data.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00132 \{}
+\DoxyCodeLine{00133     \textcolor{comment}{// Create a pointer for a 2D array}}
+\DoxyCodeLine{00134     \textcolor{keywordtype}{int} **arr2d = \textcolor{keyword}{new} \textcolor{keywordtype}{int} *[v2d.size()];}
+\DoxyCodeLine{00135 }
+\DoxyCodeLine{00136     \textcolor{comment}{// For each line in the vector:}}
+\DoxyCodeLine{00137     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < v2d.size(); i++)}
+\DoxyCodeLine{00138     \{}
+\DoxyCodeLine{00139         arr2d[i] = \textcolor{keyword}{new} \textcolor{keywordtype}{int}[v2d[i].size()];}
+\DoxyCodeLine{00140 }
+\DoxyCodeLine{00141         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} j = 0; j < v2d[i].size(); j++)}
+\DoxyCodeLine{00142         \{}
+\DoxyCodeLine{00143             arr2d[i][j] = v2d[i][j];}
+\DoxyCodeLine{00144         \}}
+\DoxyCodeLine{00145     \}}
+\DoxyCodeLine{00146 }
+\DoxyCodeLine{00147     \textcolor{keywordflow}{return} arr2d;}
+\DoxyCodeLine{00148 \}}
+
+\end{DoxyCode}

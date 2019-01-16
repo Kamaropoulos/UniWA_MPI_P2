@@ -1,0 +1,217 @@
+\hypertarget{networking_8cpp_source}{}\section{networking.\+cpp}
+\label{networking_8cpp_source}\index{src/networking.cpp@{src/networking.cpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001 }
+\DoxyCodeLine{00012 \textcolor{preprocessor}{\#include "\mbox{\hyperlink{networking_8h}{networking.h}}"}}
+\DoxyCodeLine{00013 \textcolor{preprocessor}{\#include "\mbox{\hyperlink{data_8h}{data.h}}"}}
+\DoxyCodeLine{00014 \textcolor{preprocessor}{\#include "mpi.h"}}
+\DoxyCodeLine{00015 }
+\DoxyCodeLine{00016 \textcolor{preprocessor}{\#define ROOT\_PROCESS 0}}
+\DoxyCodeLine{00017 \textcolor{preprocessor}{\#include "utils.h"}}
+\DoxyCodeLine{00018 }
+\DoxyCodeLine{00019 \textcolor{preprocessor}{\#include <algorithm>}}
+\DoxyCodeLine{00020 }
+\DoxyCodeLine{00021 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{00022 }
+\DoxyCodeLine{\Hypertarget{networking_8cpp_source_l00030}\mbox{\hyperlink{networking_8h_a4f043b23867da30b825487b736565c9f}{00030}} \textcolor{keywordtype}{void} \mbox{\hyperlink{networking_8cpp_a4f043b23867da30b825487b736565c9f}{GetMPIParams}}(\textcolor{keywordtype}{int} *processesCount, \textcolor{keywordtype}{int} *rank)}
+\DoxyCodeLine{00031 \{}
+\DoxyCodeLine{00032     MPI\_Comm\_rank(MPI\_COMM\_WORLD, rank);}
+\DoxyCodeLine{00033     MPI\_Comm\_size(MPI\_COMM\_WORLD, processesCount);}
+\DoxyCodeLine{00034 \}}
+\DoxyCodeLine{00035 }
+\DoxyCodeLine{\Hypertarget{networking_8cpp_source_l00044}\mbox{\hyperlink{networking_8h_a2b5f195179a5dab012c7eb63316c8909}{00044}} \textcolor{keywordtype}{int} \mbox{\hyperlink{networking_8cpp_a2b5f195179a5dab012c7eb63316c8909}{lineToProcess}}(\textcolor{keywordtype}{int} line, \textcolor{keywordtype}{int} totalLines, \textcolor{keywordtype}{int} processes)}
+\DoxyCodeLine{00045 \{}
+\DoxyCodeLine{00046     \textcolor{comment}{// Create a vector holding the number of the process each line will be assigned to.}}
+\DoxyCodeLine{00047     \textcolor{comment}{// The index will be the line number and the data the process number;}}
+\DoxyCodeLine{00048     std::vector<int> lineAssignments;}
+\DoxyCodeLine{00049 }
+\DoxyCodeLine{00050     \textcolor{comment}{// What we want to do here is assign each line to a process based on how many}}
+\DoxyCodeLine{00051     \textcolor{comment}{// there are and then sort the array so all the lines of a process are continuous}}
+\DoxyCodeLine{00052     \textcolor{comment}{// for easier manipulation.}}
+\DoxyCodeLine{00053 }
+\DoxyCodeLine{00054     \textcolor{comment}{// Fill the vector with the assignments based on the modulo of the line.}}
+\DoxyCodeLine{00055     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} \_line = 0; \_line < totalLines; \_line++)}
+\DoxyCodeLine{00056         lineAssignments.push\_back(\mbox{\hyperlink{networking_8cpp_a13ea20b290c58975e6f9ad5b419330cc}{\_lineToProcess}}(\_line, totalLines, processes));}
+\DoxyCodeLine{00057 }
+\DoxyCodeLine{00058     \textcolor{comment}{// Sort the vector so all the process occurances are together.}}
+\DoxyCodeLine{00059     std::sort(lineAssignments.begin(), lineAssignments.end());}
+\DoxyCodeLine{00060 }
+\DoxyCodeLine{00061     \textcolor{keywordflow}{return} lineAssignments[line];}
+\DoxyCodeLine{00062 \}}
+\DoxyCodeLine{00063 }
+\DoxyCodeLine{\Hypertarget{networking_8cpp_source_l00073}\mbox{\hyperlink{networking_8h_a13ea20b290c58975e6f9ad5b419330cc}{00073}} \textcolor{keywordtype}{int} \mbox{\hyperlink{networking_8cpp_a13ea20b290c58975e6f9ad5b419330cc}{\_lineToProcess}}(\textcolor{keywordtype}{int} line, \textcolor{keywordtype}{int} totalLines, \textcolor{keywordtype}{int} processes)}
+\DoxyCodeLine{00074 \{}
+\DoxyCodeLine{00075     \textcolor{keywordflow}{return} ((line \% (processes)));}
+\DoxyCodeLine{00076 \}}
+\DoxyCodeLine{00077 }
+\DoxyCodeLine{\Hypertarget{networking_8cpp_source_l00087}\mbox{\hyperlink{networking_8h_a899a3109ee6d901ce9e10411db36bd53}{00087}} std::vector<int> \mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(\textcolor{keywordtype}{int} process, \textcolor{keywordtype}{int} totalLines, \textcolor{keywordtype}{int} processes)}
+\DoxyCodeLine{00088 \{}
+\DoxyCodeLine{00089     std::vector<int> lines;}
+\DoxyCodeLine{00090 }
+\DoxyCodeLine{00091     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} line = 0; line < totalLines; line++)}
+\DoxyCodeLine{00092     \{}
+\DoxyCodeLine{00093         \textcolor{keywordflow}{if} (\mbox{\hyperlink{networking_8cpp_a2b5f195179a5dab012c7eb63316c8909}{lineToProcess}}(line, totalLines, processes) == process)}
+\DoxyCodeLine{00094         \{}
+\DoxyCodeLine{00095             lines.push\_back(line);}
+\DoxyCodeLine{00096         \}}
+\DoxyCodeLine{00097     \}}
+\DoxyCodeLine{00098 }
+\DoxyCodeLine{00099     \textcolor{keywordflow}{return} lines;}
+\DoxyCodeLine{00100 \}}
+\DoxyCodeLine{00101 }
+\DoxyCodeLine{\Hypertarget{networking_8cpp_source_l00110}\mbox{\hyperlink{networking_8h_a1b2d1e5ad12dfa2377bd6e665324b6d2}{00110}} \textcolor{keywordtype}{int} \mbox{\hyperlink{networking_8cpp_a1b2d1e5ad12dfa2377bd6e665324b6d2}{processToLinesCount}}(\textcolor{keywordtype}{int} process, \textcolor{keywordtype}{int} totalLines, \textcolor{keywordtype}{int} processes)}
+\DoxyCodeLine{00111 \{}
+\DoxyCodeLine{00112     \textcolor{keywordtype}{int} linesCount = 0;}
+\DoxyCodeLine{00113 }
+\DoxyCodeLine{00114     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < totalLines; i++)}
+\DoxyCodeLine{00115         \textcolor{keywordflow}{if} (\mbox{\hyperlink{networking_8cpp_a13ea20b290c58975e6f9ad5b419330cc}{\_lineToProcess}}(i, totalLines, processes) == process)}
+\DoxyCodeLine{00116             linesCount++;}
+\DoxyCodeLine{00117 }
+\DoxyCodeLine{00118     \textcolor{keywordflow}{return} linesCount;}
+\DoxyCodeLine{00119 \}}
+\DoxyCodeLine{00120 }
+\DoxyCodeLine{00121 \textcolor{keywordtype}{void} broadcastArraySize(\textcolor{keywordtype}{int} *arraySize)}
+\DoxyCodeLine{00122 \{}
+\DoxyCodeLine{00123     MPI\_Bcast(arraySize, 1, MPI\_INT, 0, MPI\_COMM\_WORLD);}
+\DoxyCodeLine{00124 \}}
+\DoxyCodeLine{00125 }
+\DoxyCodeLine{00126 \textcolor{keywordtype}{void} calculateDisplsScounts(\textcolor{keywordtype}{int} *\&displs, \textcolor{keywordtype}{int} *\&scounts, \textcolor{keywordtype}{int} arraySize, \textcolor{keywordtype}{int} processes, \textcolor{keywordtype}{int} myRank)}
+\DoxyCodeLine{00127 \{}
+\DoxyCodeLine{00128     displs = \textcolor{keyword}{new} \textcolor{keywordtype}{int}[processes];}
+\DoxyCodeLine{00129     scounts = \textcolor{keyword}{new} \textcolor{keywordtype}{int}[processes];}
+\DoxyCodeLine{00130 }
+\DoxyCodeLine{00131     displs[0] = 0;}
+\DoxyCodeLine{00132     scounts[0] = (arraySize * \mbox{\hyperlink{networking_8cpp_a1b2d1e5ad12dfa2377bd6e665324b6d2}{processToLinesCount}}(0, arraySize, processes));}
+\DoxyCodeLine{00133 }
+\DoxyCodeLine{00134     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 1; i < processes; i++)}
+\DoxyCodeLine{00135     \{}
+\DoxyCodeLine{00136         \textcolor{keywordflow}{if} (\mbox{\hyperlink{networking_8cpp_a1b2d1e5ad12dfa2377bd6e665324b6d2}{processToLinesCount}}(i, arraySize, processes) > 0)}
+\DoxyCodeLine{00137         \{}
+\DoxyCodeLine{00138             displs[i] = displs[i - 1] + scounts[i - 1];}
+\DoxyCodeLine{00139             scounts[i] = (arraySize * \mbox{\hyperlink{networking_8cpp_a1b2d1e5ad12dfa2377bd6e665324b6d2}{processToLinesCount}}(i, arraySize, processes));}
+\DoxyCodeLine{00140         \}}
+\DoxyCodeLine{00141         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00142         \{}
+\DoxyCodeLine{00143             displs[i] = 0;}
+\DoxyCodeLine{00144             scounts[i] = 0;}
+\DoxyCodeLine{00145         \}}
+\DoxyCodeLine{00146     \}}
+\DoxyCodeLine{00147 \}}
+\DoxyCodeLine{00148 }
+\DoxyCodeLine{00149 std::vector<std::vector<int>> scatterData(std::vector<std::vector<int>> data, \textcolor{keywordtype}{int} arraySize, \textcolor{keywordtype}{int} myRank, \textcolor{keywordtype}{int} processes)}
+\DoxyCodeLine{00150 \{}
+\DoxyCodeLine{00151 }
+\DoxyCodeLine{00152     \textcolor{comment}{// An array to hold the array in row major form}}
+\DoxyCodeLine{00153     \textcolor{keywordtype}{int} *dataArray;}
+\DoxyCodeLine{00154 }
+\DoxyCodeLine{00155     \textcolor{comment}{// Convert data vector to row-major order array}}
+\DoxyCodeLine{00156     ifRoot(\{}
+\DoxyCodeLine{00157         dataArray = \textcolor{keyword}{new} \textcolor{keywordtype}{int}[data.size() * arraySize];}
+\DoxyCodeLine{00158         prepareData(data, dataArray);}
+\DoxyCodeLine{00159     \});}
+\DoxyCodeLine{00160 }
+\DoxyCodeLine{00161     \textcolor{keywordtype}{int} *displs, *scounts;}
+\DoxyCodeLine{00162     calculateDisplsScounts(displs, scounts, arraySize, processes, myRank);}
+\DoxyCodeLine{00163 }
+\DoxyCodeLine{00164     \textcolor{keywordtype}{int} elements = (arraySize)*\mbox{\hyperlink{networking_8cpp_a1b2d1e5ad12dfa2377bd6e665324b6d2}{processToLinesCount}}(myRank, arraySize, processes);}
+\DoxyCodeLine{00165     \textcolor{keywordtype}{int} *dataOut = \textcolor{keyword}{new} \textcolor{keywordtype}{int}[elements];}
+\DoxyCodeLine{00166 }
+\DoxyCodeLine{00167     MPI\_Barrier(MPI\_COMM\_WORLD);}
+\DoxyCodeLine{00168 }
+\DoxyCodeLine{00169     MPI\_Scatterv(dataArray, scounts, displs, MPI\_INT, dataOut, *scounts, MPI\_INT, 0, MPI\_COMM\_WORLD);}
+\DoxyCodeLine{00170 }
+\DoxyCodeLine{00171     MPI\_Barrier(MPI\_COMM\_WORLD);}
+\DoxyCodeLine{00172 }
+\DoxyCodeLine{00173     \textcolor{keyword}{delete}[] displs;}
+\DoxyCodeLine{00174     \textcolor{keyword}{delete}[] scounts;}
+\DoxyCodeLine{00175 }
+\DoxyCodeLine{00176     std::vector<std::vector<int>> localData = arrayRowMajorTo2DVector(dataOut, \mbox{\hyperlink{networking_8cpp_a1b2d1e5ad12dfa2377bd6e665324b6d2}{processToLinesCount}}(myRank, arraySize, processes), arraySize);}
+\DoxyCodeLine{00177 }
+\DoxyCodeLine{00178     \textcolor{keywordflow}{return} localData;}
+\DoxyCodeLine{00179 \}}
+\DoxyCodeLine{00180 }
+\DoxyCodeLine{00181 \textcolor{keywordtype}{int} calculateMax(\textcolor{keywordtype}{int} maxLocal)}
+\DoxyCodeLine{00182 \{}
+\DoxyCodeLine{00183     \textcolor{keywordtype}{int} max;}
+\DoxyCodeLine{00184     MPI\_Allreduce(\&maxLocal, \&max, 1, MPI\_INT, MPI\_MAX, MPI\_COMM\_WORLD);}
+\DoxyCodeLine{00185     \textcolor{keywordflow}{return} max;}
+\DoxyCodeLine{00186 \}}
+\DoxyCodeLine{00187 }
+\DoxyCodeLine{00188 \textcolor{keywordtype}{bool} checkCriteria(std::vector<std::vector<int>> localData, \textcolor{keywordtype}{int} arraySize, \textcolor{keywordtype}{int} myRank, \textcolor{keywordtype}{int} processes, \textcolor{keywordtype}{int} *max)}
+\DoxyCodeLine{00189 \{}
+\DoxyCodeLine{00190     \textcolor{keywordtype}{int} maxLocal;}
+\DoxyCodeLine{00191     \textcolor{keywordtype}{int} resultLocal = checkCriteriaLocal(localData, arraySize, myRank, processes, \&maxLocal);}
+\DoxyCodeLine{00192 }
+\DoxyCodeLine{00193     \textcolor{keywordtype}{int} globalResult;}
+\DoxyCodeLine{00194 }
+\DoxyCodeLine{00195     MPI\_Reduce(\&resultLocal, \&globalResult, 1, MPI\_INT, MPI\_SUM, 0, MPI\_COMM\_WORLD);}
+\DoxyCodeLine{00196 }
+\DoxyCodeLine{00197     \textcolor{keywordtype}{bool} abortP = \textcolor{keyword}{false};}
+\DoxyCodeLine{00198 }
+\DoxyCodeLine{00199     ifRoot(\{}
+\DoxyCodeLine{00200         \textcolor{keywordflow}{if} (globalResult == processes)}
+\DoxyCodeLine{00201         \{}
+\DoxyCodeLine{00202             abortP = \textcolor{keyword}{false};}
+\DoxyCodeLine{00203             std::cout << \textcolor{stringliteral}{"yes"} << std::endl;}
+\DoxyCodeLine{00204         \}}
+\DoxyCodeLine{00205         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00206         \{}
+\DoxyCodeLine{00207             abortP = \textcolor{keyword}{true};}
+\DoxyCodeLine{00208             std::cout << \textcolor{stringliteral}{"no"} << std::endl;}
+\DoxyCodeLine{00209         \}}
+\DoxyCodeLine{00210     \})}
+\DoxyCodeLine{00211 }
+\DoxyCodeLine{00212         MPI\_Barrier(MPI\_COMM\_WORLD);}
+\DoxyCodeLine{00213 }
+\DoxyCodeLine{00214     MPI\_Bcast(\&abortP, 1, MPI\_CXX\_BOOL, 0, MPI\_COMM\_WORLD);}
+\DoxyCodeLine{00215 }
+\DoxyCodeLine{00216     \textcolor{keywordflow}{if} (abortP)}
+\DoxyCodeLine{00217     \{}
+\DoxyCodeLine{00218         \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{00219     \}}
+\DoxyCodeLine{00220     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00221     \{}
+\DoxyCodeLine{00222         *max = calculateMax(maxLocal);}
+\DoxyCodeLine{00223         ifRoot(\{ std::cout << \textcolor{stringliteral}{"max = "} << *max << std::endl; \});}
+\DoxyCodeLine{00224         \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{00225     \}}
+\DoxyCodeLine{00226 \}}
+\DoxyCodeLine{00227 }
+\DoxyCodeLine{00228 \textcolor{keywordtype}{void} calculateB(std::vector<std::vector<int>> localData, \textcolor{keywordtype}{int} arraySize, \textcolor{keywordtype}{int} max, \textcolor{keywordtype}{int} myRank, \textcolor{keywordtype}{int} processes, \textcolor{keywordtype}{int} *minLocal, \textcolor{keywordtype}{int} *minXLocal, \textcolor{keywordtype}{int} *minYLocal)}
+\DoxyCodeLine{00229 \{}
+\DoxyCodeLine{00230     std::vector<std::vector<int>> localBLines = calculateBLocal(localData, max, arraySize, myRank, processes, minLocal, minXLocal, minYLocal);}
+\DoxyCodeLine{00231 }
+\DoxyCodeLine{00232     MPI\_Barrier(MPI\_COMM\_WORLD);}
+\DoxyCodeLine{00233 }
+\DoxyCodeLine{00234     \textcolor{keywordtype}{int} *localBLinesArr = \textcolor{keyword}{new} \textcolor{keywordtype}{int}[localBLines.size() * arraySize];}
+\DoxyCodeLine{00235     prepareData(localBLines, localBLinesArr);}
+\DoxyCodeLine{00236 }
+\DoxyCodeLine{00237     \textcolor{keywordtype}{int} *displs, *scounts;}
+\DoxyCodeLine{00238     calculateDisplsScounts(displs, scounts, arraySize, processes, myRank);}
+\DoxyCodeLine{00239 }
+\DoxyCodeLine{00240     \textcolor{keywordtype}{int} *b;}
+\DoxyCodeLine{00241     ifRoot(\{}
+\DoxyCodeLine{00242         b = \textcolor{keyword}{new} \textcolor{keywordtype}{int}[arraySize * arraySize];}
+\DoxyCodeLine{00243     \});}
+\DoxyCodeLine{00244 }
+\DoxyCodeLine{00245     MPI\_Gatherv(localBLinesArr, \mbox{\hyperlink{networking_8cpp_a1b2d1e5ad12dfa2377bd6e665324b6d2}{processToLinesCount}}(myRank, arraySize, processes) * arraySize, MPI\_INT, b, scounts, displs, MPI\_INT, 0, MPI\_COMM\_WORLD);}
+\DoxyCodeLine{00246 }
+\DoxyCodeLine{00247     \textcolor{keyword}{delete}[] displs;}
+\DoxyCodeLine{00248     \textcolor{keyword}{delete}[] scounts;}
+\DoxyCodeLine{00249 }
+\DoxyCodeLine{00250     \textcolor{keyword}{delete}[] localBLinesArr;}
+\DoxyCodeLine{00251 }
+\DoxyCodeLine{00252     ifRoot(\{}
+\DoxyCodeLine{00253         printB(b, arraySize);}
+\DoxyCodeLine{00254     \});}
+\DoxyCodeLine{00255 }
+\DoxyCodeLine{00256     \textcolor{keyword}{delete}[] b;}
+\DoxyCodeLine{00257 \}}
+\DoxyCodeLine{00258 }
+\DoxyCodeLine{00259 \textcolor{keywordtype}{void} findMin(\textcolor{keywordtype}{int} minLocal, \textcolor{keywordtype}{int} minXLocal, \textcolor{keywordtype}{int} minYLocal, \textcolor{keywordtype}{int} *min, \textcolor{keywordtype}{int} *minX, \textcolor{keywordtype}{int} *minY, \textcolor{keywordtype}{int} myRank)}
+\DoxyCodeLine{00260 \{}
+\DoxyCodeLine{00261     MPI\_Allreduce(\&minLocal, min, 1, MPI\_INT, MPI\_MIN, MPI\_COMM\_WORLD);}
+\DoxyCodeLine{00262 \}}
+
+\end{DoxyCode}

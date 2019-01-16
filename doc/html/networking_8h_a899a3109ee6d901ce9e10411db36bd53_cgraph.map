@@ -1,0 +1,5 @@
+<map id="processToLines" name="processToLines">
+<area shape="rect" id="node1" title="Returns a vector with the numbers (base 0) of the lines a process will be assigned." alt="" coords="5,5,120,32"/>
+<area shape="rect" id="node2" href="$networking_8cpp.html#a2b5f195179a5dab012c7eb63316c8909" title="Returns the number of the process a line of the array will be assigned to." alt="" coords="168,5,273,32"/>
+<area shape="rect" id="node3" href="$networking_8cpp.html#a13ea20b290c58975e6f9ad5b419330cc" title="[Internal] Line to process assignments based on the modulo of the line." alt="" coords="321,5,433,32"/>
+</map>
