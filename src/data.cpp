@@ -23,6 +23,8 @@
 
 #include <iostream>
 
+#include "networking.h"
+
 /**
  * @brief Check if a file with the given name exists
  * 
@@ -72,7 +74,7 @@ std::string inputFileName(int argc, char **argv)
  * @param argc 
  * @param argv 
  */
-void ReadData(std::vector<std::vector<int>> *data, int argc, char **argv)
+void ReadData(std::vector<std::vector<int>> *data, int *arraySize, int argc, char **argv)
 {
     std::string filename;
 
@@ -115,6 +117,8 @@ void ReadData(std::vector<std::vector<int>> *data, int argc, char **argv)
         // We are at the end of the file, close it as we won't need it anymore.
         inputFile.close();
     }
+
+    *arraySize = data->size();
 }
 
 /**
@@ -159,21 +163,145 @@ int *array2DTo1DRowMajor(int **arr2d, int m, int n)
     return arr;
 }
 
-std::vector<std::vector<int>> arrayRowMajorTo2DVector(int* arr, int m, int n){
+std::vector<std::vector<int>> arrayRowMajorTo2DVector(int *arr, int m, int n)
+{
     std::vector<std::vector<int>> vec;
-    
+
     int index = 0;
-    for(int i = 0; i < m; i++)
+    for (int i = 0; i < m; i++)
     {
         std::vector<int> vecLine;
-        
-        for(int j = 0; j < n; j++)
+
+        for (int j = 0; j < n; j++)
         {
             vecLine.push_back(arr[index++]);
         }
 
-        vec.push_back(vecLine);        
+        vec.push_back(vecLine);
     }
 
-    return vec;    
+    return vec;
+}
+
+void prepareData(std::vector<std::vector<int>> data, int *&dataArray)
+{
+    int **arr2D = vector2DToArray2D(data);
+    dataArray = array2DTo1DRowMajor(arr2D, data.size(), data[0].size());
+}
+
+int checkCriteriaLocal(std::vector<std::vector<int>> localData, int arraySize, int myRank, int processes, int *maxLocal)
+{
+
+    int result = 0;
+
+    int maxLocalTemp;
+
+    std::vector<int> lines = processToLines(myRank, arraySize, processes);
+
+    // For each line:
+    for (int i = 0; i < localData.size(); i++)
+    {
+
+        int line = lines[i];
+        int diagonalElement = localData[i][line];
+
+        if (i == 0)
+        {
+            maxLocalTemp = diagonalElement;
+        }
+        else
+        {
+            maxLocalTemp = (abs(diagonalElement) > maxLocalTemp) ? diagonalElement : maxLocalTemp;
+        }
+
+        // Calculate sum
+        int sum = 0;
+        for (int j = 0; j < arraySize; j++)
+        {
+            if (j != line)
+            {
+                sum += abs(localData[i][j]);
+            }
+        }
+
+        bool ok = diagonalElement >= sum;
+
+        if (ok)
+        {
+            result += 1;
+        }
+    }
+
+    *maxLocal = maxLocalTemp;
+
+    if (result == lines.size())
+    {
+        return 1;
+    }
+    else
+    {
+        return 0;
+    }
+}
+
+int calculateBCell(int a, int max, int x, int y)
+{
+    if (x == y)
+        return max;
+    return max - abs(a);
+}
+
+std::vector<std::vector<int>> calculateBLocal(std::vector<std::vector<int>> localData, int max, int arraySize, int myRank, int processes, int *min, int *minX, int *minY)
+{
+    std::vector<std::vector<int>> localB;
+    std::vector<int> lines = processToLines(myRank, arraySize, processes);
+
+    *minX = -1;
+    *minY = -1;
+
+    for (int i = 0; i < lines.size(); i++)
+    {
+        std::vector<int> line;
+
+        for (int j = 0; j < arraySize; j++)
+        {
+
+            line.push_back(calculateBCell(localData[i][j], max, lines[i], j));
+
+            if ((i == 0) && (j == 0))
+            {
+                *min = line[0];
+                *minX = 0;
+                *minY = 0;
+            }
+            else
+            {
+                if (line[j] < *min)
+                {
+                    *min = line[j];
+                    *minX = lines[i];
+                    *minY = j;
+                }
+            }
+        }
+        localB.push_back(line);
+    }
+
+    return localB;
+}
+
+void printB(int *b, int arraySize)
+{
+    // std::cout << "B = [";
+    for (int i = 0; i < arraySize; i++)
+    {
+        // std::cout << "     ";
+        for (int j = 0; j < arraySize; j++)
+        {
+
+            std::cout << b[(i * arraySize) + j] << " ";
+        }
+        std::cout << std::endl;
+    }
+    // std::cout << "]" << std::endl;
 }

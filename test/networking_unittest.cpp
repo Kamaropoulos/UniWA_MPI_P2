@@ -13,6 +13,8 @@
 
 #include "../lib/catch.hpp"
 
+#include "mpi.h"
+
 #include "../src/networking.h"
 
 TEST_CASE("[Internal] Line to Process Assignments: (p == n), ((n mod p) == 0)", "[ilineToProcess]")
@@ -110,7 +112,6 @@ TEST_CASE("Line to Process Assignments: (p > n), ((n mod p) != 0)", "[lineToProc
     CHECK(lineToProcess(3, 5, 8) == 3);
     CHECK(lineToProcess(4, 5, 8) == 4);
 }
-
 
 TEST_CASE("Lines assigned to a process: (p == n), ((n mod p) == 0)", "[processToLines]")
 {
@@ -264,3 +265,121 @@ TEST_CASE("Number of lines assigned to a process: (p > n), ((n mod p) != 0)", "[
     CHECK(processToLines(3, 5, 8)[0] == 3);
     CHECK(processToLines(4, 5, 8)[0] == 4);
 }
+
+TEST_CASE("Calculate didpls and scounts for MPI_Scatterv: (p == n), ((n mod p) == 0)", "[calculateDisplsScounts]")
+{
+    int *displs, *scounts;
+    int arraySize = 4;
+    int processes = 4;
+    int myRank = 0;
+
+    calculateDisplsScounts(displs, scounts, arraySize, processes, myRank);
+
+    CHECK(displs[0] == 0);
+    CHECK(displs[1] == 4);
+    CHECK(displs[2] == 8);
+    CHECK(displs[3] == 12);
+
+    CHECK(scounts[0] == 4);
+    CHECK(scounts[1] == 4);
+    CHECK(scounts[2] == 4);
+    CHECK(scounts[3] == 4);
+
+    delete[] displs;
+    delete[] scounts;
+}
+
+TEST_CASE("Calculate didpls and scounts for MPI_Scatterv: (p < n), ((n mod p) == 0)", "[calculateDisplsScounts]")
+{
+    int *displs, *scounts;
+    int arraySize = 8;
+    int processes = 4;
+    int myRank = 0;
+
+    calculateDisplsScounts(displs, scounts, arraySize, processes, myRank);
+
+    CHECK(displs[0] == 0);
+    CHECK(displs[1] == 16);
+    CHECK(displs[2] == 32);
+    CHECK(displs[3] == 48);
+
+    CHECK(scounts[0] == 16);
+    CHECK(scounts[1] == 16);
+    CHECK(scounts[2] == 16);
+    CHECK(scounts[3] == 16);
+
+    delete[] displs;
+    delete[] scounts;
+}
+
+TEST_CASE("Calculate didpls and scounts for MPI_Scatterv: (p < n), ((n mod p) != 0)", "[calculateDisplsScounts]")
+{
+    int *displs, *scounts;
+    int arraySize = 7;
+    int processes = 4;
+    int myRank = 0;
+
+    calculateDisplsScounts(displs, scounts, arraySize, processes, myRank);
+
+    CHECK(displs[0] == 0);
+    CHECK(displs[1] == 14);
+    CHECK(displs[2] == 28);
+    CHECK(displs[3] == 42);
+
+    CHECK(scounts[0] == 14);
+    CHECK(scounts[1] == 14);
+    CHECK(scounts[2] == 14);
+    CHECK(scounts[3] == 7);
+
+    delete[] displs;
+    delete[] scounts;
+}
+
+TEST_CASE("Calculate didpls and scounts for MPI_Scatterv: (p > n), ((n mod p) == 0)", "[calculateDisplsScounts]")
+{
+    int *displs, *scounts;
+    int arraySize = 4;
+    int processes = 8;
+    int myRank = 0;
+
+    calculateDisplsScounts(displs, scounts, arraySize, processes, myRank);
+
+    CHECK(displs[0] == 0);
+    CHECK(displs[1] == 4);
+    CHECK(displs[2] == 8);
+    CHECK(displs[3] == 12);
+
+    CHECK(scounts[0] == 4);
+    CHECK(scounts[1] == 4);
+    CHECK(scounts[2] == 4);
+    CHECK(scounts[3] == 4);
+
+    delete[] displs;
+    delete[] scounts;
+}
+
+TEST_CASE("Calculate didpls and scounts for MPI_Scatterv: (p > n), ((n mod p) != 0)", "[calculateDisplsScounts]")
+{
+    int *displs, *scounts;
+    int arraySize = 5;
+    int processes = 8;
+    int myRank = 0;
+
+    calculateDisplsScounts(displs, scounts, arraySize, processes, myRank);
+
+    CHECK(displs[0] == 0);
+    CHECK(displs[1] == 5);
+    CHECK(displs[2] == 10);
+    CHECK(displs[3] == 15);
+    CHECK(displs[4] == 20);
+
+    CHECK(scounts[0] == 5);
+    CHECK(scounts[1] == 5);
+    CHECK(scounts[2] == 5);
+    CHECK(scounts[3] == 5);
+    CHECK(scounts[4] == 5);
+
+    delete[] displs;
+    delete[] scounts;
+}
+
