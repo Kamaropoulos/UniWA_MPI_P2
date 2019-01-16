@@ -123,38 +123,10 @@ void broadcastArraySize(int *arraySize)
     MPI_Bcast(arraySize, 1, MPI_INT, 0, MPI_COMM_WORLD);
 }
 
-// void scatterData(std::vector<std::vector<int>> data)
-// {
-// int arraySize = data.size();
-
-//     // Add indentification element (last element will be the line number)
-
-//     for (int i = 0; i < arraySize; i++)
-//     {
-//         data[i].push_back(i);
-//     }
-
-//     // Convert data vector to row-major order array
-// dataArray = new int[arraySize * (arraySize + 1)];
-// dataArray = array2DTo1DRowMajor(vector2DToArray2D(data), arraySize, (arraySize + 1));
-// }
-
 void calculateDisplsScounts(int *&displs, int *&scounts, int arraySize, int processes, int myRank)
 {
     displs = new int[processes];
     scounts = new int[processes];
-
-    // int displsTemp = 0;
-    // for (int i = 0; i < ((processes > arraySize) ? arraySize : processes); i++)
-    // {
-    //     displs[i] = i * (processToLinesCount(i, arraySize, processes)) * arraySize;
-    //     scounts[i] = (processToLinesCount(i, arraySize, processes)) * arraySize;
-    //     if ((processes < arraySize) && ((arraySize % processes) != 0))
-    //     {
-    //         displs[i] += displsTemp;
-    //         displsTemp = (processToLinesCount(i, arraySize, processes)) * arraySize;
-    //     }
-    // }
 
     displs[0] = 0;
     scounts[0] = (arraySize * processToLinesCount(0, arraySize, processes));
@@ -253,12 +225,6 @@ bool checkCriteria(std::vector<std::vector<int>> localData, int arraySize, int m
     }
 }
 
-struct minloc
-{
-    double value;
-    int rank;
-};
-
 void calculateB(std::vector<std::vector<int>> localData, int arraySize, int max, int myRank, int processes, int *minLocal, int *minXLocal, int *minYLocal)
 {
     std::vector<std::vector<int>> localBLines = calculateBLocal(localData, max, arraySize, myRank, processes, minLocal, minXLocal, minYLocal);
@@ -288,75 +254,9 @@ void calculateB(std::vector<std::vector<int>> localData, int arraySize, int max,
     });
 
     delete[] b;
-
-    // MPI_Barrier(MPI_COMM_WORLD);
-
-    // int min;
-    // MPI_Allreduce(minLocal, &min, 1, MPI_INT, MPI_MIN, MPI_COMM_WORLD);
-
-    // int *pos;
-    // if (myRank != ROOT_PROCESS){
-    //     if (min == *minLocal){
-    //         std::cout << "process " << myRank << " got the min" << std::endl;
-    //     }
-    // }
-
-    // struct minloc minGlobal;
-    // int min;
-
-    // // MPI_Reduce(&minLocal, &min, 1, MPI_INT, MPI_MIN, 0, MPI_COMM_WORLD);
-    // MPI_Allreduce(&minLocal, &minGlobal, 1, MPI_DOUBLE_INT, MPI_MINLOC, MPI_COMM_WORLD);
-
-    // // if (myRank == ROOT_PROCESS)
-    // // {
-    // //     std::cout << minGlobal.rank << std::endl;
-    // // }
-
-    // MPI_Barrier(MPI_COMM_WORLD);
-
-    // std::cout << "Process " << myRank << ": min=" << minGlobal.value << " rank=" << minGlobal.rank << std::endl;
-
-    // if (myRank == minGlobal.rank - 1)
-    // {
-    //     std::cout << "min = B[" << *minXLocal << "][" << *minYLocal << "] = " << *minLocal << std::endl;
-    // }
-    // processes continue to find the min of the new matrix
-
-
-    // if (min == *minLocal)
-    // {
-    //     if (myRank != ROOT_PROCESS)
-    //     {
-    //         int *pos = new int[2];
-    //         pos[0] = *minXLocal;
-    //         pos[1] = *minYLocal;
-    //         MPI_Send(pos, 2, MPI_INT, 0, 10, MPI_COMM_WORLD);
-    //         delete[] pos;
-    //     }
-    //     else
-    //     {
-    //         std::cout << "min = " << min << " at " << *minXLocal << "," << *minYLocal << std::endl;
-    //     }
-    // }
-    // else
-    // {
-    //     ifRoot({
-    //         int* pos = new int[2];
-    //         MPI_Recv(pos, 2, MPI_INT, MPI_ANY_SOURCE, 10, MPI_COMM_WORLD, MPI_STATUS_IGNORE);
-    //         std::cout << "min = " << min << " at " << pos[0] << "," << pos[1] << std::endl;
-    //         delete[] pos;
-    //     })
-    // }
-
-    // std::cout << "Process " << myRank << ": min = " << min << std::endl;
 }
 
 void findMin(int minLocal, int minXLocal, int minYLocal, int *min, int *minX, int *minY, int myRank)
 {
-    // int *data = new int[2];
     MPI_Allreduce(&minLocal, min, 1, MPI_INT, MPI_MIN, MPI_COMM_WORLD);
-
-    // ifRoot({
-    //     std::cout << "Process " << myRank << ": min=" << data[0] << " at " << data[2] << std::endl;
-    // });
 }

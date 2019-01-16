@@ -292,10 +292,8 @@ std::vector<std::vector<int>> calculateBLocal(std::vector<std::vector<int>> loca
 
 void printB(int *b, int arraySize)
 {
-    // std::cout << "B = [";
     for (int i = 0; i < arraySize; i++)
     {
-        // std::cout << "     ";
         for (int j = 0; j < arraySize; j++)
         {
 
@@ -303,5 +301,4 @@ void printB(int *b, int arraySize)
         }
         std::cout << std::endl;
     }
-    // std::cout << "]" << std::endl;
 }
