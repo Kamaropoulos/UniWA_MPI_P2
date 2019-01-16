@@ -17,6 +17,10 @@
 
 #include "../src/networking.h"
 
+/**
+ * @brief Unit test for method _lineToProcess with 4 lines and 4 processes (p == n), ((n mod p) == 0)
+ * 
+ */
 TEST_CASE("[Internal] Line to Process Assignments: (p == n), ((n mod p) == 0)", "[ilineToProcess]")
 {
     CHECK(_lineToProcess(0, 4, 4) == 0);
@@ -25,6 +29,10 @@ TEST_CASE("[Internal] Line to Process Assignments: (p == n), ((n mod p) == 0)", 
     CHECK(_lineToProcess(3, 4, 4) == 3);
 }
 
+/**
+ * @brief Unit test for method _lineToProcess with 8 lines and 4 processes (p < n), ((n mod p) == 0)
+ * 
+ */
 TEST_CASE("[Internal] Line to Process Assignments: (p < n), ((n mod p) == 0)", "[ilineToProcess]")
 {
     CHECK(_lineToProcess(0, 8, 4) == 0);
@@ -37,6 +45,10 @@ TEST_CASE("[Internal] Line to Process Assignments: (p < n), ((n mod p) == 0)", "
     CHECK(_lineToProcess(7, 8, 4) == 3);
 }
 
+/**
+ * @brief Unit test for method _lineToProcess with 7 lines and 4 processes (p < n), ((n mod p) != 0)
+ * 
+ */
 TEST_CASE("[Internal] Line to Process Assignments: (p < n), ((n mod p) != 0)", "[ilineToProcess]")
 {
     CHECK(_lineToProcess(0, 7, 4) == 0);
@@ -48,6 +60,10 @@ TEST_CASE("[Internal] Line to Process Assignments: (p < n), ((n mod p) != 0)", "
     CHECK(_lineToProcess(6, 7, 4) == 2);
 }
 
+/**
+ * @brief Unit test for method _lineToProcess with 4 lines and 8 processes (p > n), ((n mod p) == 0)
+ * 
+ */
 TEST_CASE("[Internal] Line to Process Assignments: (p > n), ((n mod p) == 0)", "[ilineToProcess]")
 {
     CHECK(_lineToProcess(0, 4, 8) == 0);
@@ -56,6 +72,10 @@ TEST_CASE("[Internal] Line to Process Assignments: (p > n), ((n mod p) == 0)", "
     CHECK(_lineToProcess(3, 4, 8) == 3);
 }
 
+/**
+ * @brief Unit test for method _lineToProcess with 5 lines and 8 processes (p > n), ((n mod p) != 0)
+ * 
+ */
 TEST_CASE("[Internal] Line to Process Assignments: (p > n), ((n mod p) != 0)", "[ilineToProcess]")
 {
     CHECK(_lineToProcess(0, 5, 8) == 0);
@@ -65,6 +85,10 @@ TEST_CASE("[Internal] Line to Process Assignments: (p > n), ((n mod p) != 0)", "
     CHECK(_lineToProcess(4, 5, 8) == 4);
 }
 
+/**
+ * @brief Unit test for method lineToProcess with 4 lines and 4 processes (p == n), ((n mod p) == 0)
+ * 
+ */
 TEST_CASE("Line to Process Assignments: (p == n), ((n mod p) == 0)", "[lineToProcess]")
 {
     CHECK(lineToProcess(0, 4, 4) == 0);
@@ -73,6 +97,10 @@ TEST_CASE("Line to Process Assignments: (p == n), ((n mod p) == 0)", "[lineToPro
     CHECK(lineToProcess(3, 4, 4) == 3);
 }
 
+/**
+ * @brief Unit test for method lineToProcess with 8 lines and 4 processes (p < n), ((n mod p) == 0)
+ * 
+ */
 TEST_CASE("Line to Process Assignments: (p < n), ((n mod p) == 0)", "[lineToProcess]")
 {
     CHECK(lineToProcess(0, 8, 4) == 0);
@@ -85,6 +113,10 @@ TEST_CASE("Line to Process Assignments: (p < n), ((n mod p) == 0)", "[lineToProc
     CHECK(lineToProcess(7, 8, 4) == 3);
 }
 
+/**
+ * @brief Unit test for method lineToProcess with 7 lines and 4 processes (p < n), ((n mod p) != 0)
+ * 
+ */
 TEST_CASE("Line to Process Assignments: (p < n), ((n mod p) != 0)", "[lineToProcess]")
 {
     CHECK(lineToProcess(0, 7, 4) == 0);
@@ -96,6 +128,10 @@ TEST_CASE("Line to Process Assignments: (p < n), ((n mod p) != 0)", "[lineToProc
     CHECK(lineToProcess(6, 7, 4) == 3);
 }
 
+/**
+ * @brief Unit test for method lineToProcess with 4 lines and 8 processes (p > n), ((n mod p) == 0)
+ * 
+ */
 TEST_CASE("Line to Process Assignments: (p > n), ((n mod p) == 0)", "[lineToProcess]")
 {
     CHECK(lineToProcess(0, 4, 8) == 0);
@@ -104,6 +140,10 @@ TEST_CASE("Line to Process Assignments: (p > n), ((n mod p) == 0)", "[lineToProc
     CHECK(lineToProcess(3, 4, 8) == 3);
 }
 
+/**
+ * @brief Unit test for method lineToProcess with 5 lines and 8 processes (p > n), ((n mod p) != 0)
+ * 
+ */
 TEST_CASE("Line to Process Assignments: (p > n), ((n mod p) != 0)", "[lineToProcess]")
 {
     CHECK(lineToProcess(0, 5, 8) == 0);
@@ -113,6 +153,10 @@ TEST_CASE("Line to Process Assignments: (p > n), ((n mod p) != 0)", "[lineToProc
     CHECK(lineToProcess(4, 5, 8) == 4);
 }
 
+/**
+ * @brief Unit test for method processToLines with 4 lines and 4 processes (p == n), ((n mod p) == 0)
+ * 
+ */
 TEST_CASE("Lines assigned to a process: (p == n), ((n mod p) == 0)", "[processToLines]")
 {
     CHECK(processToLines(0, 4, 4).size() == 1);
@@ -126,6 +170,10 @@ TEST_CASE("Lines assigned to a process: (p == n), ((n mod p) == 0)", "[processTo
     CHECK(processToLines(3, 4, 4)[0] == 3);
 }
 
+/**
+ * @brief Unit test for method processToLines with 8 lines and 4 processes (p < n), ((n mod p) == 0)
+ * 
+ */
 TEST_CASE("Lines assigned to a process: (p < n), ((n mod p) == 0)", "[processToLines]")
 {
     CHECK(processToLines(0, 8, 4).size() == 2);
@@ -142,6 +190,10 @@ TEST_CASE("Lines assigned to a process: (p < n), ((n mod p) == 0)", "[processToL
     CHECK(processToLines(3, 8, 4)[1] == 7);
 }
 
+/**
+ * @brief Unit test for method processToLines with 7 lines and 4 processes (p < n), ((n mod p) != 0)
+ * 
+ */
 TEST_CASE("Lines assigned to a process: (p < n), ((n mod p) != 0)", "[processToLines]")
 {
     CHECK(processToLines(0, 7, 4).size() == 2);
@@ -157,6 +209,10 @@ TEST_CASE("Lines assigned to a process: (p < n), ((n mod p) != 0)", "[processToL
     CHECK(processToLines(3, 7, 4)[0] == 6);
 }
 
+/**
+ * @brief Unit test for method processToLines with 4 lines and 8 processes (p > n), ((n mod p) == 0)
+ * 
+ */
 TEST_CASE("Lines assigned to a process: (p > n), ((n mod p) == 0)", "[processToLines]")
 {
     CHECK(processToLines(0, 4, 8).size() == 1);
@@ -173,6 +229,10 @@ TEST_CASE("Lines assigned to a process: (p > n), ((n mod p) == 0)", "[processToL
     CHECK(processToLines(3, 4, 8)[0] == 3);
 }
 
+/**
+ * @brief Unit test for method processToLines with 5 lines and 8 processes (p > n), ((n mod p) != 0)
+ * 
+ */
 TEST_CASE("Lines assigned to a process: (p > n), ((n mod p) != 0)", "[processToLines]")
 {
     CHECK(processToLines(0, 5, 8).size() == 1);
@@ -190,6 +250,10 @@ TEST_CASE("Lines assigned to a process: (p > n), ((n mod p) != 0)", "[processToL
     CHECK(processToLines(4, 5, 8)[0] == 4);
 }
 
+/**
+ * @brief Unit test for method processToLinesCount with 4 lines and 4 processes (p == n), ((n mod p) == 0)
+ * 
+ */
 TEST_CASE("Number of lines assigned to a process: (p == n), ((n mod p) == 0)", "[processToLinesCount]")
 {
     CHECK(processToLines(0, 4, 4).size() == 1);
@@ -202,6 +266,10 @@ TEST_CASE("Number of lines assigned to a process: (p == n), ((n mod p) == 0)", "
     CHECK(processToLines(3, 4, 4)[0] == 3);
 }
 
+/**
+ * @brief Unit test for method processToLinesCount with 8 lines and 4 processes (p < n), ((n mod p) == 0)
+ * 
+ */
 TEST_CASE("Number of lines assigned to a process: (p < n), ((n mod p) == 0)", "[processToLinesCount]")
 {
     CHECK(processToLines(0, 8, 4).size() == 2);
@@ -218,6 +286,10 @@ TEST_CASE("Number of lines assigned to a process: (p < n), ((n mod p) == 0)", "[
     CHECK(processToLines(3, 8, 4)[1] == 7);
 }
 
+/**
+ * @brief Unit test for method processToLinesCount with 7 lines and 4 processes (p < n), ((n mod p) != 0)
+ * 
+ */
 TEST_CASE("Number of lines assigned to a process: (p < n), ((n mod p) != 0)", "[processToLinesCount]")
 {
     CHECK(processToLines(0, 7, 4).size() == 2);
@@ -233,6 +305,10 @@ TEST_CASE("Number of lines assigned to a process: (p < n), ((n mod p) != 0)", "[
     CHECK(processToLines(3, 7, 4)[0] == 6);
 }
 
+/**
+ * @brief Unit test for method processToLinesCount with 4 lines and 8 processes (p > n), ((n mod p) == 0)
+ * 
+ */
 TEST_CASE("Number of lines assigned to a process: (p > n), ((n mod p) == 0)", "[processToLinesCount]")
 {
     CHECK(processToLines(0, 4, 8).size() == 1);
@@ -249,6 +325,10 @@ TEST_CASE("Number of lines assigned to a process: (p > n), ((n mod p) == 0)", "[
     CHECK(processToLines(3, 4, 8)[0] == 3);
 }
 
+/**
+ * @brief Unit test for method processToLinesCount with 5 lines and 8 processes (p > n), ((n mod p) != 0)
+ * 
+ */
 TEST_CASE("Number of lines assigned to a process: (p > n), ((n mod p) != 0)", "[processToLinesCount]")
 {
     CHECK(processToLines(0, 5, 8).size() == 1);
@@ -266,6 +346,10 @@ TEST_CASE("Number of lines assigned to a process: (p > n), ((n mod p) != 0)", "[
     CHECK(processToLines(4, 5, 8)[0] == 4);
 }
 
+/**
+ * @brief Unit test for method calculateDisplsScounts with 4 lines and 4 processes (p == n), ((n mod p) == 0)
+ * 
+ */
 TEST_CASE("Calculate didpls and scounts for MPI_Scatterv: (p == n), ((n mod p) == 0)", "[calculateDisplsScounts]")
 {
     int *displs, *scounts;
@@ -289,6 +373,10 @@ TEST_CASE("Calculate didpls and scounts for MPI_Scatterv: (p == n), ((n mod p) =
     delete[] scounts;
 }
 
+/**
+ * @brief Unit test for method calculateDisplsScounts with 8 lines and 4 processes (p < n), ((n mod p) == 0)
+ * 
+ */
 TEST_CASE("Calculate didpls and scounts for MPI_Scatterv: (p < n), ((n mod p) == 0)", "[calculateDisplsScounts]")
 {
     int *displs, *scounts;
@@ -312,6 +400,10 @@ TEST_CASE("Calculate didpls and scounts for MPI_Scatterv: (p < n), ((n mod p) ==
     delete[] scounts;
 }
 
+/**
+ * @brief Unit test for method calculateDisplsScounts with 7 lines and 4 processes (p < n), ((n mod p) != 0)
+ * 
+ */
 TEST_CASE("Calculate didpls and scounts for MPI_Scatterv: (p < n), ((n mod p) != 0)", "[calculateDisplsScounts]")
 {
     int *displs, *scounts;
@@ -335,6 +427,10 @@ TEST_CASE("Calculate didpls and scounts for MPI_Scatterv: (p < n), ((n mod p) !=
     delete[] scounts;
 }
 
+/**
+ * @brief Unit test for method calculateDisplsScounts with 4 lines and 8 processes (p > n), ((n mod p) == 0)
+ * 
+ */
 TEST_CASE("Calculate didpls and scounts for MPI_Scatterv: (p > n), ((n mod p) == 0)", "[calculateDisplsScounts]")
 {
     int *displs, *scounts;
@@ -358,6 +454,10 @@ TEST_CASE("Calculate didpls and scounts for MPI_Scatterv: (p > n), ((n mod p) ==
     delete[] scounts;
 }
 
+/**
+ * @brief Unit test for method calculateDisplsScounts with 5 lines and 8 processes (p > n), ((n mod p) != 0)
+ * 
+ */
 TEST_CASE("Calculate didpls and scounts for MPI_Scatterv: (p > n), ((n mod p) != 0)", "[calculateDisplsScounts]")
 {
     int *displs, *scounts;

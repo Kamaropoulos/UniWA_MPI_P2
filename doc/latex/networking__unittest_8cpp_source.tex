@@ -11,371 +11,371 @@
 \DoxyCodeLine{00017 }
 \DoxyCodeLine{00018 \textcolor{preprocessor}{\#include "../src/networking.h"}}
 \DoxyCodeLine{00019 }
-\DoxyCodeLine{00020 TEST\_CASE(\textcolor{stringliteral}{"[Internal] Line to Process Assignments: (p == n), ((n mod p) == 0)"}, \textcolor{stringliteral}{"[ilineToProcess]"})}
-\DoxyCodeLine{00021 \{}
-\DoxyCodeLine{00022     CHECK(\mbox{\hyperlink{networking_8cpp_a13ea20b290c58975e6f9ad5b419330cc}{\_lineToProcess}}(0, 4, 4) == 0);}
-\DoxyCodeLine{00023     CHECK(\mbox{\hyperlink{networking_8cpp_a13ea20b290c58975e6f9ad5b419330cc}{\_lineToProcess}}(1, 4, 4) == 1);}
-\DoxyCodeLine{00024     CHECK(\mbox{\hyperlink{networking_8cpp_a13ea20b290c58975e6f9ad5b419330cc}{\_lineToProcess}}(2, 4, 4) == 2);}
-\DoxyCodeLine{00025     CHECK(\mbox{\hyperlink{networking_8cpp_a13ea20b290c58975e6f9ad5b419330cc}{\_lineToProcess}}(3, 4, 4) == 3);}
-\DoxyCodeLine{00026 \}}
-\DoxyCodeLine{00027 }
-\DoxyCodeLine{00028 TEST\_CASE(\textcolor{stringliteral}{"[Internal] Line to Process Assignments: (p < n), ((n mod p) == 0)"}, \textcolor{stringliteral}{"[ilineToProcess]"})}
-\DoxyCodeLine{00029 \{}
-\DoxyCodeLine{00030     CHECK(\mbox{\hyperlink{networking_8cpp_a13ea20b290c58975e6f9ad5b419330cc}{\_lineToProcess}}(0, 8, 4) == 0);}
-\DoxyCodeLine{00031     CHECK(\mbox{\hyperlink{networking_8cpp_a13ea20b290c58975e6f9ad5b419330cc}{\_lineToProcess}}(1, 8, 4) == 1);}
-\DoxyCodeLine{00032     CHECK(\mbox{\hyperlink{networking_8cpp_a13ea20b290c58975e6f9ad5b419330cc}{\_lineToProcess}}(2, 8, 4) == 2);}
-\DoxyCodeLine{00033     CHECK(\mbox{\hyperlink{networking_8cpp_a13ea20b290c58975e6f9ad5b419330cc}{\_lineToProcess}}(3, 8, 4) == 3);}
-\DoxyCodeLine{00034     CHECK(\mbox{\hyperlink{networking_8cpp_a13ea20b290c58975e6f9ad5b419330cc}{\_lineToProcess}}(4, 8, 4) == 0);}
-\DoxyCodeLine{00035     CHECK(\mbox{\hyperlink{networking_8cpp_a13ea20b290c58975e6f9ad5b419330cc}{\_lineToProcess}}(5, 8, 4) == 1);}
-\DoxyCodeLine{00036     CHECK(\mbox{\hyperlink{networking_8cpp_a13ea20b290c58975e6f9ad5b419330cc}{\_lineToProcess}}(6, 8, 4) == 2);}
-\DoxyCodeLine{00037     CHECK(\mbox{\hyperlink{networking_8cpp_a13ea20b290c58975e6f9ad5b419330cc}{\_lineToProcess}}(7, 8, 4) == 3);}
-\DoxyCodeLine{00038 \}}
-\DoxyCodeLine{00039 }
-\DoxyCodeLine{00040 TEST\_CASE(\textcolor{stringliteral}{"[Internal] Line to Process Assignments: (p < n), ((n mod p) != 0)"}, \textcolor{stringliteral}{"[ilineToProcess]"})}
-\DoxyCodeLine{00041 \{}
-\DoxyCodeLine{00042     CHECK(\mbox{\hyperlink{networking_8cpp_a13ea20b290c58975e6f9ad5b419330cc}{\_lineToProcess}}(0, 7, 4) == 0);}
-\DoxyCodeLine{00043     CHECK(\mbox{\hyperlink{networking_8cpp_a13ea20b290c58975e6f9ad5b419330cc}{\_lineToProcess}}(1, 7, 4) == 1);}
-\DoxyCodeLine{00044     CHECK(\mbox{\hyperlink{networking_8cpp_a13ea20b290c58975e6f9ad5b419330cc}{\_lineToProcess}}(2, 7, 4) == 2);}
-\DoxyCodeLine{00045     CHECK(\mbox{\hyperlink{networking_8cpp_a13ea20b290c58975e6f9ad5b419330cc}{\_lineToProcess}}(3, 7, 4) == 3);}
-\DoxyCodeLine{00046     CHECK(\mbox{\hyperlink{networking_8cpp_a13ea20b290c58975e6f9ad5b419330cc}{\_lineToProcess}}(4, 7, 4) == 0);}
-\DoxyCodeLine{00047     CHECK(\mbox{\hyperlink{networking_8cpp_a13ea20b290c58975e6f9ad5b419330cc}{\_lineToProcess}}(5, 7, 4) == 1);}
-\DoxyCodeLine{00048     CHECK(\mbox{\hyperlink{networking_8cpp_a13ea20b290c58975e6f9ad5b419330cc}{\_lineToProcess}}(6, 7, 4) == 2);}
-\DoxyCodeLine{00049 \}}
-\DoxyCodeLine{00050 }
-\DoxyCodeLine{00051 TEST\_CASE(\textcolor{stringliteral}{"[Internal] Line to Process Assignments: (p > n), ((n mod p) == 0)"}, \textcolor{stringliteral}{"[ilineToProcess]"})}
-\DoxyCodeLine{00052 \{}
-\DoxyCodeLine{00053     CHECK(\mbox{\hyperlink{networking_8cpp_a13ea20b290c58975e6f9ad5b419330cc}{\_lineToProcess}}(0, 4, 8) == 0);}
-\DoxyCodeLine{00054     CHECK(\mbox{\hyperlink{networking_8cpp_a13ea20b290c58975e6f9ad5b419330cc}{\_lineToProcess}}(1, 4, 8) == 1);}
-\DoxyCodeLine{00055     CHECK(\mbox{\hyperlink{networking_8cpp_a13ea20b290c58975e6f9ad5b419330cc}{\_lineToProcess}}(2, 4, 8) == 2);}
-\DoxyCodeLine{00056     CHECK(\mbox{\hyperlink{networking_8cpp_a13ea20b290c58975e6f9ad5b419330cc}{\_lineToProcess}}(3, 4, 8) == 3);}
-\DoxyCodeLine{00057 \}}
-\DoxyCodeLine{00058 }
-\DoxyCodeLine{00059 TEST\_CASE(\textcolor{stringliteral}{"[Internal] Line to Process Assignments: (p > n), ((n mod p) != 0)"}, \textcolor{stringliteral}{"[ilineToProcess]"})}
-\DoxyCodeLine{00060 \{}
-\DoxyCodeLine{00061     CHECK(\mbox{\hyperlink{networking_8cpp_a13ea20b290c58975e6f9ad5b419330cc}{\_lineToProcess}}(0, 5, 8) == 0);}
-\DoxyCodeLine{00062     CHECK(\mbox{\hyperlink{networking_8cpp_a13ea20b290c58975e6f9ad5b419330cc}{\_lineToProcess}}(1, 5, 8) == 1);}
-\DoxyCodeLine{00063     CHECK(\mbox{\hyperlink{networking_8cpp_a13ea20b290c58975e6f9ad5b419330cc}{\_lineToProcess}}(2, 5, 8) == 2);}
-\DoxyCodeLine{00064     CHECK(\mbox{\hyperlink{networking_8cpp_a13ea20b290c58975e6f9ad5b419330cc}{\_lineToProcess}}(3, 5, 8) == 3);}
-\DoxyCodeLine{00065     CHECK(\mbox{\hyperlink{networking_8cpp_a13ea20b290c58975e6f9ad5b419330cc}{\_lineToProcess}}(4, 5, 8) == 4);}
-\DoxyCodeLine{00066 \}}
-\DoxyCodeLine{00067 }
-\DoxyCodeLine{00068 TEST\_CASE(\textcolor{stringliteral}{"Line to Process Assignments: (p == n), ((n mod p) == 0)"}, \textcolor{stringliteral}{"[lineToProcess]"})}
-\DoxyCodeLine{00069 \{}
-\DoxyCodeLine{00070     CHECK(\mbox{\hyperlink{networking_8cpp_a2b5f195179a5dab012c7eb63316c8909}{lineToProcess}}(0, 4, 4) == 0);}
-\DoxyCodeLine{00071     CHECK(\mbox{\hyperlink{networking_8cpp_a2b5f195179a5dab012c7eb63316c8909}{lineToProcess}}(1, 4, 4) == 1);}
-\DoxyCodeLine{00072     CHECK(\mbox{\hyperlink{networking_8cpp_a2b5f195179a5dab012c7eb63316c8909}{lineToProcess}}(2, 4, 4) == 2);}
-\DoxyCodeLine{00073     CHECK(\mbox{\hyperlink{networking_8cpp_a2b5f195179a5dab012c7eb63316c8909}{lineToProcess}}(3, 4, 4) == 3);}
-\DoxyCodeLine{00074 \}}
-\DoxyCodeLine{00075 }
-\DoxyCodeLine{00076 TEST\_CASE(\textcolor{stringliteral}{"Line to Process Assignments: (p < n), ((n mod p) == 0)"}, \textcolor{stringliteral}{"[lineToProcess]"})}
-\DoxyCodeLine{00077 \{}
-\DoxyCodeLine{00078     CHECK(\mbox{\hyperlink{networking_8cpp_a2b5f195179a5dab012c7eb63316c8909}{lineToProcess}}(0, 8, 4) == 0);}
-\DoxyCodeLine{00079     CHECK(\mbox{\hyperlink{networking_8cpp_a2b5f195179a5dab012c7eb63316c8909}{lineToProcess}}(1, 8, 4) == 0);}
-\DoxyCodeLine{00080     CHECK(\mbox{\hyperlink{networking_8cpp_a2b5f195179a5dab012c7eb63316c8909}{lineToProcess}}(2, 8, 4) == 1);}
-\DoxyCodeLine{00081     CHECK(\mbox{\hyperlink{networking_8cpp_a2b5f195179a5dab012c7eb63316c8909}{lineToProcess}}(3, 8, 4) == 1);}
-\DoxyCodeLine{00082     CHECK(\mbox{\hyperlink{networking_8cpp_a2b5f195179a5dab012c7eb63316c8909}{lineToProcess}}(4, 8, 4) == 2);}
-\DoxyCodeLine{00083     CHECK(\mbox{\hyperlink{networking_8cpp_a2b5f195179a5dab012c7eb63316c8909}{lineToProcess}}(5, 8, 4) == 2);}
-\DoxyCodeLine{00084     CHECK(\mbox{\hyperlink{networking_8cpp_a2b5f195179a5dab012c7eb63316c8909}{lineToProcess}}(6, 8, 4) == 3);}
-\DoxyCodeLine{00085     CHECK(\mbox{\hyperlink{networking_8cpp_a2b5f195179a5dab012c7eb63316c8909}{lineToProcess}}(7, 8, 4) == 3);}
-\DoxyCodeLine{00086 \}}
-\DoxyCodeLine{00087 }
-\DoxyCodeLine{00088 TEST\_CASE(\textcolor{stringliteral}{"Line to Process Assignments: (p < n), ((n mod p) != 0)"}, \textcolor{stringliteral}{"[lineToProcess]"})}
-\DoxyCodeLine{00089 \{}
-\DoxyCodeLine{00090     CHECK(\mbox{\hyperlink{networking_8cpp_a2b5f195179a5dab012c7eb63316c8909}{lineToProcess}}(0, 7, 4) == 0);}
-\DoxyCodeLine{00091     CHECK(\mbox{\hyperlink{networking_8cpp_a2b5f195179a5dab012c7eb63316c8909}{lineToProcess}}(1, 7, 4) == 0);}
-\DoxyCodeLine{00092     CHECK(\mbox{\hyperlink{networking_8cpp_a2b5f195179a5dab012c7eb63316c8909}{lineToProcess}}(2, 7, 4) == 1);}
-\DoxyCodeLine{00093     CHECK(\mbox{\hyperlink{networking_8cpp_a2b5f195179a5dab012c7eb63316c8909}{lineToProcess}}(3, 7, 4) == 1);}
-\DoxyCodeLine{00094     CHECK(\mbox{\hyperlink{networking_8cpp_a2b5f195179a5dab012c7eb63316c8909}{lineToProcess}}(4, 7, 4) == 2);}
-\DoxyCodeLine{00095     CHECK(\mbox{\hyperlink{networking_8cpp_a2b5f195179a5dab012c7eb63316c8909}{lineToProcess}}(5, 7, 4) == 2);}
-\DoxyCodeLine{00096     CHECK(\mbox{\hyperlink{networking_8cpp_a2b5f195179a5dab012c7eb63316c8909}{lineToProcess}}(6, 7, 4) == 3);}
-\DoxyCodeLine{00097 \}}
-\DoxyCodeLine{00098 }
-\DoxyCodeLine{00099 TEST\_CASE(\textcolor{stringliteral}{"Line to Process Assignments: (p > n), ((n mod p) == 0)"}, \textcolor{stringliteral}{"[lineToProcess]"})}
-\DoxyCodeLine{00100 \{}
-\DoxyCodeLine{00101     CHECK(\mbox{\hyperlink{networking_8cpp_a2b5f195179a5dab012c7eb63316c8909}{lineToProcess}}(0, 4, 8) == 0);}
-\DoxyCodeLine{00102     CHECK(\mbox{\hyperlink{networking_8cpp_a2b5f195179a5dab012c7eb63316c8909}{lineToProcess}}(1, 4, 8) == 1);}
-\DoxyCodeLine{00103     CHECK(\mbox{\hyperlink{networking_8cpp_a2b5f195179a5dab012c7eb63316c8909}{lineToProcess}}(2, 4, 8) == 2);}
-\DoxyCodeLine{00104     CHECK(\mbox{\hyperlink{networking_8cpp_a2b5f195179a5dab012c7eb63316c8909}{lineToProcess}}(3, 4, 8) == 3);}
-\DoxyCodeLine{00105 \}}
-\DoxyCodeLine{00106 }
-\DoxyCodeLine{00107 TEST\_CASE(\textcolor{stringliteral}{"Line to Process Assignments: (p > n), ((n mod p) != 0)"}, \textcolor{stringliteral}{"[lineToProcess]"})}
-\DoxyCodeLine{00108 \{}
-\DoxyCodeLine{00109     CHECK(\mbox{\hyperlink{networking_8cpp_a2b5f195179a5dab012c7eb63316c8909}{lineToProcess}}(0, 5, 8) == 0);}
-\DoxyCodeLine{00110     CHECK(\mbox{\hyperlink{networking_8cpp_a2b5f195179a5dab012c7eb63316c8909}{lineToProcess}}(1, 5, 8) == 1);}
-\DoxyCodeLine{00111     CHECK(\mbox{\hyperlink{networking_8cpp_a2b5f195179a5dab012c7eb63316c8909}{lineToProcess}}(2, 5, 8) == 2);}
-\DoxyCodeLine{00112     CHECK(\mbox{\hyperlink{networking_8cpp_a2b5f195179a5dab012c7eb63316c8909}{lineToProcess}}(3, 5, 8) == 3);}
-\DoxyCodeLine{00113     CHECK(\mbox{\hyperlink{networking_8cpp_a2b5f195179a5dab012c7eb63316c8909}{lineToProcess}}(4, 5, 8) == 4);}
-\DoxyCodeLine{00114 \}}
-\DoxyCodeLine{00115 }
-\DoxyCodeLine{00116 TEST\_CASE(\textcolor{stringliteral}{"Lines assigned to a process: (p == n), ((n mod p) == 0)"}, \textcolor{stringliteral}{"[processToLines]"})}
-\DoxyCodeLine{00117 \{}
-\DoxyCodeLine{00118     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(0, 4, 4).size() == 1);}
-\DoxyCodeLine{00119     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(1, 4, 4).size() == 1);}
-\DoxyCodeLine{00120     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(2, 4, 4).size() == 1);}
-\DoxyCodeLine{00121     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(3, 4, 4).size() == 1);}
-\DoxyCodeLine{00122 }
-\DoxyCodeLine{00123     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(0, 4, 4)[0] == 0);}
-\DoxyCodeLine{00124     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(1, 4, 4)[0] == 1);}
-\DoxyCodeLine{00125     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(2, 4, 4)[0] == 2);}
-\DoxyCodeLine{00126     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(3, 4, 4)[0] == 3);}
-\DoxyCodeLine{00127 \}}
-\DoxyCodeLine{00128 }
-\DoxyCodeLine{00129 TEST\_CASE(\textcolor{stringliteral}{"Lines assigned to a process: (p < n), ((n mod p) == 0)"}, \textcolor{stringliteral}{"[processToLines]"})}
-\DoxyCodeLine{00130 \{}
-\DoxyCodeLine{00131     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(0, 8, 4).size() == 2);}
-\DoxyCodeLine{00132     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(1, 8, 4).size() == 2);}
-\DoxyCodeLine{00133     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(2, 8, 4).size() == 2);}
-\DoxyCodeLine{00134     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(3, 8, 4).size() == 2);}
-\DoxyCodeLine{00135     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(0, 8, 4)[0] == 0);}
-\DoxyCodeLine{00136     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(0, 8, 4)[1] == 1);}
-\DoxyCodeLine{00137     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(1, 8, 4)[0] == 2);}
-\DoxyCodeLine{00138     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(1, 8, 4)[1] == 3);}
-\DoxyCodeLine{00139     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(2, 8, 4)[0] == 4);}
-\DoxyCodeLine{00140     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(2, 8, 4)[1] == 5);}
-\DoxyCodeLine{00141     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(3, 8, 4)[0] == 6);}
-\DoxyCodeLine{00142     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(3, 8, 4)[1] == 7);}
-\DoxyCodeLine{00143 \}}
-\DoxyCodeLine{00144 }
-\DoxyCodeLine{00145 TEST\_CASE(\textcolor{stringliteral}{"Lines assigned to a process: (p < n), ((n mod p) != 0)"}, \textcolor{stringliteral}{"[processToLines]"})}
-\DoxyCodeLine{00146 \{}
-\DoxyCodeLine{00147     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(0, 7, 4).size() == 2);}
-\DoxyCodeLine{00148     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(1, 7, 4).size() == 2);}
-\DoxyCodeLine{00149     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(2, 7, 4).size() == 2);}
-\DoxyCodeLine{00150     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(3, 7, 4).size() == 1);}
-\DoxyCodeLine{00151     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(0, 7, 4)[0] == 0);}
-\DoxyCodeLine{00152     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(0, 7, 4)[1] == 1);}
-\DoxyCodeLine{00153     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(1, 7, 4)[0] == 2);}
-\DoxyCodeLine{00154     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(1, 7, 4)[1] == 3);}
-\DoxyCodeLine{00155     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(2, 7, 4)[0] == 4);}
-\DoxyCodeLine{00156     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(2, 7, 4)[1] == 5);}
-\DoxyCodeLine{00157     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(3, 7, 4)[0] == 6);}
-\DoxyCodeLine{00158 \}}
-\DoxyCodeLine{00159 }
-\DoxyCodeLine{00160 TEST\_CASE(\textcolor{stringliteral}{"Lines assigned to a process: (p > n), ((n mod p) == 0)"}, \textcolor{stringliteral}{"[processToLines]"})}
-\DoxyCodeLine{00161 \{}
-\DoxyCodeLine{00162     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(0, 4, 8).size() == 1);}
-\DoxyCodeLine{00163     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(1, 4, 8).size() == 1);}
-\DoxyCodeLine{00164     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(2, 4, 8).size() == 1);}
-\DoxyCodeLine{00165     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(3, 4, 8).size() == 1);}
-\DoxyCodeLine{00166     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(4, 4, 8).size() == 0);}
-\DoxyCodeLine{00167     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(5, 4, 8).size() == 0);}
-\DoxyCodeLine{00168     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(6, 4, 8).size() == 0);}
-\DoxyCodeLine{00169     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(7, 4, 8).size() == 0);}
-\DoxyCodeLine{00170     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(0, 4, 8)[0] == 0);}
-\DoxyCodeLine{00171     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(1, 4, 8)[0] == 1);}
-\DoxyCodeLine{00172     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(2, 4, 8)[0] == 2);}
-\DoxyCodeLine{00173     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(3, 4, 8)[0] == 3);}
-\DoxyCodeLine{00174 \}}
-\DoxyCodeLine{00175 }
-\DoxyCodeLine{00176 TEST\_CASE(\textcolor{stringliteral}{"Lines assigned to a process: (p > n), ((n mod p) != 0)"}, \textcolor{stringliteral}{"[processToLines]"})}
-\DoxyCodeLine{00177 \{}
-\DoxyCodeLine{00178     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(0, 5, 8).size() == 1);}
-\DoxyCodeLine{00179     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(1, 5, 8).size() == 1);}
-\DoxyCodeLine{00180     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(2, 5, 8).size() == 1);}
-\DoxyCodeLine{00181     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(3, 5, 8).size() == 1);}
-\DoxyCodeLine{00182     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(4, 5, 8).size() == 1);}
-\DoxyCodeLine{00183     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(5, 5, 8).size() == 0);}
-\DoxyCodeLine{00184     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(6, 5, 8).size() == 0);}
-\DoxyCodeLine{00185     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(7, 5, 8).size() == 0);}
-\DoxyCodeLine{00186     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(0, 5, 8)[0] == 0);}
-\DoxyCodeLine{00187     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(1, 5, 8)[0] == 1);}
-\DoxyCodeLine{00188     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(2, 5, 8)[0] == 2);}
-\DoxyCodeLine{00189     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(3, 5, 8)[0] == 3);}
-\DoxyCodeLine{00190     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(4, 5, 8)[0] == 4);}
-\DoxyCodeLine{00191 \}}
-\DoxyCodeLine{00192 }
-\DoxyCodeLine{00193 TEST\_CASE(\textcolor{stringliteral}{"Number of lines assigned to a process: (p == n), ((n mod p) == 0)"}, \textcolor{stringliteral}{"[processToLinesCount]"})}
-\DoxyCodeLine{00194 \{}
-\DoxyCodeLine{00195     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(0, 4, 4).size() == 1);}
-\DoxyCodeLine{00196     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(1, 4, 4).size() == 1);}
-\DoxyCodeLine{00197     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(2, 4, 4).size() == 1);}
-\DoxyCodeLine{00198     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(3, 4, 4).size() == 1);}
-\DoxyCodeLine{00199     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(0, 4, 4)[0] == 0);}
-\DoxyCodeLine{00200     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(1, 4, 4)[0] == 1);}
-\DoxyCodeLine{00201     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(2, 4, 4)[0] == 2);}
-\DoxyCodeLine{00202     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(3, 4, 4)[0] == 3);}
-\DoxyCodeLine{00203 \}}
-\DoxyCodeLine{00204 }
-\DoxyCodeLine{00205 TEST\_CASE(\textcolor{stringliteral}{"Number of lines assigned to a process: (p < n), ((n mod p) == 0)"}, \textcolor{stringliteral}{"[processToLinesCount]"})}
-\DoxyCodeLine{00206 \{}
-\DoxyCodeLine{00207     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(0, 8, 4).size() == 2);}
-\DoxyCodeLine{00208     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(1, 8, 4).size() == 2);}
-\DoxyCodeLine{00209     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(2, 8, 4).size() == 2);}
-\DoxyCodeLine{00210     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(3, 8, 4).size() == 2);}
-\DoxyCodeLine{00211     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(0, 8, 4)[0] == 0);}
-\DoxyCodeLine{00212     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(0, 8, 4)[1] == 1);}
-\DoxyCodeLine{00213     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(1, 8, 4)[0] == 2);}
-\DoxyCodeLine{00214     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(1, 8, 4)[1] == 3);}
-\DoxyCodeLine{00215     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(2, 8, 4)[0] == 4);}
-\DoxyCodeLine{00216     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(2, 8, 4)[1] == 5);}
-\DoxyCodeLine{00217     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(3, 8, 4)[0] == 6);}
-\DoxyCodeLine{00218     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(3, 8, 4)[1] == 7);}
-\DoxyCodeLine{00219 \}}
-\DoxyCodeLine{00220 }
-\DoxyCodeLine{00221 TEST\_CASE(\textcolor{stringliteral}{"Number of lines assigned to a process: (p < n), ((n mod p) != 0)"}, \textcolor{stringliteral}{"[processToLinesCount]"})}
-\DoxyCodeLine{00222 \{}
-\DoxyCodeLine{00223     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(0, 7, 4).size() == 2);}
-\DoxyCodeLine{00224     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(1, 7, 4).size() == 2);}
-\DoxyCodeLine{00225     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(2, 7, 4).size() == 2);}
-\DoxyCodeLine{00226     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(3, 7, 4).size() == 1);}
-\DoxyCodeLine{00227     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(0, 7, 4)[0] == 0);}
-\DoxyCodeLine{00228     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(0, 7, 4)[1] == 1);}
-\DoxyCodeLine{00229     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(1, 7, 4)[0] == 2);}
-\DoxyCodeLine{00230     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(1, 7, 4)[1] == 3);}
-\DoxyCodeLine{00231     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(2, 7, 4)[0] == 4);}
-\DoxyCodeLine{00232     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(2, 7, 4)[1] == 5);}
-\DoxyCodeLine{00233     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(3, 7, 4)[0] == 6);}
-\DoxyCodeLine{00234 \}}
-\DoxyCodeLine{00235 }
-\DoxyCodeLine{00236 TEST\_CASE(\textcolor{stringliteral}{"Number of lines assigned to a process: (p > n), ((n mod p) == 0)"}, \textcolor{stringliteral}{"[processToLinesCount]"})}
-\DoxyCodeLine{00237 \{}
-\DoxyCodeLine{00238     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(0, 4, 8).size() == 1);}
-\DoxyCodeLine{00239     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(1, 4, 8).size() == 1);}
-\DoxyCodeLine{00240     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(2, 4, 8).size() == 1);}
-\DoxyCodeLine{00241     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(3, 4, 8).size() == 1);}
-\DoxyCodeLine{00242     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(4, 4, 8).size() == 0);}
-\DoxyCodeLine{00243     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(5, 4, 8).size() == 0);}
-\DoxyCodeLine{00244     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(6, 4, 8).size() == 0);}
-\DoxyCodeLine{00245     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(7, 4, 8).size() == 0);}
-\DoxyCodeLine{00246     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(0, 4, 8)[0] == 0);}
-\DoxyCodeLine{00247     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(1, 4, 8)[0] == 1);}
-\DoxyCodeLine{00248     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(2, 4, 8)[0] == 2);}
-\DoxyCodeLine{00249     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(3, 4, 8)[0] == 3);}
-\DoxyCodeLine{00250 \}}
-\DoxyCodeLine{00251 }
-\DoxyCodeLine{00252 TEST\_CASE(\textcolor{stringliteral}{"Number of lines assigned to a process: (p > n), ((n mod p) != 0)"}, \textcolor{stringliteral}{"[processToLinesCount]"})}
-\DoxyCodeLine{00253 \{}
-\DoxyCodeLine{00254     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(0, 5, 8).size() == 1);}
-\DoxyCodeLine{00255     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(1, 5, 8).size() == 1);}
-\DoxyCodeLine{00256     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(2, 5, 8).size() == 1);}
-\DoxyCodeLine{00257     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(3, 5, 8).size() == 1);}
-\DoxyCodeLine{00258     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(4, 5, 8).size() == 1);}
-\DoxyCodeLine{00259     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(5, 5, 8).size() == 0);}
-\DoxyCodeLine{00260     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(6, 5, 8).size() == 0);}
-\DoxyCodeLine{00261     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(7, 5, 8).size() == 0);}
-\DoxyCodeLine{00262     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(0, 5, 8)[0] == 0);}
-\DoxyCodeLine{00263     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(1, 5, 8)[0] == 1);}
-\DoxyCodeLine{00264     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(2, 5, 8)[0] == 2);}
-\DoxyCodeLine{00265     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(3, 5, 8)[0] == 3);}
-\DoxyCodeLine{00266     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(4, 5, 8)[0] == 4);}
-\DoxyCodeLine{00267 \}}
-\DoxyCodeLine{00268 }
-\DoxyCodeLine{00269 TEST\_CASE(\textcolor{stringliteral}{"Calculate didpls and scounts for MPI\_Scatterv: (p == n), ((n mod p) == 0)"}, \textcolor{stringliteral}{"[calculateDisplsScounts]"})}
-\DoxyCodeLine{00270 \{}
-\DoxyCodeLine{00271     \textcolor{keywordtype}{int} *displs, *scounts;}
-\DoxyCodeLine{00272     \textcolor{keywordtype}{int} arraySize = 4;}
-\DoxyCodeLine{00273     \textcolor{keywordtype}{int} processes = 4;}
-\DoxyCodeLine{00274     \textcolor{keywordtype}{int} myRank = 0;}
-\DoxyCodeLine{00275 }
-\DoxyCodeLine{00276     \mbox{\hyperlink{networking_8cpp_a3b76ad8a23451b07a2a6f4019798dede}{calculateDisplsScounts}}(displs, scounts, arraySize, processes, myRank);}
-\DoxyCodeLine{00277 }
-\DoxyCodeLine{00278     CHECK(displs[0] == 0);}
-\DoxyCodeLine{00279     CHECK(displs[1] == 4);}
-\DoxyCodeLine{00280     CHECK(displs[2] == 8);}
-\DoxyCodeLine{00281     CHECK(displs[3] == 12);}
-\DoxyCodeLine{00282 }
-\DoxyCodeLine{00283     CHECK(scounts[0] == 4);}
-\DoxyCodeLine{00284     CHECK(scounts[1] == 4);}
-\DoxyCodeLine{00285     CHECK(scounts[2] == 4);}
-\DoxyCodeLine{00286     CHECK(scounts[3] == 4);}
-\DoxyCodeLine{00287 }
-\DoxyCodeLine{00288     \textcolor{keyword}{delete}[] displs;}
-\DoxyCodeLine{00289     \textcolor{keyword}{delete}[] scounts;}
-\DoxyCodeLine{00290 \}}
+\DoxyCodeLine{\Hypertarget{networking__unittest_8cpp_source_l00024}\mbox{\hyperlink{networking__unittest_8cpp_aaf7e8778df83d15dcc1031e591e20b2c}{00024}} \mbox{\hyperlink{networking__unittest_8cpp_aaf7e8778df83d15dcc1031e591e20b2c}{TEST\_CASE}}(\textcolor{stringliteral}{"[Internal] Line to Process Assignments: (p == n), ((n mod p) == 0)"}, \textcolor{stringliteral}{"[ilineToProcess]"})}
+\DoxyCodeLine{00025 \{}
+\DoxyCodeLine{00026     CHECK(\mbox{\hyperlink{networking_8cpp_a13ea20b290c58975e6f9ad5b419330cc}{\_lineToProcess}}(0, 4, 4) == 0);}
+\DoxyCodeLine{00027     CHECK(\mbox{\hyperlink{networking_8cpp_a13ea20b290c58975e6f9ad5b419330cc}{\_lineToProcess}}(1, 4, 4) == 1);}
+\DoxyCodeLine{00028     CHECK(\mbox{\hyperlink{networking_8cpp_a13ea20b290c58975e6f9ad5b419330cc}{\_lineToProcess}}(2, 4, 4) == 2);}
+\DoxyCodeLine{00029     CHECK(\mbox{\hyperlink{networking_8cpp_a13ea20b290c58975e6f9ad5b419330cc}{\_lineToProcess}}(3, 4, 4) == 3);}
+\DoxyCodeLine{00030 \}}
+\DoxyCodeLine{00031 }
+\DoxyCodeLine{00032 \mbox{\hyperlink{networking__unittest_8cpp_aaf7e8778df83d15dcc1031e591e20b2c}{TEST\_CASE}}(\textcolor{stringliteral}{"[Internal] Line to Process Assignments: (p < n), ((n mod p) == 0)"}, \textcolor{stringliteral}{"[ilineToProcess]"})}
+\DoxyCodeLine{00033 \{}
+\DoxyCodeLine{00034     CHECK(\mbox{\hyperlink{networking_8cpp_a13ea20b290c58975e6f9ad5b419330cc}{\_lineToProcess}}(0, 8, 4) == 0);}
+\DoxyCodeLine{00035     CHECK(\mbox{\hyperlink{networking_8cpp_a13ea20b290c58975e6f9ad5b419330cc}{\_lineToProcess}}(1, 8, 4) == 1);}
+\DoxyCodeLine{00036     CHECK(\mbox{\hyperlink{networking_8cpp_a13ea20b290c58975e6f9ad5b419330cc}{\_lineToProcess}}(2, 8, 4) == 2);}
+\DoxyCodeLine{00037     CHECK(\mbox{\hyperlink{networking_8cpp_a13ea20b290c58975e6f9ad5b419330cc}{\_lineToProcess}}(3, 8, 4) == 3);}
+\DoxyCodeLine{00038     CHECK(\mbox{\hyperlink{networking_8cpp_a13ea20b290c58975e6f9ad5b419330cc}{\_lineToProcess}}(4, 8, 4) == 0);}
+\DoxyCodeLine{00039     CHECK(\mbox{\hyperlink{networking_8cpp_a13ea20b290c58975e6f9ad5b419330cc}{\_lineToProcess}}(5, 8, 4) == 1);}
+\DoxyCodeLine{00040     CHECK(\mbox{\hyperlink{networking_8cpp_a13ea20b290c58975e6f9ad5b419330cc}{\_lineToProcess}}(6, 8, 4) == 2);}
+\DoxyCodeLine{00041     CHECK(\mbox{\hyperlink{networking_8cpp_a13ea20b290c58975e6f9ad5b419330cc}{\_lineToProcess}}(7, 8, 4) == 3);}
+\DoxyCodeLine{00042 \}}
+\DoxyCodeLine{00043 }
+\DoxyCodeLine{00044 \mbox{\hyperlink{networking__unittest_8cpp_aaf7e8778df83d15dcc1031e591e20b2c}{TEST\_CASE}}(\textcolor{stringliteral}{"[Internal] Line to Process Assignments: (p < n), ((n mod p) != 0)"}, \textcolor{stringliteral}{"[ilineToProcess]"})}
+\DoxyCodeLine{00045 \{}
+\DoxyCodeLine{00046     CHECK(\mbox{\hyperlink{networking_8cpp_a13ea20b290c58975e6f9ad5b419330cc}{\_lineToProcess}}(0, 7, 4) == 0);}
+\DoxyCodeLine{00047     CHECK(\mbox{\hyperlink{networking_8cpp_a13ea20b290c58975e6f9ad5b419330cc}{\_lineToProcess}}(1, 7, 4) == 1);}
+\DoxyCodeLine{00048     CHECK(\mbox{\hyperlink{networking_8cpp_a13ea20b290c58975e6f9ad5b419330cc}{\_lineToProcess}}(2, 7, 4) == 2);}
+\DoxyCodeLine{00049     CHECK(\mbox{\hyperlink{networking_8cpp_a13ea20b290c58975e6f9ad5b419330cc}{\_lineToProcess}}(3, 7, 4) == 3);}
+\DoxyCodeLine{00050     CHECK(\mbox{\hyperlink{networking_8cpp_a13ea20b290c58975e6f9ad5b419330cc}{\_lineToProcess}}(4, 7, 4) == 0);}
+\DoxyCodeLine{00051     CHECK(\mbox{\hyperlink{networking_8cpp_a13ea20b290c58975e6f9ad5b419330cc}{\_lineToProcess}}(5, 7, 4) == 1);}
+\DoxyCodeLine{00052     CHECK(\mbox{\hyperlink{networking_8cpp_a13ea20b290c58975e6f9ad5b419330cc}{\_lineToProcess}}(6, 7, 4) == 2);}
+\DoxyCodeLine{00053 \}}
+\DoxyCodeLine{00054 }
+\DoxyCodeLine{00055 \mbox{\hyperlink{networking__unittest_8cpp_aaf7e8778df83d15dcc1031e591e20b2c}{TEST\_CASE}}(\textcolor{stringliteral}{"[Internal] Line to Process Assignments: (p > n), ((n mod p) == 0)"}, \textcolor{stringliteral}{"[ilineToProcess]"})}
+\DoxyCodeLine{00056 \{}
+\DoxyCodeLine{00057     CHECK(\mbox{\hyperlink{networking_8cpp_a13ea20b290c58975e6f9ad5b419330cc}{\_lineToProcess}}(0, 4, 8) == 0);}
+\DoxyCodeLine{00058     CHECK(\mbox{\hyperlink{networking_8cpp_a13ea20b290c58975e6f9ad5b419330cc}{\_lineToProcess}}(1, 4, 8) == 1);}
+\DoxyCodeLine{00059     CHECK(\mbox{\hyperlink{networking_8cpp_a13ea20b290c58975e6f9ad5b419330cc}{\_lineToProcess}}(2, 4, 8) == 2);}
+\DoxyCodeLine{00060     CHECK(\mbox{\hyperlink{networking_8cpp_a13ea20b290c58975e6f9ad5b419330cc}{\_lineToProcess}}(3, 4, 8) == 3);}
+\DoxyCodeLine{00061 \}}
+\DoxyCodeLine{00062 }
+\DoxyCodeLine{00063 \mbox{\hyperlink{networking__unittest_8cpp_aaf7e8778df83d15dcc1031e591e20b2c}{TEST\_CASE}}(\textcolor{stringliteral}{"[Internal] Line to Process Assignments: (p > n), ((n mod p) != 0)"}, \textcolor{stringliteral}{"[ilineToProcess]"})}
+\DoxyCodeLine{00064 \{}
+\DoxyCodeLine{00065     CHECK(\mbox{\hyperlink{networking_8cpp_a13ea20b290c58975e6f9ad5b419330cc}{\_lineToProcess}}(0, 5, 8) == 0);}
+\DoxyCodeLine{00066     CHECK(\mbox{\hyperlink{networking_8cpp_a13ea20b290c58975e6f9ad5b419330cc}{\_lineToProcess}}(1, 5, 8) == 1);}
+\DoxyCodeLine{00067     CHECK(\mbox{\hyperlink{networking_8cpp_a13ea20b290c58975e6f9ad5b419330cc}{\_lineToProcess}}(2, 5, 8) == 2);}
+\DoxyCodeLine{00068     CHECK(\mbox{\hyperlink{networking_8cpp_a13ea20b290c58975e6f9ad5b419330cc}{\_lineToProcess}}(3, 5, 8) == 3);}
+\DoxyCodeLine{00069     CHECK(\mbox{\hyperlink{networking_8cpp_a13ea20b290c58975e6f9ad5b419330cc}{\_lineToProcess}}(4, 5, 8) == 4);}
+\DoxyCodeLine{00070 \}}
+\DoxyCodeLine{00071 }
+\DoxyCodeLine{00072 \mbox{\hyperlink{networking__unittest_8cpp_aaf7e8778df83d15dcc1031e591e20b2c}{TEST\_CASE}}(\textcolor{stringliteral}{"Line to Process Assignments: (p == n), ((n mod p) == 0)"}, \textcolor{stringliteral}{"[lineToProcess]"})}
+\DoxyCodeLine{00073 \{}
+\DoxyCodeLine{00074     CHECK(\mbox{\hyperlink{networking_8cpp_a2b5f195179a5dab012c7eb63316c8909}{lineToProcess}}(0, 4, 4) == 0);}
+\DoxyCodeLine{00075     CHECK(\mbox{\hyperlink{networking_8cpp_a2b5f195179a5dab012c7eb63316c8909}{lineToProcess}}(1, 4, 4) == 1);}
+\DoxyCodeLine{00076     CHECK(\mbox{\hyperlink{networking_8cpp_a2b5f195179a5dab012c7eb63316c8909}{lineToProcess}}(2, 4, 4) == 2);}
+\DoxyCodeLine{00077     CHECK(\mbox{\hyperlink{networking_8cpp_a2b5f195179a5dab012c7eb63316c8909}{lineToProcess}}(3, 4, 4) == 3);}
+\DoxyCodeLine{00078 \}}
+\DoxyCodeLine{00079 }
+\DoxyCodeLine{00080 \mbox{\hyperlink{networking__unittest_8cpp_aaf7e8778df83d15dcc1031e591e20b2c}{TEST\_CASE}}(\textcolor{stringliteral}{"Line to Process Assignments: (p < n), ((n mod p) == 0)"}, \textcolor{stringliteral}{"[lineToProcess]"})}
+\DoxyCodeLine{00081 \{}
+\DoxyCodeLine{00082     CHECK(\mbox{\hyperlink{networking_8cpp_a2b5f195179a5dab012c7eb63316c8909}{lineToProcess}}(0, 8, 4) == 0);}
+\DoxyCodeLine{00083     CHECK(\mbox{\hyperlink{networking_8cpp_a2b5f195179a5dab012c7eb63316c8909}{lineToProcess}}(1, 8, 4) == 0);}
+\DoxyCodeLine{00084     CHECK(\mbox{\hyperlink{networking_8cpp_a2b5f195179a5dab012c7eb63316c8909}{lineToProcess}}(2, 8, 4) == 1);}
+\DoxyCodeLine{00085     CHECK(\mbox{\hyperlink{networking_8cpp_a2b5f195179a5dab012c7eb63316c8909}{lineToProcess}}(3, 8, 4) == 1);}
+\DoxyCodeLine{00086     CHECK(\mbox{\hyperlink{networking_8cpp_a2b5f195179a5dab012c7eb63316c8909}{lineToProcess}}(4, 8, 4) == 2);}
+\DoxyCodeLine{00087     CHECK(\mbox{\hyperlink{networking_8cpp_a2b5f195179a5dab012c7eb63316c8909}{lineToProcess}}(5, 8, 4) == 2);}
+\DoxyCodeLine{00088     CHECK(\mbox{\hyperlink{networking_8cpp_a2b5f195179a5dab012c7eb63316c8909}{lineToProcess}}(6, 8, 4) == 3);}
+\DoxyCodeLine{00089     CHECK(\mbox{\hyperlink{networking_8cpp_a2b5f195179a5dab012c7eb63316c8909}{lineToProcess}}(7, 8, 4) == 3);}
+\DoxyCodeLine{00090 \}}
+\DoxyCodeLine{00091 }
+\DoxyCodeLine{00092 \mbox{\hyperlink{networking__unittest_8cpp_aaf7e8778df83d15dcc1031e591e20b2c}{TEST\_CASE}}(\textcolor{stringliteral}{"Line to Process Assignments: (p < n), ((n mod p) != 0)"}, \textcolor{stringliteral}{"[lineToProcess]"})}
+\DoxyCodeLine{00093 \{}
+\DoxyCodeLine{00094     CHECK(\mbox{\hyperlink{networking_8cpp_a2b5f195179a5dab012c7eb63316c8909}{lineToProcess}}(0, 7, 4) == 0);}
+\DoxyCodeLine{00095     CHECK(\mbox{\hyperlink{networking_8cpp_a2b5f195179a5dab012c7eb63316c8909}{lineToProcess}}(1, 7, 4) == 0);}
+\DoxyCodeLine{00096     CHECK(\mbox{\hyperlink{networking_8cpp_a2b5f195179a5dab012c7eb63316c8909}{lineToProcess}}(2, 7, 4) == 1);}
+\DoxyCodeLine{00097     CHECK(\mbox{\hyperlink{networking_8cpp_a2b5f195179a5dab012c7eb63316c8909}{lineToProcess}}(3, 7, 4) == 1);}
+\DoxyCodeLine{00098     CHECK(\mbox{\hyperlink{networking_8cpp_a2b5f195179a5dab012c7eb63316c8909}{lineToProcess}}(4, 7, 4) == 2);}
+\DoxyCodeLine{00099     CHECK(\mbox{\hyperlink{networking_8cpp_a2b5f195179a5dab012c7eb63316c8909}{lineToProcess}}(5, 7, 4) == 2);}
+\DoxyCodeLine{00100     CHECK(\mbox{\hyperlink{networking_8cpp_a2b5f195179a5dab012c7eb63316c8909}{lineToProcess}}(6, 7, 4) == 3);}
+\DoxyCodeLine{00101 \}}
+\DoxyCodeLine{00102 }
+\DoxyCodeLine{00103 \mbox{\hyperlink{networking__unittest_8cpp_aaf7e8778df83d15dcc1031e591e20b2c}{TEST\_CASE}}(\textcolor{stringliteral}{"Line to Process Assignments: (p > n), ((n mod p) == 0)"}, \textcolor{stringliteral}{"[lineToProcess]"})}
+\DoxyCodeLine{00104 \{}
+\DoxyCodeLine{00105     CHECK(\mbox{\hyperlink{networking_8cpp_a2b5f195179a5dab012c7eb63316c8909}{lineToProcess}}(0, 4, 8) == 0);}
+\DoxyCodeLine{00106     CHECK(\mbox{\hyperlink{networking_8cpp_a2b5f195179a5dab012c7eb63316c8909}{lineToProcess}}(1, 4, 8) == 1);}
+\DoxyCodeLine{00107     CHECK(\mbox{\hyperlink{networking_8cpp_a2b5f195179a5dab012c7eb63316c8909}{lineToProcess}}(2, 4, 8) == 2);}
+\DoxyCodeLine{00108     CHECK(\mbox{\hyperlink{networking_8cpp_a2b5f195179a5dab012c7eb63316c8909}{lineToProcess}}(3, 4, 8) == 3);}
+\DoxyCodeLine{00109 \}}
+\DoxyCodeLine{00110 }
+\DoxyCodeLine{00111 \mbox{\hyperlink{networking__unittest_8cpp_aaf7e8778df83d15dcc1031e591e20b2c}{TEST\_CASE}}(\textcolor{stringliteral}{"Line to Process Assignments: (p > n), ((n mod p) != 0)"}, \textcolor{stringliteral}{"[lineToProcess]"})}
+\DoxyCodeLine{00112 \{}
+\DoxyCodeLine{00113     CHECK(\mbox{\hyperlink{networking_8cpp_a2b5f195179a5dab012c7eb63316c8909}{lineToProcess}}(0, 5, 8) == 0);}
+\DoxyCodeLine{00114     CHECK(\mbox{\hyperlink{networking_8cpp_a2b5f195179a5dab012c7eb63316c8909}{lineToProcess}}(1, 5, 8) == 1);}
+\DoxyCodeLine{00115     CHECK(\mbox{\hyperlink{networking_8cpp_a2b5f195179a5dab012c7eb63316c8909}{lineToProcess}}(2, 5, 8) == 2);}
+\DoxyCodeLine{00116     CHECK(\mbox{\hyperlink{networking_8cpp_a2b5f195179a5dab012c7eb63316c8909}{lineToProcess}}(3, 5, 8) == 3);}
+\DoxyCodeLine{00117     CHECK(\mbox{\hyperlink{networking_8cpp_a2b5f195179a5dab012c7eb63316c8909}{lineToProcess}}(4, 5, 8) == 4);}
+\DoxyCodeLine{00118 \}}
+\DoxyCodeLine{00119 }
+\DoxyCodeLine{00120 \mbox{\hyperlink{networking__unittest_8cpp_aaf7e8778df83d15dcc1031e591e20b2c}{TEST\_CASE}}(\textcolor{stringliteral}{"Lines assigned to a process: (p == n), ((n mod p) == 0)"}, \textcolor{stringliteral}{"[processToLines]"})}
+\DoxyCodeLine{00121 \{}
+\DoxyCodeLine{00122     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(0, 4, 4).size() == 1);}
+\DoxyCodeLine{00123     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(1, 4, 4).size() == 1);}
+\DoxyCodeLine{00124     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(2, 4, 4).size() == 1);}
+\DoxyCodeLine{00125     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(3, 4, 4).size() == 1);}
+\DoxyCodeLine{00126 }
+\DoxyCodeLine{00127     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(0, 4, 4)[0] == 0);}
+\DoxyCodeLine{00128     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(1, 4, 4)[0] == 1);}
+\DoxyCodeLine{00129     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(2, 4, 4)[0] == 2);}
+\DoxyCodeLine{00130     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(3, 4, 4)[0] == 3);}
+\DoxyCodeLine{00131 \}}
+\DoxyCodeLine{00132 }
+\DoxyCodeLine{00133 \mbox{\hyperlink{networking__unittest_8cpp_aaf7e8778df83d15dcc1031e591e20b2c}{TEST\_CASE}}(\textcolor{stringliteral}{"Lines assigned to a process: (p < n), ((n mod p) == 0)"}, \textcolor{stringliteral}{"[processToLines]"})}
+\DoxyCodeLine{00134 \{}
+\DoxyCodeLine{00135     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(0, 8, 4).size() == 2);}
+\DoxyCodeLine{00136     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(1, 8, 4).size() == 2);}
+\DoxyCodeLine{00137     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(2, 8, 4).size() == 2);}
+\DoxyCodeLine{00138     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(3, 8, 4).size() == 2);}
+\DoxyCodeLine{00139     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(0, 8, 4)[0] == 0);}
+\DoxyCodeLine{00140     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(0, 8, 4)[1] == 1);}
+\DoxyCodeLine{00141     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(1, 8, 4)[0] == 2);}
+\DoxyCodeLine{00142     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(1, 8, 4)[1] == 3);}
+\DoxyCodeLine{00143     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(2, 8, 4)[0] == 4);}
+\DoxyCodeLine{00144     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(2, 8, 4)[1] == 5);}
+\DoxyCodeLine{00145     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(3, 8, 4)[0] == 6);}
+\DoxyCodeLine{00146     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(3, 8, 4)[1] == 7);}
+\DoxyCodeLine{00147 \}}
+\DoxyCodeLine{00148 }
+\DoxyCodeLine{00149 \mbox{\hyperlink{networking__unittest_8cpp_aaf7e8778df83d15dcc1031e591e20b2c}{TEST\_CASE}}(\textcolor{stringliteral}{"Lines assigned to a process: (p < n), ((n mod p) != 0)"}, \textcolor{stringliteral}{"[processToLines]"})}
+\DoxyCodeLine{00150 \{}
+\DoxyCodeLine{00151     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(0, 7, 4).size() == 2);}
+\DoxyCodeLine{00152     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(1, 7, 4).size() == 2);}
+\DoxyCodeLine{00153     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(2, 7, 4).size() == 2);}
+\DoxyCodeLine{00154     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(3, 7, 4).size() == 1);}
+\DoxyCodeLine{00155     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(0, 7, 4)[0] == 0);}
+\DoxyCodeLine{00156     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(0, 7, 4)[1] == 1);}
+\DoxyCodeLine{00157     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(1, 7, 4)[0] == 2);}
+\DoxyCodeLine{00158     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(1, 7, 4)[1] == 3);}
+\DoxyCodeLine{00159     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(2, 7, 4)[0] == 4);}
+\DoxyCodeLine{00160     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(2, 7, 4)[1] == 5);}
+\DoxyCodeLine{00161     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(3, 7, 4)[0] == 6);}
+\DoxyCodeLine{00162 \}}
+\DoxyCodeLine{00163 }
+\DoxyCodeLine{00164 \mbox{\hyperlink{networking__unittest_8cpp_aaf7e8778df83d15dcc1031e591e20b2c}{TEST\_CASE}}(\textcolor{stringliteral}{"Lines assigned to a process: (p > n), ((n mod p) == 0)"}, \textcolor{stringliteral}{"[processToLines]"})}
+\DoxyCodeLine{00165 \{}
+\DoxyCodeLine{00166     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(0, 4, 8).size() == 1);}
+\DoxyCodeLine{00167     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(1, 4, 8).size() == 1);}
+\DoxyCodeLine{00168     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(2, 4, 8).size() == 1);}
+\DoxyCodeLine{00169     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(3, 4, 8).size() == 1);}
+\DoxyCodeLine{00170     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(4, 4, 8).size() == 0);}
+\DoxyCodeLine{00171     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(5, 4, 8).size() == 0);}
+\DoxyCodeLine{00172     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(6, 4, 8).size() == 0);}
+\DoxyCodeLine{00173     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(7, 4, 8).size() == 0);}
+\DoxyCodeLine{00174     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(0, 4, 8)[0] == 0);}
+\DoxyCodeLine{00175     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(1, 4, 8)[0] == 1);}
+\DoxyCodeLine{00176     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(2, 4, 8)[0] == 2);}
+\DoxyCodeLine{00177     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(3, 4, 8)[0] == 3);}
+\DoxyCodeLine{00178 \}}
+\DoxyCodeLine{00179 }
+\DoxyCodeLine{00180 \mbox{\hyperlink{networking__unittest_8cpp_aaf7e8778df83d15dcc1031e591e20b2c}{TEST\_CASE}}(\textcolor{stringliteral}{"Lines assigned to a process: (p > n), ((n mod p) != 0)"}, \textcolor{stringliteral}{"[processToLines]"})}
+\DoxyCodeLine{00181 \{}
+\DoxyCodeLine{00182     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(0, 5, 8).size() == 1);}
+\DoxyCodeLine{00183     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(1, 5, 8).size() == 1);}
+\DoxyCodeLine{00184     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(2, 5, 8).size() == 1);}
+\DoxyCodeLine{00185     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(3, 5, 8).size() == 1);}
+\DoxyCodeLine{00186     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(4, 5, 8).size() == 1);}
+\DoxyCodeLine{00187     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(5, 5, 8).size() == 0);}
+\DoxyCodeLine{00188     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(6, 5, 8).size() == 0);}
+\DoxyCodeLine{00189     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(7, 5, 8).size() == 0);}
+\DoxyCodeLine{00190     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(0, 5, 8)[0] == 0);}
+\DoxyCodeLine{00191     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(1, 5, 8)[0] == 1);}
+\DoxyCodeLine{00192     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(2, 5, 8)[0] == 2);}
+\DoxyCodeLine{00193     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(3, 5, 8)[0] == 3);}
+\DoxyCodeLine{00194     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(4, 5, 8)[0] == 4);}
+\DoxyCodeLine{00195 \}}
+\DoxyCodeLine{00196 }
+\DoxyCodeLine{00197 \mbox{\hyperlink{networking__unittest_8cpp_aaf7e8778df83d15dcc1031e591e20b2c}{TEST\_CASE}}(\textcolor{stringliteral}{"Number of lines assigned to a process: (p == n), ((n mod p) == 0)"}, \textcolor{stringliteral}{"[processToLinesCount]"})}
+\DoxyCodeLine{00198 \{}
+\DoxyCodeLine{00199     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(0, 4, 4).size() == 1);}
+\DoxyCodeLine{00200     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(1, 4, 4).size() == 1);}
+\DoxyCodeLine{00201     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(2, 4, 4).size() == 1);}
+\DoxyCodeLine{00202     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(3, 4, 4).size() == 1);}
+\DoxyCodeLine{00203     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(0, 4, 4)[0] == 0);}
+\DoxyCodeLine{00204     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(1, 4, 4)[0] == 1);}
+\DoxyCodeLine{00205     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(2, 4, 4)[0] == 2);}
+\DoxyCodeLine{00206     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(3, 4, 4)[0] == 3);}
+\DoxyCodeLine{00207 \}}
+\DoxyCodeLine{00208 }
+\DoxyCodeLine{00209 \mbox{\hyperlink{networking__unittest_8cpp_aaf7e8778df83d15dcc1031e591e20b2c}{TEST\_CASE}}(\textcolor{stringliteral}{"Number of lines assigned to a process: (p < n), ((n mod p) == 0)"}, \textcolor{stringliteral}{"[processToLinesCount]"})}
+\DoxyCodeLine{00210 \{}
+\DoxyCodeLine{00211     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(0, 8, 4).size() == 2);}
+\DoxyCodeLine{00212     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(1, 8, 4).size() == 2);}
+\DoxyCodeLine{00213     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(2, 8, 4).size() == 2);}
+\DoxyCodeLine{00214     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(3, 8, 4).size() == 2);}
+\DoxyCodeLine{00215     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(0, 8, 4)[0] == 0);}
+\DoxyCodeLine{00216     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(0, 8, 4)[1] == 1);}
+\DoxyCodeLine{00217     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(1, 8, 4)[0] == 2);}
+\DoxyCodeLine{00218     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(1, 8, 4)[1] == 3);}
+\DoxyCodeLine{00219     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(2, 8, 4)[0] == 4);}
+\DoxyCodeLine{00220     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(2, 8, 4)[1] == 5);}
+\DoxyCodeLine{00221     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(3, 8, 4)[0] == 6);}
+\DoxyCodeLine{00222     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(3, 8, 4)[1] == 7);}
+\DoxyCodeLine{00223 \}}
+\DoxyCodeLine{00224 }
+\DoxyCodeLine{00225 \mbox{\hyperlink{networking__unittest_8cpp_aaf7e8778df83d15dcc1031e591e20b2c}{TEST\_CASE}}(\textcolor{stringliteral}{"Number of lines assigned to a process: (p < n), ((n mod p) != 0)"}, \textcolor{stringliteral}{"[processToLinesCount]"})}
+\DoxyCodeLine{00226 \{}
+\DoxyCodeLine{00227     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(0, 7, 4).size() == 2);}
+\DoxyCodeLine{00228     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(1, 7, 4).size() == 2);}
+\DoxyCodeLine{00229     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(2, 7, 4).size() == 2);}
+\DoxyCodeLine{00230     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(3, 7, 4).size() == 1);}
+\DoxyCodeLine{00231     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(0, 7, 4)[0] == 0);}
+\DoxyCodeLine{00232     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(0, 7, 4)[1] == 1);}
+\DoxyCodeLine{00233     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(1, 7, 4)[0] == 2);}
+\DoxyCodeLine{00234     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(1, 7, 4)[1] == 3);}
+\DoxyCodeLine{00235     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(2, 7, 4)[0] == 4);}
+\DoxyCodeLine{00236     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(2, 7, 4)[1] == 5);}
+\DoxyCodeLine{00237     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(3, 7, 4)[0] == 6);}
+\DoxyCodeLine{00238 \}}
+\DoxyCodeLine{00239 }
+\DoxyCodeLine{00240 \mbox{\hyperlink{networking__unittest_8cpp_aaf7e8778df83d15dcc1031e591e20b2c}{TEST\_CASE}}(\textcolor{stringliteral}{"Number of lines assigned to a process: (p > n), ((n mod p) == 0)"}, \textcolor{stringliteral}{"[processToLinesCount]"})}
+\DoxyCodeLine{00241 \{}
+\DoxyCodeLine{00242     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(0, 4, 8).size() == 1);}
+\DoxyCodeLine{00243     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(1, 4, 8).size() == 1);}
+\DoxyCodeLine{00244     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(2, 4, 8).size() == 1);}
+\DoxyCodeLine{00245     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(3, 4, 8).size() == 1);}
+\DoxyCodeLine{00246     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(4, 4, 8).size() == 0);}
+\DoxyCodeLine{00247     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(5, 4, 8).size() == 0);}
+\DoxyCodeLine{00248     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(6, 4, 8).size() == 0);}
+\DoxyCodeLine{00249     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(7, 4, 8).size() == 0);}
+\DoxyCodeLine{00250     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(0, 4, 8)[0] == 0);}
+\DoxyCodeLine{00251     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(1, 4, 8)[0] == 1);}
+\DoxyCodeLine{00252     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(2, 4, 8)[0] == 2);}
+\DoxyCodeLine{00253     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(3, 4, 8)[0] == 3);}
+\DoxyCodeLine{00254 \}}
+\DoxyCodeLine{00255 }
+\DoxyCodeLine{00256 \mbox{\hyperlink{networking__unittest_8cpp_aaf7e8778df83d15dcc1031e591e20b2c}{TEST\_CASE}}(\textcolor{stringliteral}{"Number of lines assigned to a process: (p > n), ((n mod p) != 0)"}, \textcolor{stringliteral}{"[processToLinesCount]"})}
+\DoxyCodeLine{00257 \{}
+\DoxyCodeLine{00258     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(0, 5, 8).size() == 1);}
+\DoxyCodeLine{00259     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(1, 5, 8).size() == 1);}
+\DoxyCodeLine{00260     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(2, 5, 8).size() == 1);}
+\DoxyCodeLine{00261     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(3, 5, 8).size() == 1);}
+\DoxyCodeLine{00262     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(4, 5, 8).size() == 1);}
+\DoxyCodeLine{00263     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(5, 5, 8).size() == 0);}
+\DoxyCodeLine{00264     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(6, 5, 8).size() == 0);}
+\DoxyCodeLine{00265     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(7, 5, 8).size() == 0);}
+\DoxyCodeLine{00266     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(0, 5, 8)[0] == 0);}
+\DoxyCodeLine{00267     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(1, 5, 8)[0] == 1);}
+\DoxyCodeLine{00268     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(2, 5, 8)[0] == 2);}
+\DoxyCodeLine{00269     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(3, 5, 8)[0] == 3);}
+\DoxyCodeLine{00270     CHECK(\mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(4, 5, 8)[0] == 4);}
+\DoxyCodeLine{00271 \}}
+\DoxyCodeLine{00272 }
+\DoxyCodeLine{00273 \mbox{\hyperlink{networking__unittest_8cpp_aaf7e8778df83d15dcc1031e591e20b2c}{TEST\_CASE}}(\textcolor{stringliteral}{"Calculate didpls and scounts for MPI\_Scatterv: (p == n), ((n mod p) == 0)"}, \textcolor{stringliteral}{"[calculateDisplsScounts]"})}
+\DoxyCodeLine{00274 \{}
+\DoxyCodeLine{00275     \textcolor{keywordtype}{int} *displs, *scounts;}
+\DoxyCodeLine{00276     \textcolor{keywordtype}{int} arraySize = 4;}
+\DoxyCodeLine{00277     \textcolor{keywordtype}{int} processes = 4;}
+\DoxyCodeLine{00278     \textcolor{keywordtype}{int} myRank = 0;}
+\DoxyCodeLine{00279 }
+\DoxyCodeLine{00280     \mbox{\hyperlink{networking_8cpp_a3b76ad8a23451b07a2a6f4019798dede}{calculateDisplsScounts}}(displs, scounts, arraySize, processes, myRank);}
+\DoxyCodeLine{00281 }
+\DoxyCodeLine{00282     CHECK(displs[0] == 0);}
+\DoxyCodeLine{00283     CHECK(displs[1] == 4);}
+\DoxyCodeLine{00284     CHECK(displs[2] == 8);}
+\DoxyCodeLine{00285     CHECK(displs[3] == 12);}
+\DoxyCodeLine{00286 }
+\DoxyCodeLine{00287     CHECK(scounts[0] == 4);}
+\DoxyCodeLine{00288     CHECK(scounts[1] == 4);}
+\DoxyCodeLine{00289     CHECK(scounts[2] == 4);}
+\DoxyCodeLine{00290     CHECK(scounts[3] == 4);}
 \DoxyCodeLine{00291 }
-\DoxyCodeLine{00292 TEST\_CASE(\textcolor{stringliteral}{"Calculate didpls and scounts for MPI\_Scatterv: (p < n), ((n mod p) == 0)"}, \textcolor{stringliteral}{"[calculateDisplsScounts]"})}
-\DoxyCodeLine{00293 \{}
-\DoxyCodeLine{00294     \textcolor{keywordtype}{int} *displs, *scounts;}
-\DoxyCodeLine{00295     \textcolor{keywordtype}{int} arraySize = 8;}
-\DoxyCodeLine{00296     \textcolor{keywordtype}{int} processes = 4;}
-\DoxyCodeLine{00297     \textcolor{keywordtype}{int} myRank = 0;}
-\DoxyCodeLine{00298 }
-\DoxyCodeLine{00299     \mbox{\hyperlink{networking_8cpp_a3b76ad8a23451b07a2a6f4019798dede}{calculateDisplsScounts}}(displs, scounts, arraySize, processes, myRank);}
-\DoxyCodeLine{00300 }
-\DoxyCodeLine{00301     CHECK(displs[0] == 0);}
-\DoxyCodeLine{00302     CHECK(displs[1] == 16);}
-\DoxyCodeLine{00303     CHECK(displs[2] == 32);}
-\DoxyCodeLine{00304     CHECK(displs[3] == 48);}
-\DoxyCodeLine{00305 }
-\DoxyCodeLine{00306     CHECK(scounts[0] == 16);}
-\DoxyCodeLine{00307     CHECK(scounts[1] == 16);}
-\DoxyCodeLine{00308     CHECK(scounts[2] == 16);}
-\DoxyCodeLine{00309     CHECK(scounts[3] == 16);}
-\DoxyCodeLine{00310 }
-\DoxyCodeLine{00311     \textcolor{keyword}{delete}[] displs;}
-\DoxyCodeLine{00312     \textcolor{keyword}{delete}[] scounts;}
-\DoxyCodeLine{00313 \}}
+\DoxyCodeLine{00292     \textcolor{keyword}{delete}[] displs;}
+\DoxyCodeLine{00293     \textcolor{keyword}{delete}[] scounts;}
+\DoxyCodeLine{00294 \}}
+\DoxyCodeLine{00295 }
+\DoxyCodeLine{00296 \mbox{\hyperlink{networking__unittest_8cpp_aaf7e8778df83d15dcc1031e591e20b2c}{TEST\_CASE}}(\textcolor{stringliteral}{"Calculate didpls and scounts for MPI\_Scatterv: (p < n), ((n mod p) == 0)"}, \textcolor{stringliteral}{"[calculateDisplsScounts]"})}
+\DoxyCodeLine{00297 \{}
+\DoxyCodeLine{00298     \textcolor{keywordtype}{int} *displs, *scounts;}
+\DoxyCodeLine{00299     \textcolor{keywordtype}{int} arraySize = 8;}
+\DoxyCodeLine{00300     \textcolor{keywordtype}{int} processes = 4;}
+\DoxyCodeLine{00301     \textcolor{keywordtype}{int} myRank = 0;}
+\DoxyCodeLine{00302 }
+\DoxyCodeLine{00303     \mbox{\hyperlink{networking_8cpp_a3b76ad8a23451b07a2a6f4019798dede}{calculateDisplsScounts}}(displs, scounts, arraySize, processes, myRank);}
+\DoxyCodeLine{00304 }
+\DoxyCodeLine{00305     CHECK(displs[0] == 0);}
+\DoxyCodeLine{00306     CHECK(displs[1] == 16);}
+\DoxyCodeLine{00307     CHECK(displs[2] == 32);}
+\DoxyCodeLine{00308     CHECK(displs[3] == 48);}
+\DoxyCodeLine{00309 }
+\DoxyCodeLine{00310     CHECK(scounts[0] == 16);}
+\DoxyCodeLine{00311     CHECK(scounts[1] == 16);}
+\DoxyCodeLine{00312     CHECK(scounts[2] == 16);}
+\DoxyCodeLine{00313     CHECK(scounts[3] == 16);}
 \DoxyCodeLine{00314 }
-\DoxyCodeLine{00315 TEST\_CASE(\textcolor{stringliteral}{"Calculate didpls and scounts for MPI\_Scatterv: (p < n), ((n mod p) != 0)"}, \textcolor{stringliteral}{"[calculateDisplsScounts]"})}
-\DoxyCodeLine{00316 \{}
-\DoxyCodeLine{00317     \textcolor{keywordtype}{int} *displs, *scounts;}
-\DoxyCodeLine{00318     \textcolor{keywordtype}{int} arraySize = 7;}
-\DoxyCodeLine{00319     \textcolor{keywordtype}{int} processes = 4;}
-\DoxyCodeLine{00320     \textcolor{keywordtype}{int} myRank = 0;}
-\DoxyCodeLine{00321 }
-\DoxyCodeLine{00322     \mbox{\hyperlink{networking_8cpp_a3b76ad8a23451b07a2a6f4019798dede}{calculateDisplsScounts}}(displs, scounts, arraySize, processes, myRank);}
-\DoxyCodeLine{00323 }
-\DoxyCodeLine{00324     CHECK(displs[0] == 0);}
-\DoxyCodeLine{00325     CHECK(displs[1] == 14);}
-\DoxyCodeLine{00326     CHECK(displs[2] == 28);}
-\DoxyCodeLine{00327     CHECK(displs[3] == 42);}
-\DoxyCodeLine{00328 }
-\DoxyCodeLine{00329     CHECK(scounts[0] == 14);}
-\DoxyCodeLine{00330     CHECK(scounts[1] == 14);}
-\DoxyCodeLine{00331     CHECK(scounts[2] == 14);}
-\DoxyCodeLine{00332     CHECK(scounts[3] == 7);}
-\DoxyCodeLine{00333 }
-\DoxyCodeLine{00334     \textcolor{keyword}{delete}[] displs;}
-\DoxyCodeLine{00335     \textcolor{keyword}{delete}[] scounts;}
-\DoxyCodeLine{00336 \}}
+\DoxyCodeLine{00315     \textcolor{keyword}{delete}[] displs;}
+\DoxyCodeLine{00316     \textcolor{keyword}{delete}[] scounts;}
+\DoxyCodeLine{00317 \}}
+\DoxyCodeLine{00318 }
+\DoxyCodeLine{00319 \mbox{\hyperlink{networking__unittest_8cpp_aaf7e8778df83d15dcc1031e591e20b2c}{TEST\_CASE}}(\textcolor{stringliteral}{"Calculate didpls and scounts for MPI\_Scatterv: (p < n), ((n mod p) != 0)"}, \textcolor{stringliteral}{"[calculateDisplsScounts]"})}
+\DoxyCodeLine{00320 \{}
+\DoxyCodeLine{00321     \textcolor{keywordtype}{int} *displs, *scounts;}
+\DoxyCodeLine{00322     \textcolor{keywordtype}{int} arraySize = 7;}
+\DoxyCodeLine{00323     \textcolor{keywordtype}{int} processes = 4;}
+\DoxyCodeLine{00324     \textcolor{keywordtype}{int} myRank = 0;}
+\DoxyCodeLine{00325 }
+\DoxyCodeLine{00326     \mbox{\hyperlink{networking_8cpp_a3b76ad8a23451b07a2a6f4019798dede}{calculateDisplsScounts}}(displs, scounts, arraySize, processes, myRank);}
+\DoxyCodeLine{00327 }
+\DoxyCodeLine{00328     CHECK(displs[0] == 0);}
+\DoxyCodeLine{00329     CHECK(displs[1] == 14);}
+\DoxyCodeLine{00330     CHECK(displs[2] == 28);}
+\DoxyCodeLine{00331     CHECK(displs[3] == 42);}
+\DoxyCodeLine{00332 }
+\DoxyCodeLine{00333     CHECK(scounts[0] == 14);}
+\DoxyCodeLine{00334     CHECK(scounts[1] == 14);}
+\DoxyCodeLine{00335     CHECK(scounts[2] == 14);}
+\DoxyCodeLine{00336     CHECK(scounts[3] == 7);}
 \DoxyCodeLine{00337 }
-\DoxyCodeLine{00338 TEST\_CASE(\textcolor{stringliteral}{"Calculate didpls and scounts for MPI\_Scatterv: (p > n), ((n mod p) == 0)"}, \textcolor{stringliteral}{"[calculateDisplsScounts]"})}
-\DoxyCodeLine{00339 \{}
-\DoxyCodeLine{00340     \textcolor{keywordtype}{int} *displs, *scounts;}
-\DoxyCodeLine{00341     \textcolor{keywordtype}{int} arraySize = 4;}
-\DoxyCodeLine{00342     \textcolor{keywordtype}{int} processes = 8;}
-\DoxyCodeLine{00343     \textcolor{keywordtype}{int} myRank = 0;}
-\DoxyCodeLine{00344 }
-\DoxyCodeLine{00345     \mbox{\hyperlink{networking_8cpp_a3b76ad8a23451b07a2a6f4019798dede}{calculateDisplsScounts}}(displs, scounts, arraySize, processes, myRank);}
-\DoxyCodeLine{00346 }
-\DoxyCodeLine{00347     CHECK(displs[0] == 0);}
-\DoxyCodeLine{00348     CHECK(displs[1] == 4);}
-\DoxyCodeLine{00349     CHECK(displs[2] == 8);}
-\DoxyCodeLine{00350     CHECK(displs[3] == 12);}
-\DoxyCodeLine{00351 }
-\DoxyCodeLine{00352     CHECK(scounts[0] == 4);}
-\DoxyCodeLine{00353     CHECK(scounts[1] == 4);}
-\DoxyCodeLine{00354     CHECK(scounts[2] == 4);}
-\DoxyCodeLine{00355     CHECK(scounts[3] == 4);}
-\DoxyCodeLine{00356 }
-\DoxyCodeLine{00357     \textcolor{keyword}{delete}[] displs;}
-\DoxyCodeLine{00358     \textcolor{keyword}{delete}[] scounts;}
-\DoxyCodeLine{00359 \}}
+\DoxyCodeLine{00338     \textcolor{keyword}{delete}[] displs;}
+\DoxyCodeLine{00339     \textcolor{keyword}{delete}[] scounts;}
+\DoxyCodeLine{00340 \}}
+\DoxyCodeLine{00341 }
+\DoxyCodeLine{00342 \mbox{\hyperlink{networking__unittest_8cpp_aaf7e8778df83d15dcc1031e591e20b2c}{TEST\_CASE}}(\textcolor{stringliteral}{"Calculate didpls and scounts for MPI\_Scatterv: (p > n), ((n mod p) == 0)"}, \textcolor{stringliteral}{"[calculateDisplsScounts]"})}
+\DoxyCodeLine{00343 \{}
+\DoxyCodeLine{00344     \textcolor{keywordtype}{int} *displs, *scounts;}
+\DoxyCodeLine{00345     \textcolor{keywordtype}{int} arraySize = 4;}
+\DoxyCodeLine{00346     \textcolor{keywordtype}{int} processes = 8;}
+\DoxyCodeLine{00347     \textcolor{keywordtype}{int} myRank = 0;}
+\DoxyCodeLine{00348 }
+\DoxyCodeLine{00349     \mbox{\hyperlink{networking_8cpp_a3b76ad8a23451b07a2a6f4019798dede}{calculateDisplsScounts}}(displs, scounts, arraySize, processes, myRank);}
+\DoxyCodeLine{00350 }
+\DoxyCodeLine{00351     CHECK(displs[0] == 0);}
+\DoxyCodeLine{00352     CHECK(displs[1] == 4);}
+\DoxyCodeLine{00353     CHECK(displs[2] == 8);}
+\DoxyCodeLine{00354     CHECK(displs[3] == 12);}
+\DoxyCodeLine{00355 }
+\DoxyCodeLine{00356     CHECK(scounts[0] == 4);}
+\DoxyCodeLine{00357     CHECK(scounts[1] == 4);}
+\DoxyCodeLine{00358     CHECK(scounts[2] == 4);}
+\DoxyCodeLine{00359     CHECK(scounts[3] == 4);}
 \DoxyCodeLine{00360 }
-\DoxyCodeLine{00361 TEST\_CASE(\textcolor{stringliteral}{"Calculate didpls and scounts for MPI\_Scatterv: (p > n), ((n mod p) != 0)"}, \textcolor{stringliteral}{"[calculateDisplsScounts]"})}
-\DoxyCodeLine{00362 \{}
-\DoxyCodeLine{00363     \textcolor{keywordtype}{int} *displs, *scounts;}
-\DoxyCodeLine{00364     \textcolor{keywordtype}{int} arraySize = 5;}
-\DoxyCodeLine{00365     \textcolor{keywordtype}{int} processes = 8;}
-\DoxyCodeLine{00366     \textcolor{keywordtype}{int} myRank = 0;}
-\DoxyCodeLine{00367 }
-\DoxyCodeLine{00368     \mbox{\hyperlink{networking_8cpp_a3b76ad8a23451b07a2a6f4019798dede}{calculateDisplsScounts}}(displs, scounts, arraySize, processes, myRank);}
-\DoxyCodeLine{00369 }
-\DoxyCodeLine{00370     CHECK(displs[0] == 0);}
-\DoxyCodeLine{00371     CHECK(displs[1] == 5);}
-\DoxyCodeLine{00372     CHECK(displs[2] == 10);}
-\DoxyCodeLine{00373     CHECK(displs[3] == 15);}
-\DoxyCodeLine{00374     CHECK(displs[4] == 20);}
-\DoxyCodeLine{00375 }
-\DoxyCodeLine{00376     CHECK(scounts[0] == 5);}
-\DoxyCodeLine{00377     CHECK(scounts[1] == 5);}
-\DoxyCodeLine{00378     CHECK(scounts[2] == 5);}
-\DoxyCodeLine{00379     CHECK(scounts[3] == 5);}
-\DoxyCodeLine{00380     CHECK(scounts[4] == 5);}
-\DoxyCodeLine{00381 }
-\DoxyCodeLine{00382     \textcolor{keyword}{delete}[] displs;}
-\DoxyCodeLine{00383     \textcolor{keyword}{delete}[] scounts;}
-\DoxyCodeLine{00384 \}}
+\DoxyCodeLine{00361     \textcolor{keyword}{delete}[] displs;}
+\DoxyCodeLine{00362     \textcolor{keyword}{delete}[] scounts;}
+\DoxyCodeLine{00363 \}}
+\DoxyCodeLine{00364 }
+\DoxyCodeLine{00365 \mbox{\hyperlink{networking__unittest_8cpp_aaf7e8778df83d15dcc1031e591e20b2c}{TEST\_CASE}}(\textcolor{stringliteral}{"Calculate didpls and scounts for MPI\_Scatterv: (p > n), ((n mod p) != 0)"}, \textcolor{stringliteral}{"[calculateDisplsScounts]"})}
+\DoxyCodeLine{00366 \{}
+\DoxyCodeLine{00367     \textcolor{keywordtype}{int} *displs, *scounts;}
+\DoxyCodeLine{00368     \textcolor{keywordtype}{int} arraySize = 5;}
+\DoxyCodeLine{00369     \textcolor{keywordtype}{int} processes = 8;}
+\DoxyCodeLine{00370     \textcolor{keywordtype}{int} myRank = 0;}
+\DoxyCodeLine{00371 }
+\DoxyCodeLine{00372     \mbox{\hyperlink{networking_8cpp_a3b76ad8a23451b07a2a6f4019798dede}{calculateDisplsScounts}}(displs, scounts, arraySize, processes, myRank);}
+\DoxyCodeLine{00373 }
+\DoxyCodeLine{00374     CHECK(displs[0] == 0);}
+\DoxyCodeLine{00375     CHECK(displs[1] == 5);}
+\DoxyCodeLine{00376     CHECK(displs[2] == 10);}
+\DoxyCodeLine{00377     CHECK(displs[3] == 15);}
+\DoxyCodeLine{00378     CHECK(displs[4] == 20);}
+\DoxyCodeLine{00379 }
+\DoxyCodeLine{00380     CHECK(scounts[0] == 5);}
+\DoxyCodeLine{00381     CHECK(scounts[1] == 5);}
+\DoxyCodeLine{00382     CHECK(scounts[2] == 5);}
+\DoxyCodeLine{00383     CHECK(scounts[3] == 5);}
+\DoxyCodeLine{00384     CHECK(scounts[4] == 5);}
 \DoxyCodeLine{00385 }
+\DoxyCodeLine{00386     \textcolor{keyword}{delete}[] displs;}
+\DoxyCodeLine{00387     \textcolor{keyword}{delete}[] scounts;}
+\DoxyCodeLine{00388 \}}
+\DoxyCodeLine{00389 }
 
 \end{DoxyCode}
