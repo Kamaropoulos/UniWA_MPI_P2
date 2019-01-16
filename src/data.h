@@ -1,6 +1,6 @@
 /**
  * @file data.h
- * @author your name (you@domain.com)
+ * @author Konstantinos Kamaropoulos (kamaropoulos@outlook.com)
  * @brief 
  * @version 0.1
  * @date 2018-12-27

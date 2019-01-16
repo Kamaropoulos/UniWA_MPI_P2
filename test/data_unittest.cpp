@@ -1,6 +1,6 @@
 /**
  * @file data_unittest.cpp
- * @author your name (you@domain.com)
+ * @author Konstantinos Kamaropoulos (kamaropoulos@outlook.com)
  * @brief 
  * @version 0.1
  * @date 2019-01-05
