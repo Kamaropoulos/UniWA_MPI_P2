@@ -1,0 +1,4 @@
+<map id="TEST_CASE" name="TEST_CASE">
+<area shape="rect" id="node1" title="Unit test for method _lineToProcess with 8 lines and 4 processes (p &lt; n), ((n mod p) == 0)" alt="" coords="5,5,105,32"/>
+<area shape="rect" id="node2" href="$networking_8cpp.html#a13ea20b290c58975e6f9ad5b419330cc" title="[Internal] Line to process assignments based on the modulo of the line." alt="" coords="153,5,265,32"/>
+</map>
