@@ -15,10 +15,10 @@ If it is:
 - [x] Calculate and print a matrix based on the following formulas:
 
 <p align="center">
-  <img src="doc/formula1.gif">
+  <img src="docs/formula1.gif">
 </p>
 <p align="center">
-  <img src="doc/formula2.gif">
+  <img src="docs/formula2.gif">
 </p>
 
 where `m` is the previously calculated maximum element of the diagonal and `A` the original matrix.
