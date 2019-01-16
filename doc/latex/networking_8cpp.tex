@@ -1,0 +1,654 @@
+\hypertarget{networking_8cpp}{}\section{src/networking.cpp File Reference}
+\label{networking_8cpp}\index{src/networking.cpp@{src/networking.cpp}}
+{\ttfamily \#include \char`\"{}networking.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}data.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}mpi.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}utils.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$algorithm$>$}\newline
+{\ttfamily \#include $<$iostream$>$}\newline
+Include dependency graph for networking.\+cpp\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{networking_8cpp__incl}
+\end{center}
+\end{figure}
+\subsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{networking_8cpp_a38d81e78d98ca5bb60e863725f0e2be1}\label{networking_8cpp_a38d81e78d98ca5bb60e863725f0e2be1}} 
+\#define {\bfseries R\+O\+O\+T\+\_\+\+P\+R\+O\+C\+E\+SS}~0
+\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{networking_8cpp_a4f043b23867da30b825487b736565c9f}{Get\+M\+P\+I\+Params}} (int $\ast$processes\+Count, int $\ast$rank)
+\begin{DoxyCompactList}\small\item\em Returns the number of processes and the rank of the current process. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{networking_8cpp_a2b5f195179a5dab012c7eb63316c8909}{line\+To\+Process}} (int line, int total\+Lines, int processes)
+\begin{DoxyCompactList}\small\item\em Returns the number of the process a line of the array will be assigned to. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{networking_8cpp_a13ea20b290c58975e6f9ad5b419330cc}{\+\_\+line\+To\+Process}} (int line, int total\+Lines, int processes)
+\begin{DoxyCompactList}\small\item\em \mbox{[}Internal\mbox{]} Line to process assignments based on the modulo of the line. \end{DoxyCompactList}\item 
+std\+::vector$<$ int $>$ \mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{process\+To\+Lines}} (int process, int total\+Lines, int processes)
+\begin{DoxyCompactList}\small\item\em Returns a vector with the numbers (base 0) of the lines a process will be assigned. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{networking_8cpp_a1b2d1e5ad12dfa2377bd6e665324b6d2}{process\+To\+Lines\+Count}} (int process, int total\+Lines, int processes)
+\begin{DoxyCompactList}\small\item\em The number of lines that will be assigned to a process. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{networking_8cpp_a63a302a1b5a18d9b3c42763b66fc948a}{broadcast\+Array\+Size}} (int $\ast$array\+Size)
+\begin{DoxyCompactList}\small\item\em Method used to abstract the broadcasting of the array size. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{networking_8cpp_a3b76ad8a23451b07a2a6f4019798dede}{calculate\+Displs\+Scounts}} (int $\ast$\&displs, int $\ast$\&scounts, int array\+Size, int processes, int my\+Rank)
+\begin{DoxyCompactList}\small\item\em Calculate the displs and scounts arrays for use with Scatter and Gather methods. \end{DoxyCompactList}\item 
+std\+::vector$<$ std\+::vector$<$ int $>$ $>$ \mbox{\hyperlink{networking_8cpp_a3a44c57f314e8ae5a1c782ba82cfd8ad}{scatter\+Data}} (std\+::vector$<$ std\+::vector$<$ int $>$$>$ data, int array\+Size, int my\+Rank, int processes)
+\begin{DoxyCompactList}\small\item\em Scatter the lines of matrix A to the running processes. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{networking_8cpp_a0455313dd20006feab8bef34baa8a13b}{calculate\+Max}} (int max\+Local)
+\begin{DoxyCompactList}\small\item\em Find and share the max element of matrix A across all running processes. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{networking_8cpp_a7aaffad7a6e05c4b99e1a949773ddc88}{check\+Criteria}} (std\+::vector$<$ std\+::vector$<$ int $>$$>$ local\+Data, int array\+Size, int my\+Rank, int processes, int $\ast$max)
+\begin{DoxyCompactList}\small\item\em Checks if matrix A meets the strictly diagonally dominant criteria given the lines assigned to the current process and returns it\textquotesingle{}s max element by reference. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{networking_8cpp_aeb4e88c5e00d6166f5f35a59671f3667}{calculateB}} (std\+::vector$<$ std\+::vector$<$ int $>$$>$ local\+Data, int array\+Size, int max, int my\+Rank, int processes, int $\ast$min\+Local, int $\ast$min\+X\+Local, int $\ast$min\+Y\+Local)
+\begin{DoxyCompactList}\small\item\em Calculate the B matrix given the lines assigned to the current process and the max element of matrix A. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{networking_8cpp_ad3bc02c1c672b6ae601f31c897f7af2f}{find\+Min}} (int min\+Local, int min\+X\+Local, int min\+Y\+Local, int $\ast$min)
+\begin{DoxyCompactList}\small\item\em Find and share the min element of matrix B across all running processes. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\begin{DoxyAuthor}{Author}
+Konstantinos Kamaropoulos (\href{mailto:kamaropoulos@outlook.com}{\texttt{ kamaropoulos@outlook.\+com}}) 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{Version}
+0.\+1 
+\end{DoxyVersion}
+\begin{DoxyDate}{Date}
+2019-\/01-\/05
+\end{DoxyDate}
+\begin{DoxyCopyright}{Copyright}
+Copyright (c) 2019 
+\end{DoxyCopyright}
+
+
+Definition in file \mbox{\hyperlink{networking_8cpp_source}{networking.\+cpp}}.
+
+
+
+\subsection{Function Documentation}
+\mbox{\Hypertarget{networking_8cpp_a13ea20b290c58975e6f9ad5b419330cc}\label{networking_8cpp_a13ea20b290c58975e6f9ad5b419330cc}} 
+\index{networking.cpp@{networking.cpp}!\_lineToProcess@{\_lineToProcess}}
+\index{\_lineToProcess@{\_lineToProcess}!networking.cpp@{networking.cpp}}
+\subsubsection{\texorpdfstring{\_lineToProcess()}{\_lineToProcess()}}
+{\footnotesize\ttfamily int \+\_\+line\+To\+Process (\begin{DoxyParamCaption}\item[{int}]{line,  }\item[{int}]{total\+Lines,  }\item[{int}]{processes }\end{DoxyParamCaption})}
+
+
+
+\mbox{[}Internal\mbox{]} Line to process assignments based on the modulo of the line. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em line} & The number of the line of the array to assign. (base 0) \\
+\hline
+{\em total\+Lines} & The total number of lines in the array. \\
+\hline
+{\em processes} & The total number of processes. (including the root process) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int The number of the process the passed line of the array will be assigned to based on the modulo of the line. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{networking_8cpp_source_l00073}{73}} of file \mbox{\hyperlink{networking_8cpp_source}{networking.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00074 \{}
+\DoxyCodeLine{00075     \textcolor{keywordflow}{return} ((line \% (processes)));}
+\DoxyCodeLine{00076 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{networking_8cpp_a63a302a1b5a18d9b3c42763b66fc948a}\label{networking_8cpp_a63a302a1b5a18d9b3c42763b66fc948a}} 
+\index{networking.cpp@{networking.cpp}!broadcastArraySize@{broadcastArraySize}}
+\index{broadcastArraySize@{broadcastArraySize}!networking.cpp@{networking.cpp}}
+\subsubsection{\texorpdfstring{broadcastArraySize()}{broadcastArraySize()}}
+{\footnotesize\ttfamily void broadcast\+Array\+Size (\begin{DoxyParamCaption}\item[{int $\ast$}]{array\+Size }\end{DoxyParamCaption})}
+
+
+
+Method used to abstract the broadcasting of the array size. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em array\+Size} & \mbox{[}in\mbox{]} The total number of lines in all processes \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{networking_8cpp_source_l00126}{126}} of file \mbox{\hyperlink{networking_8cpp_source}{networking.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00127 \{}
+\DoxyCodeLine{00128     MPI\_Bcast(arraySize, 1, MPI\_INT, 0, MPI\_COMM\_WORLD);}
+\DoxyCodeLine{00129 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{networking_8cpp_aeb4e88c5e00d6166f5f35a59671f3667}\label{networking_8cpp_aeb4e88c5e00d6166f5f35a59671f3667}} 
+\index{networking.cpp@{networking.cpp}!calculateB@{calculateB}}
+\index{calculateB@{calculateB}!networking.cpp@{networking.cpp}}
+\subsubsection{\texorpdfstring{calculateB()}{calculateB()}}
+{\footnotesize\ttfamily void calculateB (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::vector$<$ int $>$$>$}]{local\+Data,  }\item[{int}]{array\+Size,  }\item[{int}]{max,  }\item[{int}]{my\+Rank,  }\item[{int}]{processes,  }\item[{int $\ast$}]{min\+Local,  }\item[{int $\ast$}]{min\+X\+Local,  }\item[{int $\ast$}]{min\+Y\+Local }\end{DoxyParamCaption})}
+
+
+
+Calculate the B matrix given the lines assigned to the current process and the max element of matrix A. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em local\+Data} & \mbox{[}in\mbox{]} A 2D vector with the lines assigned to the current process \\
+\hline
+{\em array\+Size} & \mbox{[}in\mbox{]} The total number of lines across all processes \\
+\hline
+{\em max} & \mbox{[}in\mbox{]} The max element of matrix A \\
+\hline
+{\em my\+Rank} & \mbox{[}in\mbox{]} The rank of the current process \\
+\hline
+{\em processes} & \mbox{[}in\mbox{]} The total number of processes \\
+\hline
+{\em min\+Local} & \mbox{[}out\mbox{]} The min element only from the lines assigned to the current process \\
+\hline
+{\em min\+X\+Local} & \mbox{[}out\mbox{]} The X coordinate of the local min element \\
+\hline
+{\em min\+Y\+Local} & \mbox{[}out\mbox{]} The Y coordinate of the local min element \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{networking_8cpp_source_l00283}{283}} of file \mbox{\hyperlink{networking_8cpp_source}{networking.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00284 \{}
+\DoxyCodeLine{00285     std::vector<std::vector<int>> localBLines = \mbox{\hyperlink{data_8cpp_a6fa50f0193e86a0cf4be42afd2aa3056}{calculateBLocal}}(localData, max, arraySize, myRank, processes, minLocal, minXLocal, minYLocal);}
+\DoxyCodeLine{00286 }
+\DoxyCodeLine{00287     MPI\_Barrier(MPI\_COMM\_WORLD);}
+\DoxyCodeLine{00288 }
+\DoxyCodeLine{00289     \textcolor{keywordtype}{int} *localBLinesArr = \textcolor{keyword}{new} \textcolor{keywordtype}{int}[localBLines.size() * arraySize];}
+\DoxyCodeLine{00290     \mbox{\hyperlink{data_8cpp_a0555064a00cfa5563cce34c929f8c7af}{prepareData}}(localBLines, localBLinesArr);}
+\DoxyCodeLine{00291 }
+\DoxyCodeLine{00292     \textcolor{keywordtype}{int} *displs, *scounts;}
+\DoxyCodeLine{00293     \mbox{\hyperlink{networking_8cpp_a3b76ad8a23451b07a2a6f4019798dede}{calculateDisplsScounts}}(displs, scounts, arraySize, processes, myRank);}
+\DoxyCodeLine{00294 }
+\DoxyCodeLine{00295     \textcolor{keywordtype}{int} *b;}
+\DoxyCodeLine{00296     ifRoot(\{}
+\DoxyCodeLine{00297         b = \textcolor{keyword}{new} \textcolor{keywordtype}{int}[arraySize * arraySize];}
+\DoxyCodeLine{00298     \});}
+\DoxyCodeLine{00299 }
+\DoxyCodeLine{00300     MPI\_Gatherv(localBLinesArr, \mbox{\hyperlink{networking_8cpp_a1b2d1e5ad12dfa2377bd6e665324b6d2}{processToLinesCount}}(myRank, arraySize, processes) * arraySize, MPI\_INT, b, scounts, displs, MPI\_INT, 0, MPI\_COMM\_WORLD);}
+\DoxyCodeLine{00301 }
+\DoxyCodeLine{00302     \textcolor{keyword}{delete}[] displs;}
+\DoxyCodeLine{00303     \textcolor{keyword}{delete}[] scounts;}
+\DoxyCodeLine{00304 }
+\DoxyCodeLine{00305     \textcolor{keyword}{delete}[] localBLinesArr;}
+\DoxyCodeLine{00306 }
+\DoxyCodeLine{00307     ifRoot(\{}
+\DoxyCodeLine{00308         \mbox{\hyperlink{data_8cpp_ae58d7964ceddd58b2ec8abdbc159a91e}{printB}}(b, arraySize);}
+\DoxyCodeLine{00309     \});}
+\DoxyCodeLine{00310 }
+\DoxyCodeLine{00311     \textcolor{keyword}{delete}[] b;}
+\DoxyCodeLine{00312 \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{networking_8cpp_aeb4e88c5e00d6166f5f35a59671f3667_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{networking_8cpp_a3b76ad8a23451b07a2a6f4019798dede}\label{networking_8cpp_a3b76ad8a23451b07a2a6f4019798dede}} 
+\index{networking.cpp@{networking.cpp}!calculateDisplsScounts@{calculateDisplsScounts}}
+\index{calculateDisplsScounts@{calculateDisplsScounts}!networking.cpp@{networking.cpp}}
+\subsubsection{\texorpdfstring{calculateDisplsScounts()}{calculateDisplsScounts()}}
+{\footnotesize\ttfamily void calculate\+Displs\+Scounts (\begin{DoxyParamCaption}\item[{int $\ast$\&}]{displs,  }\item[{int $\ast$\&}]{scounts,  }\item[{int}]{array\+Size,  }\item[{int}]{processes,  }\item[{int}]{my\+Rank }\end{DoxyParamCaption})}
+
+
+
+Calculate the displs and scounts arrays for use with Scatter and Gather methods. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em displs} & \mbox{[}out\mbox{]} A pointer for the displs array to be stored to \\
+\hline
+{\em scounts} & \mbox{[}out\mbox{]} A pointer for the scounts array to be stored to \\
+\hline
+{\em array\+Size} & \mbox{[}in\mbox{]} The total number of lines in all processes \\
+\hline
+{\em processes} & \mbox{[}in\mbox{]} The total number of processes \\
+\hline
+{\em my\+Rank} & \mbox{[}in\mbox{]} The rank of the current process \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{networking_8cpp_source_l00140}{140}} of file \mbox{\hyperlink{networking_8cpp_source}{networking.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00141 \{}
+\DoxyCodeLine{00142     displs = \textcolor{keyword}{new} \textcolor{keywordtype}{int}[processes];}
+\DoxyCodeLine{00143     scounts = \textcolor{keyword}{new} \textcolor{keywordtype}{int}[processes];}
+\DoxyCodeLine{00144 }
+\DoxyCodeLine{00145     displs[0] = 0;}
+\DoxyCodeLine{00146     scounts[0] = (arraySize * \mbox{\hyperlink{networking_8cpp_a1b2d1e5ad12dfa2377bd6e665324b6d2}{processToLinesCount}}(0, arraySize, processes));}
+\DoxyCodeLine{00147 }
+\DoxyCodeLine{00148     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 1; i < processes; i++)}
+\DoxyCodeLine{00149     \{}
+\DoxyCodeLine{00150         \textcolor{keywordflow}{if} (\mbox{\hyperlink{networking_8cpp_a1b2d1e5ad12dfa2377bd6e665324b6d2}{processToLinesCount}}(i, arraySize, processes) > 0)}
+\DoxyCodeLine{00151         \{}
+\DoxyCodeLine{00152             displs[i] = displs[i - 1] + scounts[i - 1];}
+\DoxyCodeLine{00153             scounts[i] = (arraySize * \mbox{\hyperlink{networking_8cpp_a1b2d1e5ad12dfa2377bd6e665324b6d2}{processToLinesCount}}(i, arraySize, processes));}
+\DoxyCodeLine{00154         \}}
+\DoxyCodeLine{00155         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00156         \{}
+\DoxyCodeLine{00157             displs[i] = 0;}
+\DoxyCodeLine{00158             scounts[i] = 0;}
+\DoxyCodeLine{00159         \}}
+\DoxyCodeLine{00160     \}}
+\DoxyCodeLine{00161 \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{networking_8cpp_a3b76ad8a23451b07a2a6f4019798dede_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{networking_8cpp_a0455313dd20006feab8bef34baa8a13b}\label{networking_8cpp_a0455313dd20006feab8bef34baa8a13b}} 
+\index{networking.cpp@{networking.cpp}!calculateMax@{calculateMax}}
+\index{calculateMax@{calculateMax}!networking.cpp@{networking.cpp}}
+\subsubsection{\texorpdfstring{calculateMax()}{calculateMax()}}
+{\footnotesize\ttfamily int calculate\+Max (\begin{DoxyParamCaption}\item[{int}]{max\+Local }\end{DoxyParamCaption})}
+
+
+
+Find and share the max element of matrix A across all running processes. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em max\+Local} & \mbox{[}in\mbox{]} The max found on the lines assigned to the current process \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int The max element of matrix A 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{networking_8cpp_source_l00210}{210}} of file \mbox{\hyperlink{networking_8cpp_source}{networking.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00211 \{}
+\DoxyCodeLine{00212     \textcolor{keywordtype}{int} max;}
+\DoxyCodeLine{00213     MPI\_Allreduce(\&maxLocal, \&max, 1, MPI\_INT, MPI\_MAX, MPI\_COMM\_WORLD);}
+\DoxyCodeLine{00214     \textcolor{keywordflow}{return} max;}
+\DoxyCodeLine{00215 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{networking_8cpp_a7aaffad7a6e05c4b99e1a949773ddc88}\label{networking_8cpp_a7aaffad7a6e05c4b99e1a949773ddc88}} 
+\index{networking.cpp@{networking.cpp}!checkCriteria@{checkCriteria}}
+\index{checkCriteria@{checkCriteria}!networking.cpp@{networking.cpp}}
+\subsubsection{\texorpdfstring{checkCriteria()}{checkCriteria()}}
+{\footnotesize\ttfamily bool check\+Criteria (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::vector$<$ int $>$$>$}]{local\+Data,  }\item[{int}]{array\+Size,  }\item[{int}]{my\+Rank,  }\item[{int}]{processes,  }\item[{int $\ast$}]{max }\end{DoxyParamCaption})}
+
+
+
+Checks if matrix A meets the strictly diagonally dominant criteria given the lines assigned to the current process and returns it\textquotesingle{}s max element by reference. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em local\+Data} & \mbox{[}in\mbox{]} The lines assigned to the current process \\
+\hline
+{\em array\+Size} & \mbox{[}in\mbox{]} The total number of lines \\
+\hline
+{\em my\+Rank} & \mbox{[}in\mbox{]} The rank of the current process \\
+\hline
+{\em processes} & \mbox{[}in\mbox{]} The total number of processes \\
+\hline
+{\em max} & \mbox{[}out\mbox{]} The max element of matrix A \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true If matrix A meets the strictly diagonally dominant criteria 
+
+false If matrix A does not meet the strictly diagonally dominant criteria 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{networking_8cpp_source_l00230}{230}} of file \mbox{\hyperlink{networking_8cpp_source}{networking.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00231 \{}
+\DoxyCodeLine{00232     \textcolor{keywordtype}{int} maxLocal;}
+\DoxyCodeLine{00233     \textcolor{keywordtype}{int} resultLocal = \mbox{\hyperlink{data_8cpp_abf9ef0211f65026775fa7c1056b754fe}{checkCriteriaLocal}}(localData, arraySize, myRank, processes, \&maxLocal);}
+\DoxyCodeLine{00234 }
+\DoxyCodeLine{00235     \textcolor{keywordtype}{int} globalResult;}
+\DoxyCodeLine{00236 }
+\DoxyCodeLine{00237     MPI\_Reduce(\&resultLocal, \&globalResult, 1, MPI\_INT, MPI\_SUM, 0, MPI\_COMM\_WORLD);}
+\DoxyCodeLine{00238 }
+\DoxyCodeLine{00239     \textcolor{keywordtype}{bool} abortP = \textcolor{keyword}{false};}
+\DoxyCodeLine{00240 }
+\DoxyCodeLine{00241     ifRoot(\{}
+\DoxyCodeLine{00242         \textcolor{keywordflow}{if} (globalResult == processes)}
+\DoxyCodeLine{00243         \{}
+\DoxyCodeLine{00244             abortP = \textcolor{keyword}{false};}
+\DoxyCodeLine{00245             std::cout << \textcolor{stringliteral}{"yes"} << std::endl;}
+\DoxyCodeLine{00246         \}}
+\DoxyCodeLine{00247         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00248         \{}
+\DoxyCodeLine{00249             abortP = \textcolor{keyword}{true};}
+\DoxyCodeLine{00250             std::cout << \textcolor{stringliteral}{"no"} << std::endl;}
+\DoxyCodeLine{00251         \}}
+\DoxyCodeLine{00252     \})}
+\DoxyCodeLine{00253 }
+\DoxyCodeLine{00254         MPI\_Barrier(MPI\_COMM\_WORLD);}
+\DoxyCodeLine{00255 }
+\DoxyCodeLine{00256     MPI\_Bcast(\&abortP, 1, MPI\_CXX\_BOOL, 0, MPI\_COMM\_WORLD);}
+\DoxyCodeLine{00257 }
+\DoxyCodeLine{00258     \textcolor{keywordflow}{if} (abortP)}
+\DoxyCodeLine{00259     \{}
+\DoxyCodeLine{00260         \textcolor{keywordflow}{return} \textcolor{keyword}{false};}
+\DoxyCodeLine{00261     \}}
+\DoxyCodeLine{00262     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00263     \{}
+\DoxyCodeLine{00264         *max = \mbox{\hyperlink{networking_8cpp_a0455313dd20006feab8bef34baa8a13b}{calculateMax}}(maxLocal);}
+\DoxyCodeLine{00265         ifRoot(\{ std::cout << \textcolor{stringliteral}{"max = "} << *max << std::endl; \});}
+\DoxyCodeLine{00266         \textcolor{keywordflow}{return} \textcolor{keyword}{true};}
+\DoxyCodeLine{00267     \}}
+\DoxyCodeLine{00268 \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{networking_8cpp_a7aaffad7a6e05c4b99e1a949773ddc88_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{networking_8cpp_ad3bc02c1c672b6ae601f31c897f7af2f}\label{networking_8cpp_ad3bc02c1c672b6ae601f31c897f7af2f}} 
+\index{networking.cpp@{networking.cpp}!findMin@{findMin}}
+\index{findMin@{findMin}!networking.cpp@{networking.cpp}}
+\subsubsection{\texorpdfstring{findMin()}{findMin()}}
+{\footnotesize\ttfamily void find\+Min (\begin{DoxyParamCaption}\item[{int}]{min\+Local,  }\item[{int}]{min\+X\+Local,  }\item[{int}]{min\+Y\+Local,  }\item[{int $\ast$}]{min }\end{DoxyParamCaption})}
+
+
+
+Find and share the min element of matrix B across all running processes. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em min\+Local} & \mbox{[}in\mbox{]} The min element only from the lines assigned to the current process \\
+\hline
+{\em min\+X\+Local} & \mbox{[}in\mbox{]} The X coordinate of the local min element \\
+\hline
+{\em min\+Y\+Local} & The Y coordinate of the local min element \\
+\hline
+{\em min} & \mbox{[}out\mbox{]} The min elemetn of matrix B \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{networking_8cpp_source_l00322}{322}} of file \mbox{\hyperlink{networking_8cpp_source}{networking.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00323 \{}
+\DoxyCodeLine{00324     MPI\_Allreduce(\&minLocal, min, 1, MPI\_INT, MPI\_MIN, MPI\_COMM\_WORLD);}
+\DoxyCodeLine{00325 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{networking_8cpp_a4f043b23867da30b825487b736565c9f}\label{networking_8cpp_a4f043b23867da30b825487b736565c9f}} 
+\index{networking.cpp@{networking.cpp}!GetMPIParams@{GetMPIParams}}
+\index{GetMPIParams@{GetMPIParams}!networking.cpp@{networking.cpp}}
+\subsubsection{\texorpdfstring{GetMPIParams()}{GetMPIParams()}}
+{\footnotesize\ttfamily void Get\+M\+P\+I\+Params (\begin{DoxyParamCaption}\item[{int $\ast$}]{processes\+Count,  }\item[{int $\ast$}]{rank }\end{DoxyParamCaption})}
+
+
+
+Returns the number of processes and the rank of the current process. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em processes\+Count} & The address to which the number of the processes will be written. \\
+\hline
+{\em rank} & The address to which the rank of the current process will be written. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line \mbox{\hyperlink{networking_8cpp_source_l00030}{30}} of file \mbox{\hyperlink{networking_8cpp_source}{networking.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00031 \{}
+\DoxyCodeLine{00032     MPI\_Comm\_rank(MPI\_COMM\_WORLD, rank);}
+\DoxyCodeLine{00033     MPI\_Comm\_size(MPI\_COMM\_WORLD, processesCount);}
+\DoxyCodeLine{00034 \}}
+
+\end{DoxyCode}
+\mbox{\Hypertarget{networking_8cpp_a2b5f195179a5dab012c7eb63316c8909}\label{networking_8cpp_a2b5f195179a5dab012c7eb63316c8909}} 
+\index{networking.cpp@{networking.cpp}!lineToProcess@{lineToProcess}}
+\index{lineToProcess@{lineToProcess}!networking.cpp@{networking.cpp}}
+\subsubsection{\texorpdfstring{lineToProcess()}{lineToProcess()}}
+{\footnotesize\ttfamily int line\+To\+Process (\begin{DoxyParamCaption}\item[{int}]{line,  }\item[{int}]{total\+Lines,  }\item[{int}]{processes }\end{DoxyParamCaption})}
+
+
+
+Returns the number of the process a line of the array will be assigned to. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em line} & The number of the line of the array to assign. (base 0) \\
+\hline
+{\em total\+Lines} & The total number of lines in the array. \\
+\hline
+{\em processes} & The total number of processes. (including the root process) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int The number of the process the passed line of the array will be assigned to. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{networking_8cpp_source_l00044}{44}} of file \mbox{\hyperlink{networking_8cpp_source}{networking.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00045 \{}
+\DoxyCodeLine{00046     \textcolor{comment}{// Create a vector holding the number of the process each line will be assigned to.}}
+\DoxyCodeLine{00047     \textcolor{comment}{// The index will be the line number and the data the process number;}}
+\DoxyCodeLine{00048     std::vector<int> lineAssignments;}
+\DoxyCodeLine{00049 }
+\DoxyCodeLine{00050     \textcolor{comment}{// What we want to do here is assign each line to a process based on how many}}
+\DoxyCodeLine{00051     \textcolor{comment}{// there are and then sort the array so all the lines of a process are continuous}}
+\DoxyCodeLine{00052     \textcolor{comment}{// for easier manipulation.}}
+\DoxyCodeLine{00053 }
+\DoxyCodeLine{00054     \textcolor{comment}{// Fill the vector with the assignments based on the modulo of the line.}}
+\DoxyCodeLine{00055     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} \_line = 0; \_line < totalLines; \_line++)}
+\DoxyCodeLine{00056         lineAssignments.push\_back(\mbox{\hyperlink{networking_8cpp_a13ea20b290c58975e6f9ad5b419330cc}{\_lineToProcess}}(\_line, totalLines, processes));}
+\DoxyCodeLine{00057 }
+\DoxyCodeLine{00058     \textcolor{comment}{// Sort the vector so all the process occurances are together.}}
+\DoxyCodeLine{00059     std::sort(lineAssignments.begin(), lineAssignments.end());}
+\DoxyCodeLine{00060 }
+\DoxyCodeLine{00061     \textcolor{keywordflow}{return} lineAssignments[line];}
+\DoxyCodeLine{00062 \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=279pt]{networking_8cpp_a2b5f195179a5dab012c7eb63316c8909_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}\label{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}} 
+\index{networking.cpp@{networking.cpp}!processToLines@{processToLines}}
+\index{processToLines@{processToLines}!networking.cpp@{networking.cpp}}
+\subsubsection{\texorpdfstring{processToLines()}{processToLines()}}
+{\footnotesize\ttfamily std\+::vector$<$int$>$ process\+To\+Lines (\begin{DoxyParamCaption}\item[{int}]{process,  }\item[{int}]{total\+Lines,  }\item[{int}]{processes }\end{DoxyParamCaption})}
+
+
+
+Returns a vector with the numbers (base 0) of the lines a process will be assigned. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em process} & The number of the process we want to get the lines it will be assigned. \\
+\hline
+{\em total\+Lines} & The total number of lines in the array. \\
+\hline
+{\em processes} & The total number of processes. (including the root process) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+std\+::vector$<$int$>$ An std\+::vector$<$int$>$ object containing the numbers (base 0) of the lines the passed process will be assigned. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{networking_8cpp_source_l00087}{87}} of file \mbox{\hyperlink{networking_8cpp_source}{networking.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00088 \{}
+\DoxyCodeLine{00089     std::vector<int> lines;}
+\DoxyCodeLine{00090 }
+\DoxyCodeLine{00091     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} line = 0; line < totalLines; line++)}
+\DoxyCodeLine{00092     \{}
+\DoxyCodeLine{00093         \textcolor{keywordflow}{if} (\mbox{\hyperlink{networking_8cpp_a2b5f195179a5dab012c7eb63316c8909}{lineToProcess}}(line, totalLines, processes) == process)}
+\DoxyCodeLine{00094         \{}
+\DoxyCodeLine{00095             lines.push\_back(line);}
+\DoxyCodeLine{00096         \}}
+\DoxyCodeLine{00097     \}}
+\DoxyCodeLine{00098 }
+\DoxyCodeLine{00099     \textcolor{keywordflow}{return} lines;}
+\DoxyCodeLine{00100 \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{networking_8cpp_a1b2d1e5ad12dfa2377bd6e665324b6d2}\label{networking_8cpp_a1b2d1e5ad12dfa2377bd6e665324b6d2}} 
+\index{networking.cpp@{networking.cpp}!processToLinesCount@{processToLinesCount}}
+\index{processToLinesCount@{processToLinesCount}!networking.cpp@{networking.cpp}}
+\subsubsection{\texorpdfstring{processToLinesCount()}{processToLinesCount()}}
+{\footnotesize\ttfamily int process\+To\+Lines\+Count (\begin{DoxyParamCaption}\item[{int}]{process,  }\item[{int}]{total\+Lines,  }\item[{int}]{processes }\end{DoxyParamCaption})}
+
+
+
+The number of lines that will be assigned to a process. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em process} & The number of the process \\
+\hline
+{\em total\+Lines} & The total number of lines in the array. \\
+\hline
+{\em processes} & The total number of processes. (including the root process) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int The number of lines the passed process will be assigned. 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{networking_8cpp_source_l00110}{110}} of file \mbox{\hyperlink{networking_8cpp_source}{networking.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00111 \{}
+\DoxyCodeLine{00112     \textcolor{keywordtype}{int} linesCount = 0;}
+\DoxyCodeLine{00113 }
+\DoxyCodeLine{00114     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < totalLines; i++)}
+\DoxyCodeLine{00115         \textcolor{keywordflow}{if} (\mbox{\hyperlink{networking_8cpp_a13ea20b290c58975e6f9ad5b419330cc}{\_lineToProcess}}(i, totalLines, processes) == process)}
+\DoxyCodeLine{00116             linesCount++;}
+\DoxyCodeLine{00117 }
+\DoxyCodeLine{00118     \textcolor{keywordflow}{return} linesCount;}
+\DoxyCodeLine{00119 \}}
+
+\end{DoxyCode}
+Here is the call graph for this function\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=312pt]{networking_8cpp_a1b2d1e5ad12dfa2377bd6e665324b6d2_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{networking_8cpp_a3a44c57f314e8ae5a1c782ba82cfd8ad}\label{networking_8cpp_a3a44c57f314e8ae5a1c782ba82cfd8ad}} 
+\index{networking.cpp@{networking.cpp}!scatterData@{scatterData}}
+\index{scatterData@{scatterData}!networking.cpp@{networking.cpp}}
+\subsubsection{\texorpdfstring{scatterData()}{scatterData()}}
+{\footnotesize\ttfamily std\+::vector$<$std\+::vector$<$int$>$ $>$ scatter\+Data (\begin{DoxyParamCaption}\item[{std\+::vector$<$ std\+::vector$<$ int $>$$>$}]{data,  }\item[{int}]{array\+Size,  }\item[{int}]{my\+Rank,  }\item[{int}]{processes }\end{DoxyParamCaption})}
+
+
+
+Scatter the lines of matrix A to the running processes. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & \mbox{[}in\mbox{]} A 2D vector with the input data \\
+\hline
+{\em array\+Size} & \mbox{[}in\mbox{]} The total number of lines \\
+\hline
+{\em my\+Rank} & \mbox{[}in\mbox{]} The rank of teh current process \\
+\hline
+{\em processes} & \mbox{[}in\mbox{]} The total number of processes \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+std\+::vector$<$std\+::vector$<$int$>$$>$ The lines assigned to the current process 
+\end{DoxyReturn}
+
+
+Definition at line \mbox{\hyperlink{networking_8cpp_source_l00172}{172}} of file \mbox{\hyperlink{networking_8cpp_source}{networking.\+cpp}}.
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00173 \{}
+\DoxyCodeLine{00174 }
+\DoxyCodeLine{00175     \textcolor{comment}{// An array to hold the array in row major form}}
+\DoxyCodeLine{00176     \textcolor{keywordtype}{int} *dataArray;}
+\DoxyCodeLine{00177 }
+\DoxyCodeLine{00178     \textcolor{comment}{// Convert data vector to row-major order array}}
+\DoxyCodeLine{00179     ifRoot(\{}
+\DoxyCodeLine{00180         dataArray = \textcolor{keyword}{new} \textcolor{keywordtype}{int}[data.size() * arraySize];}
+\DoxyCodeLine{00181         \mbox{\hyperlink{data_8cpp_a0555064a00cfa5563cce34c929f8c7af}{prepareData}}(data, dataArray);}
+\DoxyCodeLine{00182     \});}
+\DoxyCodeLine{00183 }
+\DoxyCodeLine{00184     \textcolor{keywordtype}{int} *displs, *scounts;}
+\DoxyCodeLine{00185     \mbox{\hyperlink{networking_8cpp_a3b76ad8a23451b07a2a6f4019798dede}{calculateDisplsScounts}}(displs, scounts, arraySize, processes, myRank);}
+\DoxyCodeLine{00186 }
+\DoxyCodeLine{00187     \textcolor{keywordtype}{int} elements = (arraySize)*\mbox{\hyperlink{networking_8cpp_a1b2d1e5ad12dfa2377bd6e665324b6d2}{processToLinesCount}}(myRank, arraySize, processes);}
+\DoxyCodeLine{00188     \textcolor{keywordtype}{int} *dataOut = \textcolor{keyword}{new} \textcolor{keywordtype}{int}[elements];}
+\DoxyCodeLine{00189 }
+\DoxyCodeLine{00190     MPI\_Barrier(MPI\_COMM\_WORLD);}
+\DoxyCodeLine{00191 }
+\DoxyCodeLine{00192     MPI\_Scatterv(dataArray, scounts, displs, MPI\_INT, dataOut, *scounts, MPI\_INT, 0, MPI\_COMM\_WORLD);}
+\DoxyCodeLine{00193 }
+\DoxyCodeLine{00194     MPI\_Barrier(MPI\_COMM\_WORLD);}
+\DoxyCodeLine{00195 }
+\DoxyCodeLine{00196     \textcolor{keyword}{delete}[] displs;}
+\DoxyCodeLine{00197     \textcolor{keyword}{delete}[] scounts;}
+\DoxyCodeLine{00198 }
+\DoxyCodeLine{00199     std::vector<std::vector<int>> localData = \mbox{\hyperlink{data_8cpp_a1eed75538e1b158fdd154c1de2ee2409}{arrayRowMajorTo2DVector}}(dataOut, \mbox{\hyperlink{networking_8cpp_a1b2d1e5ad12dfa2377bd6e665324b6d2}{processToLinesCount}}(myRank, arraySize, processes), arraySize);}
+\DoxyCodeLine{00200 }
+\DoxyCodeLine{00201     \textcolor{keywordflow}{return} localData;}
+\DoxyCodeLine{00202 \}}
+
+\end{DoxyCode}

@@ -1,0 +1,279 @@
+\hypertarget{data_8cpp_source}{}\section{data.\+cpp}
+\label{data_8cpp_source}\index{src/data.cpp@{src/data.cpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001 }
+\DoxyCodeLine{00012 \textcolor{preprocessor}{\#define DEFAULT\_FILENAME "matrix.in"}}
+\DoxyCodeLine{00013 }
+\DoxyCodeLine{00014 \textcolor{preprocessor}{\#include <vector>}}
+\DoxyCodeLine{00015 \textcolor{preprocessor}{\#include <string>}}
+\DoxyCodeLine{00016 }
+\DoxyCodeLine{00017 \textcolor{preprocessor}{\#include <stdexcept>}}
+\DoxyCodeLine{00018 }
+\DoxyCodeLine{00019 \textcolor{preprocessor}{\#include <sys/stat.h>}}
+\DoxyCodeLine{00020 }
+\DoxyCodeLine{00021 \textcolor{preprocessor}{\#include <sstream>}}
+\DoxyCodeLine{00022 \textcolor{preprocessor}{\#include <fstream>}}
+\DoxyCodeLine{00023 }
+\DoxyCodeLine{00024 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{00025 }
+\DoxyCodeLine{00026 \textcolor{preprocessor}{\#include "\mbox{\hyperlink{networking_8h}{networking.h}}"}}
+\DoxyCodeLine{00027 }
+\DoxyCodeLine{\Hypertarget{data_8cpp_source_l00035}\mbox{\hyperlink{data_8cpp_a8da6832660ffb6bbf974846015f44a21}{00035}} \textcolor{keyword}{inline} \textcolor{keywordtype}{bool} \mbox{\hyperlink{data_8cpp_a8da6832660ffb6bbf974846015f44a21}{fileExists}}(\textcolor{keyword}{const} std::string \&name)}
+\DoxyCodeLine{00036 \{}
+\DoxyCodeLine{00037     \textcolor{keyword}{struct }stat buffer;}
+\DoxyCodeLine{00038     \textcolor{keywordflow}{return} (stat(name.c\_str(), \&buffer) == 0);}
+\DoxyCodeLine{00039 \}}
+\DoxyCodeLine{00040 }
+\DoxyCodeLine{\Hypertarget{data_8cpp_source_l00048}\mbox{\hyperlink{data_8cpp_aa66fdbd9f9a257ed80dac99b66380d2f}{00048}} std::string \mbox{\hyperlink{data_8cpp_aa66fdbd9f9a257ed80dac99b66380d2f}{inputFileName}}(\textcolor{keywordtype}{int} argc, \textcolor{keywordtype}{char} **argv)}
+\DoxyCodeLine{00049 \{}
+\DoxyCodeLine{00050     std::string filename;}
+\DoxyCodeLine{00051     \textcolor{comment}{// Check if file name was passed}}
+\DoxyCodeLine{00052     \textcolor{keywordflow}{switch} (argc)}
+\DoxyCodeLine{00053     \{}
+\DoxyCodeLine{00054     \textcolor{keywordflow}{case} 1:}
+\DoxyCodeLine{00055         \textcolor{comment}{// No parameter passed, fallback to default filename}}
+\DoxyCodeLine{00056         \textcolor{keywordflow}{return} DEFAULT\_FILENAME;}
+\DoxyCodeLine{00057         \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00058 }
+\DoxyCodeLine{00059     \textcolor{keywordflow}{case} 2:}
+\DoxyCodeLine{00060         \textcolor{comment}{// We got one parameter, check if it's an existing file}}
+\DoxyCodeLine{00061         filename = argv[1];}
+\DoxyCodeLine{00062         \textcolor{keywordflow}{if} (\mbox{\hyperlink{data_8cpp_a8da6832660ffb6bbf974846015f44a21}{fileExists}}(filename))}
+\DoxyCodeLine{00063         \{}
+\DoxyCodeLine{00064             \textcolor{keywordflow}{return} filename;}
+\DoxyCodeLine{00065         \}}
+\DoxyCodeLine{00066         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00067         \{}
+\DoxyCodeLine{00068             \textcolor{keywordflow}{throw} std::runtime\_error(\textcolor{stringliteral}{"Could not open file \(\backslash\)""} + filename + \textcolor{stringliteral}{"\(\backslash\)""});}
+\DoxyCodeLine{00069         \}}
+\DoxyCodeLine{00070 }
+\DoxyCodeLine{00071     \textcolor{keywordflow}{default}:}
+\DoxyCodeLine{00072         \textcolor{keywordflow}{throw} std::runtime\_error(\textcolor{stringliteral}{"Incorrect command usage!"});}
+\DoxyCodeLine{00073         \textcolor{keywordflow}{break};}
+\DoxyCodeLine{00074     \}}
+\DoxyCodeLine{00075 \}}
+\DoxyCodeLine{00076 }
+\DoxyCodeLine{\Hypertarget{data_8cpp_source_l00084}\mbox{\hyperlink{data_8h_ac38a113ae54084e7aa3af41af05c5784}{00084}} \textcolor{keywordtype}{void} \mbox{\hyperlink{data_8cpp_a48471d7903f5d84f202777dae4ca4942}{ReadData}}(std::vector<std::vector<int>> *data, \textcolor{keywordtype}{int} *arraySize, \textcolor{keywordtype}{int} argc, \textcolor{keywordtype}{char} **argv)}
+\DoxyCodeLine{00085 \{}
+\DoxyCodeLine{00086     std::string filename;}
+\DoxyCodeLine{00087 }
+\DoxyCodeLine{00088     \textcolor{keywordflow}{try}}
+\DoxyCodeLine{00089     \{}
+\DoxyCodeLine{00090         filename = \mbox{\hyperlink{data_8cpp_aa66fdbd9f9a257ed80dac99b66380d2f}{inputFileName}}(argc, argv);}
+\DoxyCodeLine{00091     \}}
+\DoxyCodeLine{00092     \textcolor{keywordflow}{catch} (std::exception \&e)}
+\DoxyCodeLine{00093     \{}
+\DoxyCodeLine{00094         std::cout << \textcolor{stringliteral}{"\(\backslash\)033[1;31m"}}
+\DoxyCodeLine{00095                   << \textcolor{stringliteral}{"Error: "} << e.what() << \textcolor{stringliteral}{"\(\backslash\)033[0m"}}
+\DoxyCodeLine{00096                   << std::endl;}
+\DoxyCodeLine{00097     \}}
+\DoxyCodeLine{00098 }
+\DoxyCodeLine{00099     \textcolor{comment}{// An input file stream used to read data from config.txt.}}
+\DoxyCodeLine{00100     std::ifstream inputFile(filename);}
+\DoxyCodeLine{00101 }
+\DoxyCodeLine{00102     \textcolor{comment}{// If the file is opened sucessfully}}
+\DoxyCodeLine{00103     \textcolor{keywordflow}{if} (inputFile.is\_open())}
+\DoxyCodeLine{00104     \{}
+\DoxyCodeLine{00105         \textcolor{comment}{// A temporary variable to store numbers from the input file.}}
+\DoxyCodeLine{00106         \textcolor{keywordtype}{int} tmpNumber;}
+\DoxyCodeLine{00107 }
+\DoxyCodeLine{00108         std::string line;}
+\DoxyCodeLine{00109 }
+\DoxyCodeLine{00110         \textcolor{comment}{// While inputFile still has lines, put them on line.}}
+\DoxyCodeLine{00111         \textcolor{keywordflow}{while} (std::getline(inputFile, line))}
+\DoxyCodeLine{00112         \{}
+\DoxyCodeLine{00113             std::istringstream iss(line);}
+\DoxyCodeLine{00114             std::vector<int> tempv;}
+\DoxyCodeLine{00115 }
+\DoxyCodeLine{00116             \textcolor{keywordflow}{while} (iss >> tmpNumber)}
+\DoxyCodeLine{00117             \{}
+\DoxyCodeLine{00118                 tempv.push\_back(tmpNumber);}
+\DoxyCodeLine{00119             \}}
+\DoxyCodeLine{00120 }
+\DoxyCodeLine{00121             data->push\_back(tempv);}
+\DoxyCodeLine{00122         \}}
+\DoxyCodeLine{00123 }
+\DoxyCodeLine{00124         \textcolor{comment}{// We are at the end of the file, close it as we won't need it anymore.}}
+\DoxyCodeLine{00125         inputFile.close();}
+\DoxyCodeLine{00126     \}}
+\DoxyCodeLine{00127 }
+\DoxyCodeLine{00128     *arraySize = data->size();}
+\DoxyCodeLine{00129 \}}
+\DoxyCodeLine{00130 }
+\DoxyCodeLine{\Hypertarget{data_8cpp_source_l00137}\mbox{\hyperlink{data_8cpp_ac8c9576be9f28e69607c0756f1e5a7ef}{00137}} \textcolor{keywordtype}{int} **\mbox{\hyperlink{data_8cpp_ac8c9576be9f28e69607c0756f1e5a7ef}{vector2DToArray2D}}(std::vector<std::vector<int>> v2d)}
+\DoxyCodeLine{00138 \{}
+\DoxyCodeLine{00139     \textcolor{comment}{// Create a pointer for a 2D array}}
+\DoxyCodeLine{00140     \textcolor{keywordtype}{int} **arr2d = \textcolor{keyword}{new} \textcolor{keywordtype}{int} *[v2d.size()];}
+\DoxyCodeLine{00141 }
+\DoxyCodeLine{00142     \textcolor{comment}{// For each line in the vector:}}
+\DoxyCodeLine{00143     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < v2d.size(); i++)}
+\DoxyCodeLine{00144     \{}
+\DoxyCodeLine{00145         arr2d[i] = \textcolor{keyword}{new} \textcolor{keywordtype}{int}[v2d[i].size()];}
+\DoxyCodeLine{00146 }
+\DoxyCodeLine{00147         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} j = 0; j < v2d[i].size(); j++)}
+\DoxyCodeLine{00148         \{}
+\DoxyCodeLine{00149             arr2d[i][j] = v2d[i][j];}
+\DoxyCodeLine{00150         \}}
+\DoxyCodeLine{00151     \}}
+\DoxyCodeLine{00152 }
+\DoxyCodeLine{00153     \textcolor{keywordflow}{return} arr2d;}
+\DoxyCodeLine{00154 \}}
+\DoxyCodeLine{00155 }
+\DoxyCodeLine{\Hypertarget{data_8cpp_source_l00165}\mbox{\hyperlink{data_8h_a3a660ef9ff9008d793e691b81c43ce2b}{00165}} \textcolor{keywordtype}{int} *\mbox{\hyperlink{data_8cpp_a3a660ef9ff9008d793e691b81c43ce2b}{array2DTo1DRowMajor}}(\textcolor{keywordtype}{int} **arr2d, \textcolor{keywordtype}{int} m, \textcolor{keywordtype}{int} n)}
+\DoxyCodeLine{00166 \{}
+\DoxyCodeLine{00167     \textcolor{comment}{// Create a pointer for an array}}
+\DoxyCodeLine{00168     \textcolor{keywordtype}{int} *arr = \textcolor{keyword}{new} \textcolor{keywordtype}{int}[m * n];}
+\DoxyCodeLine{00169 }
+\DoxyCodeLine{00170     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < m; i++)}
+\DoxyCodeLine{00171     \{}
+\DoxyCodeLine{00172         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} j = 0; j < n; j++)}
+\DoxyCodeLine{00173         \{}
+\DoxyCodeLine{00174             arr[i * n + j] = arr2d[i][j];}
+\DoxyCodeLine{00175         \}}
+\DoxyCodeLine{00176     \}}
+\DoxyCodeLine{00177 }
+\DoxyCodeLine{00178     \textcolor{keywordflow}{return} arr;}
+\DoxyCodeLine{00179 \}}
+\DoxyCodeLine{00180 }
+\DoxyCodeLine{\Hypertarget{data_8cpp_source_l00190}\mbox{\hyperlink{data_8h_a1eed75538e1b158fdd154c1de2ee2409}{00190}} std::vector<std::vector<int>> \mbox{\hyperlink{data_8cpp_a1eed75538e1b158fdd154c1de2ee2409}{arrayRowMajorTo2DVector}}(\textcolor{keywordtype}{int} *arr, \textcolor{keywordtype}{int} m, \textcolor{keywordtype}{int} n)}
+\DoxyCodeLine{00191 \{}
+\DoxyCodeLine{00192     std::vector<std::vector<int>> vec;}
+\DoxyCodeLine{00193 }
+\DoxyCodeLine{00194     \textcolor{keywordtype}{int} index = 0;}
+\DoxyCodeLine{00195     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < m; i++)}
+\DoxyCodeLine{00196     \{}
+\DoxyCodeLine{00197         std::vector<int> vecLine;}
+\DoxyCodeLine{00198 }
+\DoxyCodeLine{00199         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} j = 0; j < n; j++)}
+\DoxyCodeLine{00200         \{}
+\DoxyCodeLine{00201             vecLine.push\_back(arr[index++]);}
+\DoxyCodeLine{00202         \}}
+\DoxyCodeLine{00203 }
+\DoxyCodeLine{00204         vec.push\_back(vecLine);}
+\DoxyCodeLine{00205     \}}
+\DoxyCodeLine{00206 }
+\DoxyCodeLine{00207     \textcolor{keywordflow}{return} vec;}
+\DoxyCodeLine{00208 \}}
+\DoxyCodeLine{00209 }
+\DoxyCodeLine{\Hypertarget{data_8cpp_source_l00217}\mbox{\hyperlink{data_8h_a0555064a00cfa5563cce34c929f8c7af}{00217}} \textcolor{keywordtype}{void} \mbox{\hyperlink{data_8cpp_a0555064a00cfa5563cce34c929f8c7af}{prepareData}}(std::vector<std::vector<int>> data, \textcolor{keywordtype}{int} *\&dataArray)}
+\DoxyCodeLine{00218 \{}
+\DoxyCodeLine{00219     \textcolor{keywordtype}{int} **arr2D = \mbox{\hyperlink{data_8cpp_ac8c9576be9f28e69607c0756f1e5a7ef}{vector2DToArray2D}}(data);}
+\DoxyCodeLine{00220     dataArray = \mbox{\hyperlink{data_8cpp_a3a660ef9ff9008d793e691b81c43ce2b}{array2DTo1DRowMajor}}(arr2D, data.size(), data[0].size());}
+\DoxyCodeLine{00221 \}}
+\DoxyCodeLine{00222 }
+\DoxyCodeLine{\Hypertarget{data_8cpp_source_l00235}\mbox{\hyperlink{data_8h_abf9ef0211f65026775fa7c1056b754fe}{00235}} \textcolor{keywordtype}{int} \mbox{\hyperlink{data_8cpp_abf9ef0211f65026775fa7c1056b754fe}{checkCriteriaLocal}}(std::vector<std::vector<int>> localData, \textcolor{keywordtype}{int} arraySize, \textcolor{keywordtype}{int} myRank, \textcolor{keywordtype}{int} processes, \textcolor{keywordtype}{int} *maxLocal)}
+\DoxyCodeLine{00236 \{}
+\DoxyCodeLine{00237 }
+\DoxyCodeLine{00238     \textcolor{keywordtype}{int} result = 0;}
+\DoxyCodeLine{00239 }
+\DoxyCodeLine{00240     \textcolor{keywordtype}{int} maxLocalTemp;}
+\DoxyCodeLine{00241 }
+\DoxyCodeLine{00242     std::vector<int> lines = \mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(myRank, arraySize, processes);}
+\DoxyCodeLine{00243 }
+\DoxyCodeLine{00244     \textcolor{comment}{// For each line:}}
+\DoxyCodeLine{00245     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < localData.size(); i++)}
+\DoxyCodeLine{00246     \{}
+\DoxyCodeLine{00247 }
+\DoxyCodeLine{00248         \textcolor{keywordtype}{int} line = lines[i];}
+\DoxyCodeLine{00249         \textcolor{keywordtype}{int} diagonalElement = localData[i][line];}
+\DoxyCodeLine{00250 }
+\DoxyCodeLine{00251         \textcolor{keywordflow}{if} (i == 0)}
+\DoxyCodeLine{00252         \{}
+\DoxyCodeLine{00253             maxLocalTemp = diagonalElement;}
+\DoxyCodeLine{00254         \}}
+\DoxyCodeLine{00255         \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00256         \{}
+\DoxyCodeLine{00257             maxLocalTemp = (abs(diagonalElement) > maxLocalTemp) ? diagonalElement : maxLocalTemp;}
+\DoxyCodeLine{00258         \}}
+\DoxyCodeLine{00259 }
+\DoxyCodeLine{00260         \textcolor{comment}{// Calculate sum}}
+\DoxyCodeLine{00261         \textcolor{keywordtype}{int} sum = 0;}
+\DoxyCodeLine{00262         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} j = 0; j < arraySize; j++)}
+\DoxyCodeLine{00263         \{}
+\DoxyCodeLine{00264             \textcolor{keywordflow}{if} (j != line)}
+\DoxyCodeLine{00265             \{}
+\DoxyCodeLine{00266                 sum += abs(localData[i][j]);}
+\DoxyCodeLine{00267             \}}
+\DoxyCodeLine{00268         \}}
+\DoxyCodeLine{00269 }
+\DoxyCodeLine{00270         \textcolor{keywordtype}{bool} ok = diagonalElement >= sum;}
+\DoxyCodeLine{00271 }
+\DoxyCodeLine{00272         \textcolor{keywordflow}{if} (ok)}
+\DoxyCodeLine{00273         \{}
+\DoxyCodeLine{00274             result += 1;}
+\DoxyCodeLine{00275         \}}
+\DoxyCodeLine{00276     \}}
+\DoxyCodeLine{00277 }
+\DoxyCodeLine{00278     *maxLocal = maxLocalTemp;}
+\DoxyCodeLine{00279 }
+\DoxyCodeLine{00280     \textcolor{keywordflow}{if} (result == lines.size())}
+\DoxyCodeLine{00281     \{}
+\DoxyCodeLine{00282         \textcolor{keywordflow}{return} 1;}
+\DoxyCodeLine{00283     \}}
+\DoxyCodeLine{00284     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00285     \{}
+\DoxyCodeLine{00286         \textcolor{keywordflow}{return} 0;}
+\DoxyCodeLine{00287     \}}
+\DoxyCodeLine{00288 \}}
+\DoxyCodeLine{00289 }
+\DoxyCodeLine{\Hypertarget{data_8cpp_source_l00300}\mbox{\hyperlink{data_8cpp_a247d4496219cf307d9be0d0ff98cf148}{00300}} \textcolor{keywordtype}{int} \mbox{\hyperlink{data_8cpp_a247d4496219cf307d9be0d0ff98cf148}{calculateBCell}}(\textcolor{keywordtype}{int} a, \textcolor{keywordtype}{int} max, \textcolor{keywordtype}{int} x, \textcolor{keywordtype}{int} y)}
+\DoxyCodeLine{00301 \{}
+\DoxyCodeLine{00302     \textcolor{keywordflow}{if} (x == y)}
+\DoxyCodeLine{00303         \textcolor{keywordflow}{return} max;}
+\DoxyCodeLine{00304     \textcolor{keywordflow}{return} max - abs(a);}
+\DoxyCodeLine{00305 \}}
+\DoxyCodeLine{00306 }
+\DoxyCodeLine{\Hypertarget{data_8cpp_source_l00320}\mbox{\hyperlink{data_8h_a6fa50f0193e86a0cf4be42afd2aa3056}{00320}} std::vector<std::vector<int>> \mbox{\hyperlink{data_8cpp_a6fa50f0193e86a0cf4be42afd2aa3056}{calculateBLocal}}(std::vector<std::vector<int>> localData, \textcolor{keywordtype}{int} max, \textcolor{keywordtype}{int} arraySize, \textcolor{keywordtype}{int} myRank, \textcolor{keywordtype}{int} processes, \textcolor{keywordtype}{int} *min, \textcolor{keywordtype}{int} *minX, \textcolor{keywordtype}{int} *minY)}
+\DoxyCodeLine{00321 \{}
+\DoxyCodeLine{00322     std::vector<std::vector<int>> localB;}
+\DoxyCodeLine{00323     std::vector<int> lines = \mbox{\hyperlink{networking_8cpp_a899a3109ee6d901ce9e10411db36bd53}{processToLines}}(myRank, arraySize, processes);}
+\DoxyCodeLine{00324 }
+\DoxyCodeLine{00325     *minX = -1;}
+\DoxyCodeLine{00326     *minY = -1;}
+\DoxyCodeLine{00327 }
+\DoxyCodeLine{00328     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < lines.size(); i++)}
+\DoxyCodeLine{00329     \{}
+\DoxyCodeLine{00330         std::vector<int> line;}
+\DoxyCodeLine{00331 }
+\DoxyCodeLine{00332         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} j = 0; j < arraySize; j++)}
+\DoxyCodeLine{00333         \{}
+\DoxyCodeLine{00334 }
+\DoxyCodeLine{00335             line.push\_back(\mbox{\hyperlink{data_8cpp_a247d4496219cf307d9be0d0ff98cf148}{calculateBCell}}(localData[i][j], max, lines[i], j));}
+\DoxyCodeLine{00336 }
+\DoxyCodeLine{00337             \textcolor{keywordflow}{if} ((i == 0) \&\& (j == 0))}
+\DoxyCodeLine{00338             \{}
+\DoxyCodeLine{00339                 *min = line[0];}
+\DoxyCodeLine{00340                 *minX = 0;}
+\DoxyCodeLine{00341                 *minY = 0;}
+\DoxyCodeLine{00342             \}}
+\DoxyCodeLine{00343             \textcolor{keywordflow}{else}}
+\DoxyCodeLine{00344             \{}
+\DoxyCodeLine{00345                 \textcolor{keywordflow}{if} (line[j] < *min)}
+\DoxyCodeLine{00346                 \{}
+\DoxyCodeLine{00347                     *min = line[j];}
+\DoxyCodeLine{00348                     *minX = lines[i];}
+\DoxyCodeLine{00349                     *minY = j;}
+\DoxyCodeLine{00350                 \}}
+\DoxyCodeLine{00351             \}}
+\DoxyCodeLine{00352         \}}
+\DoxyCodeLine{00353         localB.push\_back(line);}
+\DoxyCodeLine{00354     \}}
+\DoxyCodeLine{00355 }
+\DoxyCodeLine{00356     \textcolor{keywordflow}{return} localB;}
+\DoxyCodeLine{00357 \}}
+\DoxyCodeLine{00358 }
+\DoxyCodeLine{\Hypertarget{data_8cpp_source_l00365}\mbox{\hyperlink{data_8h_ae58d7964ceddd58b2ec8abdbc159a91e}{00365}} \textcolor{keywordtype}{void} \mbox{\hyperlink{data_8cpp_ae58d7964ceddd58b2ec8abdbc159a91e}{printB}}(\textcolor{keywordtype}{int} *b, \textcolor{keywordtype}{int} arraySize)}
+\DoxyCodeLine{00366 \{}
+\DoxyCodeLine{00367     \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i = 0; i < arraySize; i++)}
+\DoxyCodeLine{00368     \{}
+\DoxyCodeLine{00369         \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} j = 0; j < arraySize; j++)}
+\DoxyCodeLine{00370         \{}
+\DoxyCodeLine{00371 }
+\DoxyCodeLine{00372             std::cout << b[(i * arraySize) + j] << \textcolor{stringliteral}{" "};}
+\DoxyCodeLine{00373         \}}
+\DoxyCodeLine{00374         std::cout << std::endl;}
+\DoxyCodeLine{00375     \}}
+\DoxyCodeLine{00376 \}}
+
+\end{DoxyCode}

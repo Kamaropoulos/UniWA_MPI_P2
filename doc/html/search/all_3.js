@@ -1,0 +1,17 @@
+var searchData=
+[
+  ['calculateb',['calculateB',['../networking_8cpp.html#aeb4e88c5e00d6166f5f35a59671f3667',1,'calculateB(std::vector&lt; std::vector&lt; int &gt;&gt; localData, int arraySize, int max, int myRank, int processes, int *minLocal, int *minXLocal, int *minYLocal):&#160;networking.cpp'],['../networking_8h.html#aeb4e88c5e00d6166f5f35a59671f3667',1,'calculateB(std::vector&lt; std::vector&lt; int &gt;&gt; localData, int arraySize, int max, int myRank, int processes, int *minLocal, int *minXLocal, int *minYLocal):&#160;networking.cpp']]],
+  ['calculatebcell',['calculateBCell',['../data_8cpp.html#a247d4496219cf307d9be0d0ff98cf148',1,'data.cpp']]],
+  ['calculateblocal',['calculateBLocal',['../data_8cpp.html#a6fa50f0193e86a0cf4be42afd2aa3056',1,'calculateBLocal(std::vector&lt; std::vector&lt; int &gt;&gt; localData, int max, int arraySize, int myRank, int processes, int *min, int *minX, int *minY):&#160;data.cpp'],['../data_8h.html#a6fa50f0193e86a0cf4be42afd2aa3056',1,'calculateBLocal(std::vector&lt; std::vector&lt; int &gt;&gt; localData, int max, int arraySize, int myRank, int processes, int *min, int *minX, int *minY):&#160;data.cpp']]],
+  ['calculatedisplsscounts',['calculateDisplsScounts',['../networking_8cpp.html#a3b76ad8a23451b07a2a6f4019798dede',1,'calculateDisplsScounts(int *&amp;displs, int *&amp;scounts, int arraySize, int processes, int myRank):&#160;networking.cpp'],['../networking_8h.html#aabb825fd2cbffbb991b3e7e41224024d',1,'calculateDisplsScounts(int *&amp;, int *&amp;, int, int, int):&#160;networking.cpp']]],
+  ['calculatemax',['calculateMax',['../networking_8cpp.html#a0455313dd20006feab8bef34baa8a13b',1,'networking.cpp']]],
+  ['capturer',['Capturer',['../classCatch_1_1Capturer.html',1,'Catch']]],
+  ['casedstring',['CasedString',['../structCatch_1_1Matchers_1_1StdString_1_1CasedString.html',1,'Catch::Matchers::StdString']]],
+  ['casesensitive',['CaseSensitive',['../structCatch_1_1CaseSensitive.html',1,'Catch']]],
+  ['catch_5fglobal_5fnamespace_5fdummy',['Catch_global_namespace_dummy',['../structCatch__global__namespace__dummy.html',1,'']]],
+  ['checkcriteria',['checkCriteria',['../networking_8cpp.html#a7aaffad7a6e05c4b99e1a949773ddc88',1,'checkCriteria(std::vector&lt; std::vector&lt; int &gt;&gt; localData, int arraySize, int myRank, int processes, int *max):&#160;networking.cpp'],['../networking_8h.html#aebdb84266a26d25a1e1309523febf4f0',1,'checkCriteria(std::vector&lt; std::vector&lt; int &gt;&gt; localData, int arraySize, int myRank, int processes, int *maxLocal):&#160;networking.cpp']]],
+  ['checkcriterialocal',['checkCriteriaLocal',['../data_8cpp.html#abf9ef0211f65026775fa7c1056b754fe',1,'checkCriteriaLocal(std::vector&lt; std::vector&lt; int &gt;&gt; localData, int arraySize, int myRank, int processes, int *maxLocal):&#160;data.cpp'],['../data_8h.html#abf9ef0211f65026775fa7c1056b754fe',1,'checkCriteriaLocal(std::vector&lt; std::vector&lt; int &gt;&gt; localData, int arraySize, int myRank, int processes, int *maxLocal):&#160;data.cpp']]],
+  ['containselementmatcher',['ContainsElementMatcher',['../structCatch_1_1Matchers_1_1Vector_1_1ContainsElementMatcher.html',1,'Catch::Matchers::Vector']]],
+  ['containsmatcher',['ContainsMatcher',['../structCatch_1_1Matchers_1_1StdString_1_1ContainsMatcher.html',1,'Catch::Matchers::StdString::ContainsMatcher'],['../structCatch_1_1Matchers_1_1Vector_1_1ContainsMatcher.html',1,'Catch::Matchers::Vector::ContainsMatcher&lt; T &gt;']]],
+  ['counts',['Counts',['../structCatch_1_1Counts.html',1,'Catch']]]
+];

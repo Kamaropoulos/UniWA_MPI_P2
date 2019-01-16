@@ -1,0 +1,25 @@
+\hypertarget{test_2utils_8h_source}{}\section{utils.\+h}
+\label{test_2utils_8h_source}\index{test/utils.h@{test/utils.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001 \textcolor{preprocessor}{\#include "mpi.h"}}
+\DoxyCodeLine{00002 \textcolor{preprocessor}{\#include "../src/networking.h"}}
+\DoxyCodeLine{00003 }
+\DoxyCodeLine{00004 \textcolor{preprocessor}{\#defin ROOT\_PROCESS 0}}
+\DoxyCodeLine{00005 }
+\DoxyCodeLine{00006 \textcolor{preprocessor}{\#define isRoot(callback)               \(\backslash\)}}
+\DoxyCodeLine{00007 \textcolor{preprocessor}{    int argc = 1;                      \(\backslash\)}}
+\DoxyCodeLine{00008 \textcolor{preprocessor}{    char **argv = new char *[1];       \(\backslash\)}}
+\DoxyCodeLine{00009 \textcolor{preprocessor}{    argv[0] = (char *)"./bin/test";    \(\backslash\)}}
+\DoxyCodeLine{00010 \textcolor{preprocessor}{    MPI\_Init(\&argc, \&argv);            \(\backslash\)}}
+\DoxyCodeLine{00011 \textcolor{preprocessor}{    int processes, myRank;             \(\backslash\)}}
+\DoxyCodeLine{00012 \textcolor{preprocessor}{    GetMPIParams(\&processes, \&myRank); \(\backslash\)}}
+\DoxyCodeLine{00013 \textcolor{preprocessor}{    if (myRank == ROOT\_PROCESS)        \(\backslash\)}}
+\DoxyCodeLine{00014 \textcolor{preprocessor}{    \{                                  \(\backslash\)}}
+\DoxyCodeLine{00015 \textcolor{preprocessor}{        callback                       \(\backslash\)}}
+\DoxyCodeLine{00016 \textcolor{preprocessor}{    \}                                  \(\backslash\)}}
+\DoxyCodeLine{00017 \textcolor{preprocessor}{    MPI\_Finalize();}}
+\DoxyCodeLine{00018 }
+\DoxyCodeLine{00019 \textcolor{preprocessor}{\#define MPI\_TEST\_CASE(...) INTERNAL\_CATCH\_TESTCASE(\_\_VA\_ARGS\_\_)}}
+
+\end{DoxyCode}

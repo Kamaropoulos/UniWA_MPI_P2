@@ -1,0 +1,6 @@
+<map id="TEST_CASE" name="TEST_CASE">
+<area shape="rect" id="node1" title="Unit test for method calculateDisplsScounts with 4 lines and 8 processes (p &gt; n), ((n mod p) == 0)" alt="" coords="5,5,105,32"/>
+<area shape="rect" id="node2" href="$networking_8cpp.html#a3b76ad8a23451b07a2a6f4019798dede" title="Calculate the displs and scounts arrays for use with Scatter and Gather methods." alt="" coords="153,5,312,32"/>
+<area shape="rect" id="node3" href="$networking_8cpp.html#a1b2d1e5ad12dfa2377bd6e665324b6d2" title="The number of lines that will be assigned to a process." alt="" coords="360,5,509,32"/>
+<area shape="rect" id="node4" href="$networking_8cpp.html#a13ea20b290c58975e6f9ad5b419330cc" title="[Internal] Line to process assignments based on the modulo of the line." alt="" coords="557,5,669,32"/>
+</map>
