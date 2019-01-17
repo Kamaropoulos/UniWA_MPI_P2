@@ -29,19 +29,34 @@ The project has to be implemented using MPI's Collective Communication methods.
 
 ## Compilation
 To compile the program simply run:
-`make`
+
+```
+make
+```
 
 ## Execution
 To execute the program with a sample test file run:
-`mpiexec -n 4 ./bin/main testfile.in` or
-`make demo`
+
+```
+mpiexec -n 4 ./bin/main testfile.in
+```
+
+ or
+
+
+```
+make demo
+```
 
 ## Testing
 The code can be tested with different inputs by changing the contents of the `testfile.in` file.
 
 ## Unit Testing
 Some unit tests were implemented to speed up the debugging process (using the Catch2 library). These can be compiled and executed with the following command:
-`make test`
+
+```
+make test
+```
 
 ## Documentation
 The source code's documentation can be found on the `docs` directory. It was automatically generated using Doxygen and is available in both PDF and HTML format.
