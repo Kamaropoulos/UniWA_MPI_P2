@@ -69,7 +69,7 @@ int main(int argc, char **argv)
 
     // Find the min element of B
     int min, minX, minY;
-    findMin(minLocal, minXLocal, minYLocal, &min, &minX, &minY, myRank);
+    findMin(minLocal, minXLocal, minYLocal, &min);
 
     // Print min
     ifRoot({
