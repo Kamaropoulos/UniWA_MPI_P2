@@ -1,4 +1,0 @@
-<map id="calculateBCell" name="calculateBCell">
-<area shape="rect" id="node1" title="Calculate the value of a cell of the B matrix." alt="" coords="168,5,275,32"/>
-<area shape="rect" id="node2" href="$data_8h.html#a6fa50f0193e86a0cf4be42afd2aa3056" title="Calculate the lines of B assigned to a process." alt="" coords="5,5,120,32"/>
-</map>

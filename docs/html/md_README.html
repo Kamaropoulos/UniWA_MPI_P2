@@ -77,13 +77,24 @@ $(function() {
 <li>[x] Find the maximum element of the diagonal and print it to the screen.</li>
 <li>[x] Calculate and print a matrix based on the following formulas:</li>
 </ul>
-<img src="doc/formula1.gif" alt="" class="inline"/>
- <img src="doc/formula2.gif" alt="" class="inline"/>
+<img src="docs/formula1.gif" alt="" class="inline"/>
+ <img src="docs/formula2.gif" alt="" class="inline"/>
  <p>where <code>m</code> is the previously calculated maximum element of the diagonal and <code>A</code> the original matrix.</p>
 <ul>
 <li>[x] Find the minimum element of the new matrix and print it to the screen with it's position in the matrix.</li>
 </ul>
-<p>The project has to be implemented using MPI's Collective Communication methods. </p>
+<p>The project has to be implemented using MPI's Collective Communication methods.</p>
+<h2>Compilation</h2>
+<p>To compile the program simply run:</p>
+<div class="fragment"><div class="line">make</div></div><!-- fragment --><h2>Execution</h2>
+<p>To execute the program with a sample test file run:</p>
+<div class="fragment"><div class="line">mpiexec -n 4 ./bin/main testfile.in</div></div><!-- fragment --><p>or</p>
+<div class="fragment"><div class="line">make demo</div></div><!-- fragment --><h2>Testing</h2>
+<p>The code can be tested with different inputs by changing the contents of the <code>testfile.in</code> file.</p>
+<h2>Unit Testing</h2>
+<p>Some unit tests were implemented to speed up the debugging process (using the Catch2 library). These can be compiled and executed with the following command:</p>
+<div class="fragment"><div class="line">make test</div></div><!-- fragment --><h2>Documentation</h2>
+<p>The source code's documentation can be found on the <code>docs</code> directory. It was automatically generated using Doxygen and is available in both PDF and HTML format. </p>
 </div></div><!-- PageDoc -->
 </div><!-- contents -->
 <!-- start footer part -->

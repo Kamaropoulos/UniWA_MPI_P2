@@ -1,4 +1,0 @@
-<map id="vector2DToArray2D" name="vector2DToArray2D">
-<area shape="rect" id="node1" title="Returns a 2D Array with the data of the passed 2D Vector." alt="" coords="147,5,285,32"/>
-<area shape="rect" id="node2" href="$data_8h.html#a0555064a00cfa5563cce34c929f8c7af" title="Convert data in 2D vector to an 1D array with the data of the original vector in row&#45;major order for ..." alt="" coords="5,5,99,32"/>
-</map>

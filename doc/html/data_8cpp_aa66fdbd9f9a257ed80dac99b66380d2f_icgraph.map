@@ -1,4 +1,0 @@
-<map id="inputFileName" name="inputFileName">
-<area shape="rect" id="node1" title="Decide which filename should be used to read the data from." alt="" coords="135,5,241,32"/>
-<area shape="rect" id="node2" href="$data_8h.html#ac38a113ae54084e7aa3af41af05c5784" title="Determines the source to read from, reads and writes the data to a 2D vector." alt="" coords="5,5,87,32"/>
-</map>

@@ -1,7 +1,0 @@
-<map id="calculateBLocal" name="calculateBLocal">
-<area shape="rect" id="node1" title="Calculate the lines of B assigned to a process." alt="" coords="5,31,120,57"/>
-<area shape="rect" id="node2" href="$networking_8cpp.html#a899a3109ee6d901ce9e10411db36bd53" title="Returns a vector with the numbers (base 0) of the lines a process will be assigned." alt="" coords="168,5,283,32"/>
-<area shape="rect" id="node5" href="$data_8cpp.html#a247d4496219cf307d9be0d0ff98cf148" title="Calculate the value of a cell of the B matrix." alt="" coords="172,56,279,83"/>
-<area shape="rect" id="node3" href="$networking_8cpp.html#a2b5f195179a5dab012c7eb63316c8909" title="Returns the number of the process a line of the array will be assigned to." alt="" coords="331,5,436,32"/>
-<area shape="rect" id="node4" href="$networking_8cpp.html#a13ea20b290c58975e6f9ad5b419330cc" title="[Internal] Line to process assignments based on the modulo of the line." alt="" coords="484,5,596,32"/>
-</map>

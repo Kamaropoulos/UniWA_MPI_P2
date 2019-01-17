@@ -35,6 +35,10 @@ obj/data.o: src/data.cpp dirs
 obj/networking.o: src/networking.cpp dirs
 	$(MPICPP) $(CPPFLAGS) -o obj/networking.o -c src/networking.cpp
 
+.PHONY: docs
+docs:
+	doxygen dconfig; cd docs/latex; make pdf; cd -;
+
 .PHONY: clean
 clean:
 	rm -rf bin obj

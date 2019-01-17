@@ -29,4 +29,50 @@ where {\ttfamily m} is the previously calculated maximum element of the diagonal
 \item \mbox{[}x\mbox{]} Find the minimum element of the new matrix and print it to the screen with it\textquotesingle{}s position in the matrix.
 \end{DoxyItemize}
 
-The project has to be implemented using M\+PI\textquotesingle{}s Collective Communication methods. 
+The project has to be implemented using M\+PI\textquotesingle{}s Collective Communication methods.
+
+\subsection*{Compilation}
+
+To compile the program simply run\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{make}
+\end{DoxyCode}
+
+
+\subsection*{Execution}
+
+To execute the program with a sample test file run\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{mpiexec -n 4 ./bin/main testfile.in}
+\end{DoxyCode}
+
+
+or
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{make demo}
+\end{DoxyCode}
+
+
+\subsection*{Testing}
+
+The code can be tested with different inputs by changing the contents of the {\ttfamily testfile.\+in} file.
+
+\subsection*{Unit Testing}
+
+Some unit tests were implemented to speed up the debugging process (using the Catch2 library). These can be compiled and executed with the following command\+:
+
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{make test}
+\end{DoxyCode}
+
+
+\subsection*{Documentation}
+
+The source code\textquotesingle{}s documentation can be found on the {\ttfamily docs} directory. It was automatically generated using Doxygen and is available in both P\+DF and H\+T\+ML format. 
